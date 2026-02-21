@@ -1,0 +1,79 @@
+import { useRecoilState } from 'recoil';
+
+import { useCreateActivityInDB } from '@/activities/hooks/useCreateActivityInDB';
+import { useRefreshShowPageFindManyActivitiesQueries } from '@/activities/hooks/useRefreshShowPageFindManyActivitiesQueries';
+import { isActivityInCreateModeState } from '@/activities/states/isActivityInCreateModeState';
+import { isUpsertingActivityInDBState } from '@/activities/states/isCreatingActivityInDBState';
+import { objectShowPageTargetableObjectStateV2 } from '@/activities/timeline-activities/states/objectShowPageTargetableObjectStateV2';
+import { type Note } from '@/activities/types/Note';
+import { type Task } from '@/activities/types/Task';
+import { type CoreObjectNameSingular } from '@/object-metadata/types/CoreObjectNameSingular';
+import { useUpdateOneRecord } from '@/object-record/hooks/useUpdateOneRecord';
+import { isDefined } from 'twenty-shared/utils';
+import { useRecoilStateV2 } from '@/ui/utilities/state/jotai/hooks/useRecoilStateV2';
+import { useRecoilValueV2 } from '@/ui/utilities/state/jotai/hooks/useRecoilValueV2';
+
+export const useUpsertActivity = ({
+  activityObjectNameSingular,
+}: {
+  activityObjectNameSingular:
+    | CoreObjectNameSingular.Task
+    | CoreObjectNameSingular.Note;
+}) => {
+  const [isActivityInCreateMode] = useRecoilStateV2(
+    isActivityInCreateModeState,
+  );
+
+  const { updateOneRecord: updateOneActivity } = useUpdateOneRecord();
+
+  const { createActivityInDB } = useCreateActivityInDB({
+    activityObjectNameSingular,
+  });
+
+  const [, setIsUpsertingActivityInDB] = useRecoilState(
+    isUpsertingActivityInDBState,
+  );
+
+  const objectShowPageTargetableObject = useRecoilValueV2(
+    objectShowPageTargetableObjectStateV2,
+  );
+
+  const { refreshShowPageFindManyActivitiesQueries } =
+    useRefreshShowPageFindManyActivitiesQueries({
+      activityObjectNameSingular,
+    });
+
+  const upsertActivity = async ({
+    activity,
+    input,
+  }: {
+    activity: Task | Note;
+    input: Partial<Task | Note>;
+  }) => {
+    setIsUpsertingActivityInDB(true);
+    if (isActivityInCreateMode) {
+      const activityToCreate: Partial<Task | Note> = {
+        ...activity,
+        ...input,
+      };
+
+      if (isDefined(objectShowPageTargetableObject)) {
+        refreshShowPageFindManyActivitiesQueries();
+      }
+
+      await createActivityInDB(activityToCreate);
+    } else {
+      await updateOneActivity?.({
+        objectNameSingular: activityObjectNameSingular,
+        idToUpdate: activity.id,
+        updateOneRecordInput: input,
+      });
+    }
+
+    setIsUpsertingActivityInDB(false);
+  };
+
+  return {
+    upsertActivity,
+  };
+};
