@@ -3,7 +3,9 @@ import { TSESLint } from '@typescript-eslint/utils';
 import { rule, RULE_NAME } from './component-props-naming';
 
 const ruleTester = new TSESLint.RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
+  languageOptions: {
+    parser: require('@typescript-eslint/parser'),
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -43,3 +45,4 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
 });
+

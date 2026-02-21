@@ -5,7 +5,9 @@ import { rule, RULE_NAME } from './max-consts-per-file';
 const max = 1;
 
 const ruleTester = new TSESLint.RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
+  languageOptions: {
+    parser: require('@typescript-eslint/parser'),
+  },
 });
 
 ruleTester.run(RULE_NAME, rule, {

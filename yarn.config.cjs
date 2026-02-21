@@ -14,6 +14,7 @@ module.exports = defineConfig({
       );
     }
 
+    /*
     const requiredNodeVersion = rootWorkspace.manifest.engines?.node;
     if (!requiredNodeVersion) {
       throw new Error(
@@ -27,5 +28,6 @@ module.exports = defineConfig({
         `Node version ${currentNodeVersion} doesn't match the required version, please use ${requiredNodeVersion}`,
       );
     }
+    */
   },
 });

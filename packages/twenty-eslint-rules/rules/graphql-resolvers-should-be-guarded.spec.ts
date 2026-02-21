@@ -3,7 +3,9 @@ import { TSESLint } from '@typescript-eslint/utils';
 import { rule, RULE_NAME } from './graphql-resolvers-should-be-guarded';
 
 const ruleTester = new TSESLint.RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
+  languageOptions: {
+    parser: require('@typescript-eslint/parser'),
+  },
 });
 
 ruleTester.run(RULE_NAME, rule, {
@@ -272,3 +274,4 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
 });
+

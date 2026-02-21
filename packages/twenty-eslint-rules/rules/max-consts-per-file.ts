@@ -10,7 +10,6 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
     docs: {
       description:
         'Ensure there are at most a specified number of const declarations constant file',
-      recommended: 'recommended',
     },
     fixable: 'code',
     schema: [

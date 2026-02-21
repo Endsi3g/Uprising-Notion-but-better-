@@ -3,7 +3,9 @@ import { TSESLint } from '@typescript-eslint/utils';
 import { rule, RULE_NAME } from '../rules/effect-components';
 
 const ruleTester = new TSESLint.RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
+  languageOptions: {
+    parser: require('@typescript-eslint/parser'),
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -81,3 +83,4 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
 });
+
