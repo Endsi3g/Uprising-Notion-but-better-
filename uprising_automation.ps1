@@ -7,6 +7,17 @@
 
 $ErrorActionPreference = "Stop"
 
+# Force current directory to be the script's directory
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+Set-Location $ScriptDir
+
+# Verify we are in the correct root (look for package.json)
+if (-not (Test-Path "package.json")) {
+    Write-Host "❌ Erreur : package.json non trouvé dans $ScriptDir" -ForegroundColor Red
+    Write-Host "Veuillez vous assurer de lancer le script depuis la racine du projet 'twenty-main'." -ForegroundColor Yellow
+    exit 1
+}
+
 function Write-Header($msg) {
     Write-Host "`n=== $msg ===" -ForegroundColor Cyan
 }
@@ -81,7 +92,24 @@ try {
         Write-Warning-Custom "Browserless n'est pas détecté sur le port 3333."
     }
 
-    Write-Header "Étape 6 : Automatisation Git (Commit & Push)"
+    Write-Header "Étape 6 : Accès à l'Application"
+    if (Test-Path ".env") {
+        $envVars = Get-Content ".env"
+        $frontendUrl = $envVars | Where-Object { $_ -match "^FRONTEND_URL=" } | ForEach-Object { $_.Split("=")[1].Trim() }
+        if ($frontendUrl) {
+            Write-Host "Ouverture de l'application : $frontendUrl" -ForegroundColor Cyan
+            Start-Process $frontendUrl
+            Write-Success "Navigateur lancé."
+        }
+        else {
+            Write-Warning-Custom "FRONTEND_URL non trouvé dans le fichier .env."
+        }
+    }
+    else {
+        Write-Warning-Custom "Fichier .env manquant. Impossible d'identifier l'URL."
+    }
+
+    Write-Header "Étape 7 : Automatisation Git (Commit & Push)"
     $gitStatus = git status --porcelain
     if ($gitStatus) {
         Write-Host "Changements détectés. Préparation du commit..."
