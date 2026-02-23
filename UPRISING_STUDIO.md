@@ -130,12 +130,18 @@ des vendeurs et vous envoie seulement les opportunités qualifiées."
 **Typeform d'Onboarding** : `[INSÉRER LIEN TYPEFORM ICI]`
 
 ### Processus d'Onboarding
-1. Client remplit le Typeform
-2. Données importées dans Uprising CRM (CSV/Excel)
-3. Score Apify calculé (avis Google + état du site)
-4. Système téléphonique actuel identifié
-5. Rendez-vous de kickoff planifié via Google Calendar
-6. Installation de l'IA vocale
+1. Client remplit le Typeform.
+2. Données importées dans Uprising CRM (CSV/Excel).
+3. Score Apify calculé (avis Google + état du site).
+4. Système téléphonique actuel identifié.
+5. Rendez-vous de kickoff planifié via Google Calendar.
+6. Installation de l'IA vocale.
+
+---
+
+## 🚀 Déploiement & Configuration
+
+Pour les instructions détaillées sur le déploiement Docker et la configuration des intégrations, voir le [Guide de Déploiement Interne](./DEPLOYMENT_PROMPT.md).
 
 ---
 

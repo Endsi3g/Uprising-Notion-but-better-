@@ -34,6 +34,13 @@ function Write-Error-Custom($msg) {
     Write-Host "❌ $msg" -ForegroundColor Red
 }
 
+function Invoke-NativeCommand($Command) {
+    Invoke-Expression $Command
+    if ($LASTEXITCODE -ne 0) {
+        throw "La commande a échoué avec le code de sortie $LASTEXITCODE : $Command"
+    }
+}
+
 try {
     Write-Header "Étape 1 : Installation des dépendances (Yarn)"
     if (Get-Command "yarn" -ErrorAction SilentlyContinue) {
@@ -50,16 +57,16 @@ try {
 
     Write-Header "Étape 2 : Vérification de la Qualité du Code (Linting)"
     # We use --no-daemon to avoid issues if the daemon is stuck
-    yarn nx run-many -t lint --no-daemon
+    Invoke-NativeCommand "yarn nx run-many -t lint --no-daemon"
     Write-Success "Qualité du code vérifiée."
 
     Write-Header "Étape 3 : Compilation du Projet (Build)"
     # Some builds might fail (like canvas on Windows), we want to proceed if the core server/front build
-    yarn nx run-many -t build --exclude twenty-docs --no-daemon
+    Invoke-NativeCommand "yarn nx run-many -t build --exclude twenty-docs --no-daemon"
     Write-Success "Compilation réussie (certains packages optionnels peuvent avoir été ignorés)."
 
     Write-Header "Étape 4 : Exécution des Tests Unitaires"
-    yarn nx run-many -t test
+    Invoke-NativeCommand "yarn nx run-many -t test"
     Write-Success "Tous les tests sont passés."
 
     Write-Header "Étape 5 : Vérification de l'Infrastructure"

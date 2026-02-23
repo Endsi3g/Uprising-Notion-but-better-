@@ -1205,7 +1205,8 @@ export class ConfigVariables {
     type: ConfigVariableType.STRING,
   })
   @IsOptional()
-  DEFAULT_AI_PERFORMANCE_MODEL_ID = 'llama3.1,gpt-4.1,claude-sonnet-4-5-20250929,grok-4';
+  DEFAULT_AI_PERFORMANCE_MODEL_ID =
+    'llama3.1,gpt-4.1,claude-sonnet-4-5-20250929,grok-4';
 
   @ConfigVariablesMetadata({
     group: ConfigVariablesGroup.LLM,

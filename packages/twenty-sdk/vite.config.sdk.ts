@@ -3,11 +3,14 @@ import { type UserConfig, defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 const isExternal = (id: string): boolean => {
-  if (id.startsWith('.') || id.startsWith('/') || id.startsWith('\0')) {
-    return false;
-  }
+  const isRelative = id.startsWith('.') || id.startsWith('\0');
+  const isAbsolute = path.isAbsolute(id);
+  const isProjectSrc =
+    id.startsWith('src/') ||
+    id.startsWith('@/') ||
+    (isAbsolute && !id.includes('node_modules'));
 
-  if (id.startsWith('src/') || id.startsWith('@/')) {
+  if (isRelative || isProjectSrc) {
     return false;
   }
 

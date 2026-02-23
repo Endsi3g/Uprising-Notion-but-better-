@@ -51,6 +51,8 @@ export default [
       'no-duplicate-imports': 'error',
       'no-undef': 'off',
       'no-unused-vars': 'off',
+      'prettier/prettier': ['error', { endOfLine: 'auto' }],
+      'linebreak-style': 'off',
 
       // Nx rules
       '@nx/enforce-module-boundaries': [
