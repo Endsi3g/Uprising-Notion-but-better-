@@ -1,9 +1,15 @@
-import { TSESLint } from '@typescript-eslint/utils';
+import { RuleTester } from '@typescript-eslint/rule-tester';
 import { rule, RULE_NAME } from './inject-workspace-repository';
 
-const ruleTester = new TSESLint.RuleTester({
+const ruleTester = new RuleTester({
   languageOptions: {
     parser: require('@typescript-eslint/parser'),
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
+      warnOnUnsupportedTypeScriptVersion: false,
+    },
   },
 });
 

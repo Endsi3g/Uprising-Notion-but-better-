@@ -3,7 +3,16 @@ import { ESLintUtils, type TSESTree } from '@typescript-eslint/utils';
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-max-consts-per-file"
 export const RULE_NAME = 'max-consts-per-file';
 
-export const rule = ESLintUtils.RuleCreator(() => __filename)({
+interface RuleOptions {
+  max: number;
+}
+
+type MessageIds = 'tooManyConstants';
+
+export const rule = ESLintUtils.RuleCreator(() => __filename)<
+  [RuleOptions],
+  MessageIds
+>({
   name: RULE_NAME,
   meta: {
     type: 'problem',
@@ -29,7 +38,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
         'Only a maximum of ({{ max }}) const declarations are allowed in this file.',
     },
   },
-  defaultOptions: [],
+  defaultOptions: [{ max: 1 }],
   create: (context) => {
     const [{ max }] = context.options;
 

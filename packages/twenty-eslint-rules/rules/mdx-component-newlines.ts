@@ -94,4 +94,3 @@ export const rule: Rule.RuleModule = {
     };
   },
 };
-

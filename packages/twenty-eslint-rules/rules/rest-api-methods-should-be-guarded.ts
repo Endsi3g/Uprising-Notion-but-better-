@@ -6,28 +6,25 @@ import { typedTokenHelpers } from '../utils/typedTokenHelpers';
 // NOTE: The rule will be available in ESLint configs as "@nx/workspace-rest-api-methods-should-be-guarded"
 export const RULE_NAME = 'rest-api-methods-should-be-guarded';
 
-export const restApiMethodsShouldBeGuarded = (node: TSESTree.MethodDefinition) => {
+export const restApiMethodsShouldBeGuarded = (
+  node: TSESTree.MethodDefinition,
+  context: any,
+) => {
   const hasRestApiMethodDecorator = typedTokenHelpers.nodeHasDecoratorsNamed(
     node,
-    ['Get', 'Post', 'Put', 'Delete', 'Patch', 'Options', 'Head', 'All']
+    ['Get', 'Post', 'Put', 'Delete', 'Patch', 'Options', 'Head', 'All'],
   );
 
   const hasAuthGuards = typedTokenHelpers.nodeHasAuthGuards(node);
   const hasPermissionsGuard = typedTokenHelpers.nodeHasPermissionsGuard(node);
 
-  const findClassDeclaration = (
-    node: TSESTree.Node
-  ): TSESTree.ClassDeclaration | null => {
-    if (node.type === TSESTree.AST_NODE_TYPES.ClassDeclaration) {
-      return node;
-    }
-    if (node.parent) {
-      return findClassDeclaration(node.parent);
-    }
-    return null;
-  }
-
-  const classNode = findClassDeclaration(node);
+  const classNode =
+    context.sourceCode
+      .getAncestors(node)
+      .find(
+        (ancestor: any): ancestor is TSESTree.ClassDeclaration =>
+          ancestor.type === TSESTree.AST_NODE_TYPES.ClassDeclaration,
+      ) ?? null;
 
   const hasAuthGuardsOnController = classNode
     ? typedTokenHelpers.nodeHasAuthGuards(classNode)
@@ -42,7 +39,9 @@ export const restApiMethodsShouldBeGuarded = (node: TSESTree.MethodDefinition) =
     hasRestApiMethodDecorator && !hasAuthGuards && !hasAuthGuardsOnController;
 
   const missingPermissionGuard =
-    hasRestApiMethodDecorator && !hasPermissionsGuard && !hasPermissionsGuardOnController;
+    hasRestApiMethodDecorator &&
+    !hasPermissionsGuard &&
+    !hasPermissionsGuardOnController;
 
   return missingAuthGuard || missingPermissionGuard;
 };
@@ -66,7 +65,7 @@ export const rule = createRule<[], 'restApiMethodsShouldBeGuarded'>({
   create: (context) => {
     return {
       MethodDefinition: (node: TSESTree.MethodDefinition): void => {
-        if (restApiMethodsShouldBeGuarded(node)) {
+        if (restApiMethodsShouldBeGuarded(node, context)) {
           context.report({
             node: node,
             messageId: 'restApiMethodsShouldBeGuarded',

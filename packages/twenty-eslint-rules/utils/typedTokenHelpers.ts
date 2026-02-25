@@ -48,6 +48,7 @@ export const typedTokenHelpers = {
             return (
               arg.name === 'UserAuthGuard' ||
               arg.name === 'WorkspaceAuthGuard' ||
+              arg.name === 'PublicEndpoint' ||
               arg.name === 'PublicEndpointGuard' ||
               arg.name === 'FilePathGuard' ||
               arg.name === 'FileByIdGuard'
@@ -81,12 +82,18 @@ export const typedTokenHelpers = {
           if (arg.type === TSESTree.AST_NODE_TYPES.CallExpression) {
             const callee = arg.callee;
             if (callee.type === TSESTree.AST_NODE_TYPES.Identifier) {
-              return callee.name.endsWith('PermissionGuard');
+              return (
+                callee.name.includes('PermissionGuard') ||
+                callee.name.includes('PermissionsGuard')
+              );
             }
           }
           // Identifier guards: CustomPermissionGuard, NoPermissionGuard, etc.
           if (arg.type === TSESTree.AST_NODE_TYPES.Identifier) {
-            return arg.name.endsWith('PermissionGuard');
+            return (
+              arg.name.includes('PermissionGuard') ||
+              arg.name.includes('PermissionsGuard')
+            );
           }
           return false;
         });

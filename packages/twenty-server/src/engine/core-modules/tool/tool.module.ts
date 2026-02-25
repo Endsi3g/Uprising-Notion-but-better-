@@ -48,4 +48,3 @@ import { MessagingSendManagerModule } from 'src/modules/messaging/message-outbou
   ],
 })
 export class ToolModule {}
-

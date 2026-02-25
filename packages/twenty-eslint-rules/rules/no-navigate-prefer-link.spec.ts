@@ -1,10 +1,16 @@
-import { TSESLint } from '@typescript-eslint/utils';
+import { RuleTester } from '@typescript-eslint/rule-tester';
 
 import { rule, RULE_NAME } from './no-navigate-prefer-link';
 
-const ruleTester = new TSESLint.RuleTester({
+const ruleTester = new RuleTester({
   languageOptions: {
     parser: require('@typescript-eslint/parser'),
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
+      warnOnUnsupportedTypeScriptVersion: false,
+    },
   },
 });
 
@@ -15,19 +21,9 @@ ruleTester.run(RULE_NAME, rule, {
     },
     {
       code: '<Link to="/"><Button>Click me</Button></Link>',
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
     },
     {
       code: '<Button onClick={() =>{ navigate("/"); doSomething(); }} />',
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
     },
   ],
   invalid: [
@@ -38,11 +34,6 @@ ruleTester.run(RULE_NAME, rule, {
           messageId: 'preferLink',
         },
       ],
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
     },
     {
       code: '<Button onClick={() => { navigate("/");} } />',
@@ -51,11 +42,6 @@ ruleTester.run(RULE_NAME, rule, {
           messageId: 'preferLink',
         },
       ],
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
     },
   ],
 });

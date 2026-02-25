@@ -77,10 +77,9 @@ export class BrowserTool implements Tool {
 
       switch (extractMode) {
         case 'text': {
-          result =
-            (await page.evaluate(
-              () => document.body?.innerText || '',
-            )) as string;
+          result = (await page.evaluate(
+            () => document.body?.innerText || '',
+          )) as string;
           break;
         }
         case 'html': {
@@ -117,9 +116,7 @@ export class BrowserTool implements Tool {
         success: false,
         message: `Failed to extract content from ${url}`,
         error:
-          error instanceof Error
-            ? error.message
-            : 'Browser navigation failed',
+          error instanceof Error ? error.message : 'Browser navigation failed',
       };
     } finally {
       if (browser) {

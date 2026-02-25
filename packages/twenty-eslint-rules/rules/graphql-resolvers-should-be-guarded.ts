@@ -8,6 +8,7 @@ export const RULE_NAME = 'graphql-resolvers-should-be-guarded';
 
 export const graphqlResolversShouldBeGuarded = (
   node: TSESTree.MethodDefinition,
+  context: any,
 ) => {
   const hasGraphQLResolverDecorator = typedTokenHelpers.nodeHasDecoratorsNamed(
     node,
@@ -17,19 +18,13 @@ export const graphqlResolversShouldBeGuarded = (
   const hasAuthGuards = typedTokenHelpers.nodeHasAuthGuards(node);
   const hasPermissionsGuard = typedTokenHelpers.nodeHasPermissionsGuard(node);
 
-  const findClassDeclaration = (
-    node: TSESTree.Node,
-  ): TSESTree.ClassDeclaration | null => {
-    if (node.type === TSESTree.AST_NODE_TYPES.ClassDeclaration) {
-      return node;
-    }
-    if (node.parent) {
-      return findClassDeclaration(node.parent);
-    }
-    return null;
-  };
-
-  const classNode = findClassDeclaration(node);
+  const classNode =
+    context.sourceCode
+      .getAncestors(node)
+      .find(
+        (ancestor: any): ancestor is TSESTree.ClassDeclaration =>
+          ancestor.type === TSESTree.AST_NODE_TYPES.ClassDeclaration,
+      ) ?? null;
 
   const hasAuthGuardsOnResolver = classNode
     ? typedTokenHelpers.nodeHasAuthGuards(classNode)
@@ -44,7 +39,9 @@ export const graphqlResolversShouldBeGuarded = (
     hasGraphQLResolverDecorator && !hasAuthGuards && !hasAuthGuardsOnResolver;
 
   const missingPermissionGuard =
-    hasGraphQLResolverDecorator && !hasPermissionsGuard && !hasPermissionsGuardOnResolver;
+    hasGraphQLResolverDecorator &&
+    !hasPermissionsGuard &&
+    !hasPermissionsGuardOnResolver;
 
   return missingAuthGuard || missingPermissionGuard;
 };
@@ -68,7 +65,7 @@ export const rule = createRule<[], 'graphqlResolversShouldBeGuarded'>({
   create: (context) => {
     return {
       MethodDefinition: (node: TSESTree.MethodDefinition): void => {
-        if (graphqlResolversShouldBeGuarded(node)) {
+        if (graphqlResolversShouldBeGuarded(node, context)) {
           context.report({
             node: node,
             messageId: 'graphqlResolversShouldBeGuarded',

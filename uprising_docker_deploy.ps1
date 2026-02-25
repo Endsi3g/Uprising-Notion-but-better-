@@ -124,10 +124,10 @@ try {
 
     # 2.2 - Configuration Google OAuth (Port 3001)
     Write-Host "Configuration de l'intégration Google OAuth (Port 3001)..."
-    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CLIENT_ID" "VOTRE_CLIENT_ID_GOOGLE"
-    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CLIENT_SECRET" "VOTRE_CLIENT_SECRET_GOOGLE"
-    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CALLBACK_URL" "https://localhost:3001/auth/google/redirect"
-    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_APIS_CALLBACK_URL" "https://localhost:3001/auth/google-apis/get-access-token"
+    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CLIENT_ID" "YOUR_CLIENT_ID"
+    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CLIENT_SECRET" "YOUR_CLIENT_SECRET"
+    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CALLBACK_URL" "http://localhost:3001/auth/google/redirect"
+    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_APIS_CALLBACK_URL" "http://localhost:3001/auth/google-apis/get-access-token"
     $envContent = Set-Env-Var $envContent "MESSAGING_PROVIDER_GMAIL_ENABLED" "true"
     $envContent = Set-Env-Var $envContent "CALENDAR_PROVIDER_GOOGLE_ENABLED" "true"
 
@@ -136,9 +136,16 @@ try {
     $envContent = Set-Env-Var $envContent "EMAIL_DRIVER" "smtp"
     $envContent = Set-Env-Var $envContent "EMAIL_SMTP_HOST" "smtp.gmail.com"
     $envContent = Set-Env-Var $envContent "EMAIL_SMTP_PORT" "465"
-    $envContent = Set-Env-Var $envContent "EMAIL_SMTP_USER" "votre_email@gmail.com"
-    $envContent = Set-Env-Var $envContent "EMAIL_SMTP_PASSWORD" "votre_mot_de_passe_application"
-    $envContent = Set-Env-Var $envContent "EMAIL_FROM_ADDRESS" "votre_email@gmail.com"
+    $envContent = Set-Env-Var $envContent "EMAIL_SMTP_USER" "quebecsaas@gmail.com"
+    $envContent = Set-Env-Var $envContent "EMAIL_SMTP_PASSWORD" "trit opdl uifl qkfv"
+
+    # 2.4 - Configuration Base de données et URLs (OBLIGATOIRE pour Docker)
+    Write-Host "Synchronisation de la base de données et des URLs (Port 3001)..."
+    $envContent = Set-Env-Var $envContent "PG_DATABASE_USER" "postgres"
+    $envContent = Set-Env-Var $envContent "PG_DATABASE_NAME" "postgres"
+    $envContent = Set-Env-Var $envContent "SERVER_URL" "http://localhost:3001"
+    $envContent = Set-Env-Var $envContent "FRONTEND_URL" "http://localhost:3001"
+    $envContent = Set-Env-Var $envContent "EMAIL_FROM_ADDRESS" "quebecsaas@gmail.com"
     $envContent = Set-Env-Var $envContent "EMAIL_FROM_NAME" "Uprising Studio"
 
     # 2.4 - Configuration de l'URL du serveur (Port 3001)
@@ -188,16 +195,19 @@ try {
         $elapsed = 0
         $isHealthy = $false
         
+        Write-Host "Démarrage en cours (Migrations) " -NoNewline -ForegroundColor Cyan
         while ($elapsed -lt $timeout) {
             $status = docker inspect --format '{{.State.Health.Status}}' $containerId 2>$null
             if ($status -eq "healthy") {
+                Write-Host " [PRÊT]" -ForegroundColor Green
                 $isHealthy = $true
                 break
             }
-            Write-Host "Démarrage en cours (Migrations)... ($elapsed s)"
+            Write-Host "." -NoNewline -ForegroundColor Cyan
             Start-Sleep -Seconds 10
             $elapsed += 10
         }
+        Write-Host "" # New line
 
         if (-not $isHealthy) {
             Write-Error-Custom "Le serveur n'est pas devenu prêt après 10 minutes. Voici les derniers logs :"

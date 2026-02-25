@@ -238,6 +238,6 @@
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all",
-    "endOfLine": "lf"
+    "endOfLine": "auto"
   }
 }

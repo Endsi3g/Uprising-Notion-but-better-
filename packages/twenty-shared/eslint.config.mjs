@@ -31,6 +31,7 @@ export default [
       'packages/twenty-shared/**/dist/**',
       'packages/twenty-shared/vite.config.ts',
       'packages/twenty-shared/scripts/**',
+      'packages/twenty-shared/src/individual-entry.ts',
     ],
   },
 

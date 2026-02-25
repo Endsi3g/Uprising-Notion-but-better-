@@ -65,7 +65,6 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
                   actualName: actualVariableName,
                   expectedName: expectedVariableNameBase,
                   hookName: stateNameBase,
-                  callee: node.init.callee.name,
                 },
                 fix: (fixer) => {
                   return fixer.replaceText(node.id, expectedVariableNameBase);
@@ -90,9 +89,9 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
                 node,
                 messageId: 'invalidVariableName',
                 data: {
-                  actual: actualVariableName,
-                  expected: expectedVariableNameBase,
-                  callee: node.init.callee.name,
+                  actualName: actualVariableName,
+                  expectedName: expectedVariableNameBase,
+                  hookName: stateNameBase,
                 },
                 fix: (fixer) => {
                   if (node.id.type === AST_NODE_TYPES.ArrayPattern) {

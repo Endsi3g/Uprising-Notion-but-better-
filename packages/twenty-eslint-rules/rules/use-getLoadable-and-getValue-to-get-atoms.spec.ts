@@ -1,14 +1,15 @@
-import { TSESLint } from '@typescript-eslint/utils';
+import { RuleTester } from '@typescript-eslint/rule-tester';
 
 import { rule, RULE_NAME } from './use-getLoadable-and-getValue-to-get-atoms';
 
-const ruleTester = new TSESLint.RuleTester({
+const ruleTester = new RuleTester({
   languageOptions: {
     parser: require('@typescript-eslint/parser'),
-  },
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
+      warnOnUnsupportedTypeScriptVersion: false,
     },
   },
 });
@@ -30,7 +31,10 @@ ruleTester.run(RULE_NAME, rule, {
           messageId: 'invalidAccessorOnSnapshot',
         },
       ],
-      output: 'const atoms = await snapshot.getLoadable(someState);',
+      output: [
+        'const atoms = await snapshot.getLoadable(someState);',
+        'const atoms =  snapshot.getLoadable(someState);',
+      ],
     },
     {
       code: 'const atoms = await snapshot.getPromise(someState(viewId));',
@@ -39,7 +43,10 @@ ruleTester.run(RULE_NAME, rule, {
           messageId: 'invalidAccessorOnSnapshot',
         },
       ],
-      output: 'const atoms = await snapshot.getLoadable(someState(viewId));',
+      output: [
+        'const atoms = await snapshot.getLoadable(someState(viewId));',
+        'const atoms =  snapshot.getLoadable(someState(viewId));',
+      ],
     },
     {
       code: 'const atoms = snapshot.getLoadable(someState).anotherMethod();',
@@ -52,4 +59,3 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
 });
-

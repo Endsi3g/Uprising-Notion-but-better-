@@ -1,10 +1,17 @@
-import { TSESLint } from '@typescript-eslint/utils';
+import { RuleTester } from '@typescript-eslint/rule-tester';
 
 import { rule, RULE_NAME } from './rest-api-methods-should-be-guarded';
 
-const ruleTester = new TSESLint.RuleTester({
+const ruleTester = new RuleTester({
   languageOptions: {
     parser: require('@typescript-eslint/parser'),
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
+      experimentalDecorators: true,
+      warnOnUnsupportedTypeScriptVersion: false,
+    },
   },
 });
 
@@ -304,4 +311,3 @@ ruleTester.run(RULE_NAME, rule, {
     },
   ],
 });
-
