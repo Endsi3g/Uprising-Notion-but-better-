@@ -19,7 +19,7 @@ jobs:
         if: env.TWENTY_INFRA_TOKEN != ''
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.TWENTY_INFRA_TOKEN }}
+          token: ${{ env.TWENTY_INFRA_TOKEN }}
           repository: twentyhq/twenty-infra
           event-type: auto-deploy-main
           client-payload: '{"github": ${{ toJson(github) }}}' # Passes the entire github context to the downstream workflow
