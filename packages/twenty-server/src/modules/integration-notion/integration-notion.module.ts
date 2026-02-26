@@ -4,11 +4,12 @@ import { KeyValuePairModule } from 'src/engine/core-modules/key-value-pair/key-v
 
 import { NotionWebhookController } from './controllers/notion-webhook.controller';
 import { NotionController } from './controllers/notion.controller';
+import { NotionPushListener } from './listeners/notion-push.listener';
 import { NotionSyncService } from './services/notion-sync.service';
 
 @Module({
   imports: [KeyValuePairModule],
-  providers: [NotionSyncService],
+  providers: [NotionSyncService, NotionPushListener],
   controllers: [NotionController, NotionWebhookController],
   exports: [NotionSyncService],
 })

@@ -306,4 +306,113 @@ export class NotionSyncService {
 
     return { success: true };
   }
+
+  async createOrUpdateCompanyInNotion(workspaceId: string, company: any) {
+    const notion = await this.getNotionClient(workspaceId);
+
+    if (!notion) return;
+
+    const dbConfigs = await this.keyValuePairService.get({
+      key: 'NOTION_DATABASES',
+      type: KeyValuePairType.CONFIG_VARIABLE,
+      workspaceId,
+    });
+    const databaseId = (dbConfigs[0]?.value as any)?.companiesId;
+
+    if (!databaseId) return;
+
+    const domain = company.domainName?.primaryLinkUrl;
+
+    if (!domain) return;
+
+    // Search for existing page by domain
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      filter: {
+        property: 'Domain',
+        url: { equals: domain },
+      },
+    });
+
+    const pageId = response.results[0]?.id;
+
+    const properties: any = {
+      Name: {
+        title: [{ text: { content: company.name || 'Unnamed Company' } }],
+      },
+      Domain: {
+        url: domain,
+      },
+    };
+
+    if (company.address?.addressCity) {
+      properties.Address = {
+        rich_text: [{ text: { content: company.address.addressCity } }],
+      };
+    }
+
+    if (pageId) {
+      await notion.pages.update({ page_id: pageId, properties });
+      this.logger.log(`Updated company ${company.name} in Notion`);
+    } else {
+      await notion.pages.create({
+        parent: { database_id: databaseId },
+        properties,
+      });
+      this.logger.log(`Created company ${company.name} in Notion`);
+    }
+  }
+
+  async createOrUpdatePersonInNotion(workspaceId: string, person: any) {
+    const notion = await this.getNotionClient(workspaceId);
+
+    if (!notion) return;
+
+    const dbConfigs = await this.keyValuePairService.get({
+      key: 'NOTION_DATABASES',
+      type: KeyValuePairType.CONFIG_VARIABLE,
+      workspaceId,
+    });
+    const databaseId = (dbConfigs[0]?.value as any)?.peopleId;
+
+    if (!databaseId) return;
+
+    const email = person.emails?.primaryEmail;
+
+    if (!email) return;
+
+    // Search for existing page by email
+    const response = await notion.databases.query({
+      database_id: databaseId,
+      filter: {
+        property: 'Email',
+        email: { equals: email },
+      },
+    });
+
+    const pageId = response.results[0]?.id;
+    const fullName =
+      `${person.name?.firstName || ''} ${person.name?.lastName || ''}`.trim() ||
+      'Unnamed Person';
+
+    const properties: any = {
+      Name: {
+        title: [{ text: { content: fullName } }],
+      },
+      Email: {
+        email: email,
+      },
+    };
+
+    if (pageId) {
+      await notion.pages.update({ page_id: pageId, properties });
+      this.logger.log(`Updated person ${fullName} in Notion`);
+    } else {
+      await notion.pages.create({
+        parent: { database_id: databaseId },
+        properties,
+      });
+      this.logger.log(`Created person ${fullName} in Notion`);
+    }
+  }
 }
