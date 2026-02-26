@@ -1,5 +1,16 @@
-import { Controller, Headers, Post, RawBodyRequest, Req, UnauthorizedException, UseFilters } from '@nestjs/common';
+import {
+    Controller,
+    Headers,
+    InternalServerErrorException,
+    Post,
+    RawBodyRequest,
+    Req,
+    UnauthorizedException,
+    UseFilters,
+} from '@nestjs/common';
+
 import * as crypto from 'crypto';
+
 import { Request } from 'express';
 
 import { RestApiExceptionFilter } from 'src/engine/api/rest/rest-api-exception.filter';
@@ -13,6 +24,7 @@ export class NotionWebhookController {
     @Req() req: RawBodyRequest<Request>,
   ) {
     const secret = process.env.NOTION_WEBHOOK_SECRET;
+
     if (!secret) {
       throw new UnauthorizedException('Webhook secret not configured');
     }
@@ -22,11 +34,14 @@ export class NotionWebhookController {
     }
 
     if (!req.rawBody) {
-      throw new Error('Raw body is required for webhook signature verification. Make sure rawBody is enabled in NestJS config.');
+      throw new InternalServerErrorException(
+        'Raw body is required for webhook signature verification. Make sure rawBody is enabled in NestJS config.',
+      );
     }
 
     const rawBody = req.rawBody.toString();
     const hmac = crypto.createHmac('sha256', secret);
+
     hmac.update(rawBody);
     const calculatedSignature = hmac.digest('hex');
 

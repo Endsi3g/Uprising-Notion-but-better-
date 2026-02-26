@@ -89,6 +89,11 @@ export class GoogleTasksSyncService {
             let count = 0;
 
             for (const task of tasks) {
+              if (!task.id) {
+                this.logger.warn('Skipping Google Task missing ID');
+                continue;
+              }
+
               const title = task.title || 'Untitled Task';
               const status = task.status === 'completed' ? 'DONE' : 'TODO'; // Mapping Google status to Twenty status
 

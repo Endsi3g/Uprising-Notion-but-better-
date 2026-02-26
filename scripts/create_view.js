@@ -28,20 +28,30 @@ INSERT INTO core.view (
 );
 `;
 
-console.log("SQL to execute:");
+console.log('SQL to execute:');
 console.log(sql);
 
 try {
-  const result = spawnSync('docker', ['exec', '-i', 'twenty-db-1', 'psql', '-U', 'postgres', '-d', 'default'], {
-    input: sql,
-    encoding: 'utf-8'
-  });
+  const result = spawnSync(
+    'docker',
+    ['exec', '-i', 'twenty-db-1', 'psql', '-U', 'postgres', '-d', 'default'],
+    {
+      input: sql,
+      encoding: 'utf-8',
+    },
+  );
+
+  if (result.error) {
+    console.error('Failed to spawn psql process:', result.error.message);
+    process.exit(1);
+  }
 
   if (result.status !== 0) {
-      console.error('Failed to insert view:', result.stderr);
+    console.error('Failed to insert view (psql error):', result.stderr);
+    process.exit(1);
   } else {
-      console.log(result.stdout);
-      console.log('View successfully inserted.');
+    console.log(result.stdout);
+    console.log('View successfully inserted.');
   }
 } catch (e) {
   console.error('Failed to execute command:', e.message);
