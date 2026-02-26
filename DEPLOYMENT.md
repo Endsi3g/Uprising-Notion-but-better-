@@ -1,6 +1,12 @@
 # Guide de Déploiement - Uprising Studio CRM
 
 Ce document explique comment déployer et configurer le CRM personnalisé d'Uprising Studio.
+Pour des options de déploiement 100% gratuites ou open-source, consultez le [Guide de Déploiement Gratuit](./FREE_DEPLOYMENT_GUIDE.md).
+
+## [1.1.1] - 2026-02-26
+
+### Ajouté
+- **Guide de Déploiement Gratuit** : Création de `FREE_DEPLOYMENT_GUIDE.md` détaillant les options Oracle Cloud, Coolify et CapRover.
 
 ## 1. White-Labeling (Branding)
 
