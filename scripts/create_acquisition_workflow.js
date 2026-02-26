@@ -3,18 +3,30 @@ const fs = require('fs');
 const crypto = require('crypto');
 
 function runSql(sql) {
-    fs.writeFileSync('temp_query.sql', sql);
+    const tmpFile = `temp_query_${crypto.randomUUID()}.sql`;
+    fs.writeFileSync(tmpFile, sql);
     try {
-        const cmd = `Get-Content temp_query.sql | docker exec -i twenty-db-1 psql -U postgres -d default -t -A`;
+        const cmd = `Get-Content ${tmpFile} | docker exec -i twenty-db-1 psql -U postgres -d default -t -A`;
         return execSync(cmd, { shell: 'powershell.exe' }).toString().trim();
     } catch (e) {
         console.error("SQL Error:", e.message);
         return null;
+    } finally {
+        try { fs.unlinkSync(tmpFile); } catch(_) {}
     }
 }
 
 // 1. Setup IDs
-const schemas = runSql("SELECT schema_name FROM information_schema.schemata WHERE schema_name LIKE 'workspace_%';").split('\n');
+const schemasResult = runSql("SELECT schema_name FROM information_schema.schemata WHERE schema_name LIKE 'workspace_%';");
+if (!schemasResult) {
+    console.error("Failed to fetch schemas. Aborting.");
+    process.exit(1);
+}
+const schemas = schemasResult.split('\n').map(s => s.trim()).filter(Boolean);
+if (schemas.length === 0) {
+    console.error("No valid schemas found. Aborting.");
+    process.exit(1);
+}
 const schema = schemas[0];
 console.log(`Using schema: ${schema}`);
 
@@ -80,25 +92,36 @@ steps[1].settings.input.objectRecord.companyId = `{{${steps[0].id}.result.id}}`;
 steps[0].nextStepIds = [steps[1].id];
 
 // 3. Injection SQL
+const safeSchema = schema.replace(/"/g, '""');
+const safeWorkflowId = workflowId.replace(/'/g, "''");
+const safeVersionId = versionId.replace(/'/g, "''");
+const safeTrigger = JSON.stringify(trigger).replace(/'/g, "''");
+const safeSteps = JSON.stringify(steps).replace(/'/g, "''");
+
 const sql = `
 BEGIN;
 
-INSERT INTO "${schema}"."workflow" (id, "createdAt", "updatedAt", name)
-VALUES ('${workflowId}', now(), now(), 'Acquisition de Leads (Formulaire)');
+INSERT INTO "${safeSchema}"."workflow" (id, "createdAt", "updatedAt", name)
+VALUES ('${safeWorkflowId}', now(), now(), 'Acquisition de Leads (Formulaire)');
 
-INSERT INTO "${schema}"."workflowVersion" (
+INSERT INTO "${safeSchema}"."workflowVersion" (
     id, "createdAt", "updatedAt", name, trigger, steps, status, position, "workflowId"
 ) VALUES (
-    '${versionId}', now(), now(), 'v1',
-    '${JSON.stringify(trigger)}',
-    '${JSON.stringify(steps)}',
-    'ACTIVE', 0, '${workflowId}'
+    '${safeVersionId}', now(), now(), 'v1',
+    '${safeTrigger}',
+    '${safeSteps}',
+    'ACTIVE', 0, '${safeWorkflowId}'
 );
 
 COMMIT;
 `;
 
 console.log("Injecting workflow...");
-runSql(sql);
-console.log(`Workflow created successfully! ID: ${workflowId}`);
-console.log(`Webhook URL should be: /webhooks/${workflowId}`);
+const result = runSql(sql);
+if (result !== null) {
+    console.log(`Workflow created successfully! ID: ${workflowId}`);
+    console.log(`Webhook URL should be: /webhooks/${workflowId}`);
+} else {
+    console.error("Failed to create workflow.");
+    process.exit(1);
+}

@@ -1,7 +1,8 @@
 const fs = require('fs');
 
-const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4N2FiYTkzNi1iZTgxLTQ3OWYtYjZhZS1jNzA1NDE3M2VlN2QiLCJ0eXBlIjoiQVBJX0tFWSIsIndvcmtzcGFjZUlkIjoiODdhYmE5MzYtYmU4MS00NzlmLWI2YWUtYzcwNTQxNzNlZTdkIiwiaWF0IjoxNzcyMDA2MTMzLCJleHAiOjQ5MjU2MDYxMzEsImp0aSI6Ijg0NWE3YTFiLWVmNTMtNGFiYy05ZThhLWY1ZTc5YmIyYmNmMiJ9.rcNQDopvFtytpJWg03Qt8e5rzJ247MXePpjJqUv3eOo';
-const ENDPOINT = 'http://localhost:3001/metadata';
+const TOKEN = process.env.INTROSPECT_TOKEN;
+if (!TOKEN) throw new Error("INTROSPECT_TOKEN environment variable is required.");
+const ENDPOINT = process.env.ENDPOINT || 'http://localhost:3001/metadata';
 
 async function introspect() {
   const query = `
@@ -35,6 +36,11 @@ async function introspect() {
       },
       body: JSON.stringify({ query })
     });
+
+    if (!res.ok) {
+      console.error("HTTP Error", res.status, await res.text());
+      return;
+    }
 
     const data = await res.json();
     fs.writeFileSync('introspection_full.json', JSON.stringify(data, null, 2));

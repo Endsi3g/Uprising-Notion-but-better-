@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { execSync } = require('child_process');
+const { execSync, spawnSync } = require('child_process');
 const crypto = require('crypto');
 
 const workspaceId = '87aba936-be81-479f-b6ae-c7054173ee7d';
@@ -9,15 +9,22 @@ const applicationId = '83fc4c5f-416c-4ec4-bcdb-8819ebb3d957';
 const viewId = crypto.randomUUID();
 const viewIdentifier = crypto.randomUUID();
 
+const safeWorkspaceId = workspaceId.replace(/'/g, "''");
+const safeOppId = opportunityMetadataId.replace(/'/g, "''");
+const safePhaseId = projectPhaseFieldId.replace(/'/g, "''");
+const safeAppId = applicationId.replace(/'/g, "''");
+const safeViewId = viewId.replace(/'/g, "''");
+const safeViewIdentifier = viewIdentifier.replace(/'/g, "''");
+
 const sql = `
 INSERT INTO core.view (
   id, "universalIdentifier", name, "objectMetadataId", type, icon, position,
   "isCompact", "isCustom", "openRecordIn", "workspaceId",
   "applicationId", visibility, "mainGroupByFieldMetadataId"
 ) VALUES (
-  '${viewId}', '${viewIdentifier}', 'Pipeline de Projets', '${opportunityMetadataId}',
+  '${safeViewId}', '${safeViewIdentifier}', 'Pipeline de Projets', '${safeOppId}',
   'KANBAN', 'IconKanban', 0, false, true, 'SIDE_PANEL',
-  '${workspaceId}', '${applicationId}', 'WORKSPACE', '${projectPhaseFieldId}'
+  '${safeWorkspaceId}', '${safeAppId}', 'WORKSPACE', '${safePhaseId}'
 );
 `;
 
@@ -25,12 +32,17 @@ console.log("SQL to execute:");
 console.log(sql);
 
 try {
-  fs.writeFileSync('insert_view.sql', sql);
-  const result = execSync('Get-Content insert_view.sql | docker exec -i twenty-db-1 psql -U postgres -d default', { shell: 'powershell.exe' });
-  console.log(result.toString());
-  console.log('View successfully inserted.');
+  const result = spawnSync('docker', ['exec', '-i', 'twenty-db-1', 'psql', '-U', 'postgres', '-d', 'default'], {
+    input: sql,
+    encoding: 'utf-8'
+  });
+
+  if (result.status !== 0) {
+      console.error('Failed to insert view:', result.stderr);
+  } else {
+      console.log(result.stdout);
+      console.log('View successfully inserted.');
+  }
 } catch (e) {
-  console.error('Failed to insert view:', e.message);
-  if (e.stdout) console.error(e.stdout.toString());
-  if (e.stderr) console.error(e.stderr.toString());
+  console.error('Failed to execute command:', e.message);
 }

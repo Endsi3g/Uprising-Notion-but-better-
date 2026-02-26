@@ -1,7 +1,8 @@
 const fs = require('fs');
 
-const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4N2FiYTkzNi1iZTgxLTQ3OWYtYjZhZS1jNzA1NDE3M2VlN2QiLCJ0eXBlIjoiQVBJX0tFWSIsIndvcmtzcGFjZUlkIjoiODdhYmE5MzYtYmU4MS00NzlmLWI2YWUtYzcwNTQxNzNlZTdkIiwiaWF0IjoxNzcyMDA2MTMzLCJleHAiOjQ5MjU2MDYxMzEsImp0aSI6Ijg0NWE3YTFiLWVmNTMtNGFiYy05ZThhLWY1ZTc5YmIyYmNmMiJ9.rcNQDopvFtytpJWg03Qt8e5rzJ247MXePpjJqUv3eOo';
-const ENDPOINT = 'http://localhost:3001/metadata';
+const TOKEN = process.env.TOKEN || process.env.INTROSPECT_TOKEN;
+if (!TOKEN) throw new Error("TOKEN or INTROSPECT_TOKEN environment variable is required.");
+const ENDPOINT = process.env.ENDPOINT || 'http://localhost:3001/metadata';
 
 // IDs fetched directly from db
 const OBJECTS = {
@@ -19,6 +20,12 @@ async function graphqlQuery(query, variables = {}) {
     },
     body: JSON.stringify({ query, variables })
   });
+
+  if (!res.ok) {
+    console.error("HTTP Error", res.status, await res.text().catch(() => ''));
+    throw new Error('GraphQL HTTP error');
+  }
+
   const data = await res.json();
   if (data.errors) {
     const errorMsg = JSON.stringify(data.errors);
@@ -99,7 +106,7 @@ async function createField(objectMetadataId, type, name, label, options = null, 
       console.log('Success');
     }
   } catch(e) {
-    console.log(`Failed`);
+    console.error(`Failed to create field ${label} on ${objectMetadataId}:`, e.message);
   }
 }
 
@@ -135,7 +142,7 @@ async function createObject(nameSingular, namePlural, labelSingular, labelPlural
     console.log('Success');
     return res?.createOneObject?.id || null;
   } catch(e) {
-    console.log(`Failed`);
+    console.error(`Failed to create object ${nameSingular}:`, e.message);
     return null;
   }
 }

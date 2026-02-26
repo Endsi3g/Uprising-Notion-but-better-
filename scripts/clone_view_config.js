@@ -12,8 +12,10 @@ function runSql(sql) {
         const cmd = `Get-Content temp_query.sql | docker exec -i twenty-db-1 psql -U postgres -d default -t -A`;
         return execSync(cmd, { shell: 'powershell.exe' }).toString().trim();
     } catch (e) {
-        console.error(`SQL failed.`);
-        return null;
+        console.error("SQL failed:", e.message);
+        throw e;
+    } finally {
+        try { fs.unlinkSync('temp_query.sql'); } catch (_) {}
     }
 }
 
@@ -27,12 +29,13 @@ if (!refViewId) {
 }
 console.log(`Reference view ID: ${refViewId}`);
 
-// 2. Clear existing fields for the target view
-runSql(`DELETE FROM core."viewField" WHERE "viewId" = '${targetViewId}';`);
-
-// 3. Clone fields from reference view
+// 2. Clear existing fields and 3. Clone fields via DB Transaction
 console.log("Cloning view fields...");
 const insertQuery = `
+BEGIN;
+
+DELETE FROM core."viewField" WHERE "viewId" = '${targetViewId}';
+
 INSERT INTO core."viewField" (
     "universalIdentifier", id, "viewId", "fieldMetadataId", "isVisible", position, size,
     "workspaceId", "applicationId", "createdAt", "updatedAt"
@@ -42,7 +45,14 @@ SELECT
     '${workspaceId}', '${applicationId}', now(), now()
 FROM core."viewField"
 WHERE "viewId" = '${refViewId}';
-`;
-runSql(insertQuery);
 
-console.log("Done. Kanban view configuration completed.");
+COMMIT;
+`;
+
+try {
+    runSql(insertQuery);
+    console.log("Done. Kanban view configuration completed.");
+} catch (e) {
+    console.error("Failed to commit view config", e.message);
+    process.exit(1);
+}

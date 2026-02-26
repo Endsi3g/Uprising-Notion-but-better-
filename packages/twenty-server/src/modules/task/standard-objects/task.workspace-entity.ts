@@ -1,7 +1,7 @@
 import {
-  type ActorMetadata,
-  FieldMetadataType,
-  type RichTextV2Metadata,
+    type ActorMetadata,
+    FieldMetadataType,
+    type RichTextV2Metadata,
 } from 'twenty-shared/types';
 
 import { BaseWorkspaceEntity } from 'src/engine/twenty-orm/base.workspace-entity';
@@ -24,6 +24,7 @@ export const SEARCH_FIELDS_FOR_TASKS: FieldTypeAndNameMetadata[] = [
 export class TaskWorkspaceEntity extends BaseWorkspaceEntity {
   position: number;
   title: string | null;
+  externalId: string | null;
   bodyV2: RichTextV2Metadata | null;
   dueAt: Date | null;
   status: string | null;
