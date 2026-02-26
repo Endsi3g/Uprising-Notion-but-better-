@@ -38,14 +38,15 @@ Assurez-vous que votre fichier `.env` contient les variables nécessaires.
 ## 4. Sécurité & Monitoring (Sentry / Webhooks)
 
 ### Tracking d'Erreurs avec Sentry
-L'application intègre Sentry sur le frontend et le backend.
-- **Frontend** : Renseignez la variable `VITE_SENTRY_DSN` (par exemple dans Vercel).
+L'application intègre Sentry sur le frontend et le backend pour une surveillance en temps réel.
+- **Frontend** : Renseignez la variable `VITE_SENTRY_DSN` (ex: dans Vercel). J'ai configuré le client pour capturer les erreurs globales.
 - **Backend** : Renseignez la variable `SENTRY_DSN` dans votre fichier `.env`.
 
 ### Sécurisation des Webhooks Notion
-Les callbacks de Notion vers `/rest/integration/notion/webhook` requièrent une signature valide.
-- Définissez une variable `NOTION_WEBHOOK_SECRET` sur votre backend.
-- Saisissez cette même phrase secrète dans le panneau de configuration du webhook sur l'interface de Notion.
+Les callbacks de Notion vers `/rest/integration/notion/webhook` sont désormais protégés :
+- **Validation Strict** : Le code exige un `rawBody` valide et utilise `crypto.timingSafeEqual` pour empêcher les attaques par canal auxiliaire.
+- **Isolation** : J'ai créé un `NotionWebhookController` dédié sans les gardes REST habituels, permettant une réception publique tout en maintenant une sécurité cryptographique élevée.
+- **Configuration** : Définissez `NOTION_WEBHOOK_SECRET` sur votre backend et saisissez le même secret dans Notion.
 
 ## 5. Maintenance
 

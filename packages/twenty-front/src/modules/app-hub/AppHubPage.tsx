@@ -22,13 +22,13 @@ const StyledDescription = styled.p`
   margin-bottom: ${({ theme }) => theme.spacing(6)};
 `;
 
-const AppGrid = styled.div`
+const StyledAppGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: ${({ theme }) => theme.spacing(4)};
 `;
 
-const AppCard = styled.a`
+const StyledAppCard = styled.a`
   display: flex;
   align-items: center;
   padding: ${({ theme }) => theme.spacing(4)};
@@ -44,20 +44,20 @@ const AppCard = styled.a`
   }
 `;
 
-const AppInfo = styled.div`
+const StyledAppInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: ${({ theme }) => theme.spacing(3)};
 `;
 
-const AppTitle = styled.h3`
+const StyledAppTitle = styled.h3`
   color: ${({ theme }) => theme.font.color.primary};
   font-size: 16px;
   font-weight: 500;
   margin: 0;
 `;
 
-const AppSubtitle = styled.span`
+const StyledAppSubtitle = styled.span`
   color: ${({ theme }) => theme.font.color.tertiary};
   font-size: 13px;
 `;
@@ -80,52 +80,52 @@ export const AppHubPage = () => {
       : [
           {
             id: 'default1',
-            title: 'Google Workspace',
-            desc: 'Email and Calendar',
+            title: t`Google Workspace`,
+            desc: t`Email and Calendar`,
             link: 'https://workspace.google.com',
           },
           {
             id: 'default2',
-            title: 'Notion',
-            desc: 'Documentation & Notes',
+            title: t`Notion`,
+            desc: t`Documentation & Notes`,
             link: 'https://notion.so',
           },
           {
             id: 'default3',
-            title: 'Slack',
-            desc: 'Team Communication',
+            title: t`Slack`,
+            desc: t`Team Communication`,
             link: 'https://slack.com',
           },
           {
             id: 'default4',
-            title: 'GitHub',
-            desc: 'Code Repositories & CI/CD',
-            link: 'https://github.com',
+            title: t`GitHub Repositories`,
+            desc: t`Manage your code and deployments`,
+            link: 'https://github.com/uprising-studio',
           },
           {
             id: 'default5',
-            title: 'Google Drive',
-            desc: 'File Storage & Sharing',
+            title: t`Google Drive`,
+            desc: t`File Storage & Sharing`,
             link: 'https://drive.google.com',
           },
           {
             id: 'default6',
-            title: 'Google Meet',
-            desc: 'Video Conferences',
+            title: t`Google Meet`,
+            desc: t`Video Conferences`,
             link: 'https://meet.google.com',
           },
           {
             id: 'default7',
-            title: 'Google Docs',
-            desc: 'Word Processing',
+            title: t`Google Docs`,
+            desc: t`Word Processing`,
             link: 'https://docs.google.com',
           },
         ];
 
   return (
     <StyledContainer>
-      <StyledTitle>{t`Agency App Hub`}</StyledTitle>
-      <StyledDescription>{t`Access all of your embedded agency applications from a single dashboard.`}</StyledDescription>
+      <StyledTitle>{t`Uprising App Hub`}</StyledTitle>
+      <StyledDescription>{t`Accédez à tous vos outils d'agence et dépôts GitHub depuis un point central.`}</StyledDescription>
 
       {loading ? (
         <StyledDescription>{t`Loading apps...`}</StyledDescription>
@@ -133,21 +133,21 @@ export const AppHubPage = () => {
         // Ignore error if it's just 'Object appHubLink not found' because they might not have created the Custom Object yet
         <StyledDescription>{t`Please create a Custom Object named 'AppHubLink' with fields 'title', 'desc', and 'link' to manage these apps.`}</StyledDescription>
       ) : (
-        <AppGrid>
+        <StyledAppGrid>
           {displayApps.map((app: any) => (
-            <AppCard
+            <StyledAppCard
               key={app.id || app.title}
               href={app.link}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AppInfo>
-                <AppTitle>{app.title}</AppTitle>
-                <AppSubtitle>{app.desc}</AppSubtitle>
-              </AppInfo>
-            </AppCard>
+              <StyledAppInfo>
+                <StyledAppTitle>{app.title}</StyledAppTitle>
+                <StyledAppSubtitle>{app.desc}</StyledAppSubtitle>
+              </StyledAppInfo>
+            </StyledAppCard>
           ))}
-        </AppGrid>
+        </StyledAppGrid>
       )}
     </StyledContainer>
   );
