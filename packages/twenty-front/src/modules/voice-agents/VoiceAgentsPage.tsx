@@ -54,12 +54,15 @@ const NoticeOrError = styled.div`
   padding: ${({ theme }) => theme.spacing(4)};
 `;
 
-interface Agent {
-  id: string;
-  name: string;
-  status: string;
-  hostedBy: string;
-}
+const StyledAgentName = styled.h3`
+  margin: 0;
+  font-size: 16px;
+`;
+
+const StyledAgentInfo = styled.span`
+  font-size: 13px;
+  color: ${({ theme }) => theme.font.color.tertiary};
+`;
 
 export const VoiceAgentsPage = () => {
   const { t } = useLingui();
@@ -141,10 +144,10 @@ export const VoiceAgentsPage = () => {
           {agents.map((agent) => (
             <AgentCard key={agent.id}>
               <div>
-                <h3 style={{ margin: 0, fontSize: 16 }}>{agent.name}</h3>
-                <span style={{ fontSize: 13, color: 'gray' }}>
+                <StyledAgentName>{agent.name}</StyledAgentName>
+                <StyledAgentInfo>
                   {agent.hostedBy} - {agent.status}
-                </span>
+                </StyledAgentInfo>
               </div>
               <Button title={t`Configure`} variant="secondary" />
             </AgentCard>
