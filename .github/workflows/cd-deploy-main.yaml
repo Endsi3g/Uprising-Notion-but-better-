@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Repository Dispatch
-        if: secrets.TWENTY_INFRA_TOKEN != ''
+        env:
+          TWENTY_INFRA_TOKEN: ${{ secrets.TWENTY_INFRA_TOKEN }}
+        if: env.TWENTY_INFRA_TOKEN != ''
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.TWENTY_INFRA_TOKEN }}
