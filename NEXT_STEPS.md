@@ -9,14 +9,13 @@ Pour compléter les nouvelles fonctionnalités et passer en production :
 ## 2. Configuration Google Tasks (Sync)
 - **Action** : Finaliser le polling dans `GoogleTasksSyncService` pour synchroniser les tâches avec `TaskTargetWorkspaceEntity`.
 
-## 3. White-Labeling Étendu
-- **Action** : Remplacer le logo Twenty par le logo Uprising Studio dans `packages/twenty-front/public/images/`.
-- **Action** : Personnaliser les emails envoyés par le système (invitations, notifications).
+## 3. Intégration GitHub (App Hub)
+- **Action** : Ajouter une intégration GitHub pour permettre de connecter facilement ses projets dans le App Hub.
 
 ## 4. Déploiement & Sécurité
 - **Action** : Configurer Sentry pour le tracking d'erreurs en production.
 - **Action** : Sécuriser les endpoints de webhook Notion avec une vérification de signature.
-- **Action** : Déployer sur l'infrastructure finale (Vercel/Google Cloud) via le pipeline CI/CD.
+- **Action** : Déployer sur l'infrastructure finale (Vercel et Oracle Cloud) via le pipeline CI/CD.
 
 ## 5. Monitoring
 - **Action** : Surveiller les logs de synchronisation dans la base de données via `KeyValuePairService`.

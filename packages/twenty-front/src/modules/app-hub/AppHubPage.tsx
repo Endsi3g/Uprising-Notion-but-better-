@@ -96,6 +96,30 @@ export const AppHubPage = () => {
             desc: 'Team Communication',
             link: 'https://slack.com',
           },
+          {
+            id: 'default4',
+            title: 'GitHub',
+            desc: 'Code Repositories & CI/CD',
+            link: 'https://github.com',
+          },
+          {
+            id: 'default5',
+            title: 'Google Drive',
+            desc: 'File Storage & Sharing',
+            link: 'https://drive.google.com',
+          },
+          {
+            id: 'default6',
+            title: 'Google Meet',
+            desc: 'Video Conferences',
+            link: 'https://meet.google.com',
+          },
+          {
+            id: 'default7',
+            title: 'Google Docs',
+            desc: 'Word Processing',
+            link: 'https://docs.google.com',
+          },
         ];
 
   return (
