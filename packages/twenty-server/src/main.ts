@@ -1,7 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { type NestExpressApplication } from '@nestjs/platform-express';
-
+import * as Sentry from '@sentry/node';
 import fs from 'fs';
+
+if (process.env.SENTRY_DSN) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+  });
+}
 
 import bytes from 'bytes';
 import { useContainer } from 'class-validator';

@@ -2,16 +2,30 @@
 
 Pour rendre Uprising Studio accessible à votre équipe sans frais mensuels d'abonnement SaaS, voici les trois meilleures options.
 
-## 🏆 Option 1 : Oracle Cloud Free Tier (Recommandé)
-Oracle offre le "Always Free Tier" le plus généreux du marché.
+## 🏆 Option 1 : Architecture Scindée (Vercel + Oracle Cloud) - Recommandé
 
-- **Avantages** : 100% gratuit à vie, instances ARM puissantes (jusqu'à 4 CPUs et 24 Go de RAM).
-- **Processus** :
-    1. Créez un compte sur `cloud.oracle.com`.
-    2. Créez une instance "Ampere" avec Ubuntu.
-    3. Installez Docker et Docker Compose.
-    4. Clonez ce repository.
-    5. Lancez via `docker-compose up -d`.
+C'est la méthode idéale pour allier performance frontend et gratuité backend.
+
+### Frontend (Vercel)
+
+Vercel hébergera l'interface React (`twenty-front`) gratuitement avec un CDN mondial.
+
+1. Connectez votre compte GitHub à [Vercel](https://vercel.com).
+2. Importez ce dépôt GitHub. Vercel détectera automatiquement le frontend ou vous pouvez pointer sur le dossier `packages/twenty-front`.
+3. Dans les variables d'environnement de Vercel, ajoutez :
+   - `VITE_SERVER_URL=https://api.votre-domaine.com` (l'URL de votre backend sur Oracle)
+   - `VITE_SENTRY_DSN=...` (votre DSN Sentry pour le tracking d'erreurs)
+4. Cliquez sur "Deploy".
+
+### Backend (Oracle Cloud Free Tier)
+
+Oracle offre le "Always Free Tier" le plus généreux du marché (instances ARM jusqu'à 4 CPUs et 24 Go de RAM).
+
+1. Créez un compte sur `cloud.oracle.com` et créez une instance "Ampere" avec Ubuntu.
+2. Installez Docker et Docker Compose.
+3. Clonez ce repository sur le serveur.
+4. Complétez votre fichier `.env` avec les secrets de base, `NOTION_WEBHOOK_SECRET` et `SENTRY_DSN`.
+5. Lancez les services via `docker-compose up -d`.
 
 ## 🛠️ Option 2 : Coolify (Self-Hosted PaaS)
 Coolify est une alternative open-source à Heroku/Vercel que vous installez sur votre propre serveur (VPS à 4-5$/mois ou instance gratuite Oracle).

@@ -1,4 +1,6 @@
-import { Body, Controller, Post, UseFilters, UseGuards } from '@nestjs/common';
+import { Body, Controller, Headers, Post, RawBodyRequest, Req, UnauthorizedException, UseFilters, UseGuards } from '@nestjs/common';
+import * as crypto from 'crypto';
+import { Request } from 'express';
 
 import { PermissionFlagType } from 'twenty-shared/constants';
 
@@ -45,5 +47,27 @@ export class NotionController {
     },
   ) {
     return this.notionSyncService.updateDatabasesConfig(workspace.id, config);
+  }
+
+  @Post('webhook')
+  async handleWebhook(
+    @Headers('x-notion-signature') signature: string,
+    @Req() req: RawBodyRequest<Request>,
+  ) {
+    const secret = process.env.NOTION_WEBHOOK_SECRET;
+    if (!secret) {
+      throw new UnauthorizedException('Webhook secret not configured');
+    }
+
+    const rawBody = req.rawBody?.toString() || JSON.stringify(req.body);
+    const hmac = crypto.createHmac('sha256', secret);
+    hmac.update(rawBody);
+    const calculatedSignature = hmac.digest('hex');
+
+    if (signature !== calculatedSignature) {
+      throw new UnauthorizedException('Invalid Notion signature');
+    }
+
+    return { success: true };
   }
 }
