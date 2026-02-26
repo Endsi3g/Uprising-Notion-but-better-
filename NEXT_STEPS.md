@@ -1,25 +1,22 @@
-# Next Steps: Lead Acquisition Finalization
+# Prochaines Étapes : Finalisation Uprising Studio CRM
 
-To complete the automation and move to production, the following steps are required:
+Pour compléter les nouvelles fonctionnalités et passer en production :
 
-## 1. Resolve Webhook Authentication (302 Redirect)
+## 1. Finalisation Intégration Notion (Push)
+- **Action** : Implémenter les `Orm Event Listeners` dans Twenty pour détecter la création ou modification d'une `Company` ou `Person` et mettre à jour Notion.
+- **Action** : Configurer les Webhooks Notion pour recevoir les mises à jour en temps réel.
 
-The current 302 redirect to `/login` prevents external tools (like Typeform) from triggering the workflow.
+## 2. Configuration Google Tasks (Sync)
+- **Action** : Finaliser le polling dans `GoogleTasksSyncService` pour synchroniser les tâches avec `TaskTargetWorkspaceEntity`.
 
-- **Action**: Modify `WorkflowTriggerController` or the global auth middleware to ensure that requests to `/webhooks/workflows/...` with a valid `workspaceId` and `workflowId` are permitted without a session cookie.
-- **Investigation**: Check if the `PublicEndpointGuard` is being ignored by a higher-level middleware in `app.module.ts`.
+## 3. White-Labeling Étendu
+- **Action** : Remplacer le logo Twenty par le logo Uprising Studio dans `packages/twenty-front/public/images/`.
+- **Action** : Personnaliser les emails envoyés par le système (invitations, notifications).
 
-## 2. Dynamic UUID Mapping
+## 4. Déploiement & Sécurité
+- **Action** : Configurer Sentry pour le tracking d'erreurs en production.
+- **Action** : Sécuriser les endpoints de webhook Notion avec une vérification de signature.
+- **Action** : Déployer sur l'infrastructure finale (Vercel/Google Cloud) via le pipeline CI/CD.
 
-Currently, the workspace UUID is used in the URL. We should ensure the production Typeform webhook uses the correct UUID for the target workspace.
-
-- **Action**: Update the production Typeform settings with the URL:
-  `http://<your-crm-domain>/webhooks/workflows/87aba936-be81-479f-b6ae-c7054173ee7d/8addf911-0d0c-4360-a138-04c04da5e390`
-
-## 3. Monitoring & Logging
-
-- **Action**: Monitor the `workflowRun` and `workflowRunStep` tables in the `workspace_815i5mpuq7jwcic6l2iitsuil` schema to track incoming leads and step execution results.
-
-## 4. Error Handling
-
-- **Action**: Test scenarios where the webhook body is malformed or missing fields to ensure the workflow fails gracefully and provides useful logs in the CRM UI.
+## 5. Monitoring
+- **Action** : Surveiller les logs de synchronisation dans la base de données via `KeyValuePairService`.

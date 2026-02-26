@@ -1,0 +1,3371 @@
+{
+  "data": {
+    "__schema": {
+      "mutationType": {
+        "name": "Mutation",
+        "fields": [
+          {
+            "name": "addQueryToEventStream",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "AddQuerySubscriptionInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "removeQueryFromEventStream",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "RemoveQueryFromEventStreamInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createObjectEvent",
+            "args": [
+              {
+                "name": "event",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "recordId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "objectMetadataId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "properties",
+                "type": {
+                  "name": "JSON",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "trackAnalytics",
+            "args": [
+              {
+                "name": "type",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "AnalyticsType",
+                    "kind": "ENUM"
+                  }
+                }
+              },
+              {
+                "name": "name",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "event",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "properties",
+                "type": {
+                  "name": "JSON",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "createPageLayoutWidget",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreatePageLayoutWidgetInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updatePageLayoutWidget",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdatePageLayoutWidgetInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyPageLayoutWidget",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createPageLayoutTab",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreatePageLayoutTabInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updatePageLayoutTab",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdatePageLayoutTabInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyPageLayoutTab",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createPageLayout",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreatePageLayoutInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updatePageLayout",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdatePageLayoutInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyPageLayout",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updatePageLayoutWithTabsAndWidgets",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdatePageLayoutWithTabsInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteOneLogicFunction",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "LogicFunctionIdInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createOneLogicFunction",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateLogicFunctionFromSourceInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "executeOneLogicFunction",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "ExecuteOneLogicFunctionInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateOneLogicFunction",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateLogicFunctionFromSourceInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "uploadImage",
+            "args": [
+              {
+                "name": "file",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Upload",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "fileFolder",
+                "type": {
+                  "name": "FileFolder",
+                  "kind": "ENUM",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "uploadWorkflowFile",
+            "args": [
+              {
+                "name": "file",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Upload",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "uploadWorkspaceLogo",
+            "args": [
+              {
+                "name": "file",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Upload",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "uploadWorkspaceMemberProfilePicture",
+            "args": [
+              {
+                "name": "file",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Upload",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "uploadFilesFieldFile",
+            "args": [
+              {
+                "name": "file",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Upload",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "fieldMetadataId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createOneObject",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateOneObjectInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteOneObject",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DeleteOneObjectInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateOneObject",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateOneObjectInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateCoreViewField",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateViewFieldInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createCoreViewField",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateViewFieldInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createManyCoreViewFields",
+            "args": [
+              {
+                "name": "inputs",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": null,
+                    "kind": "LIST"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCoreViewField",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DeleteViewFieldInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyCoreViewField",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DestroyViewFieldInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createCoreView",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateViewInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateCoreView",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateViewInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCoreView",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyCoreView",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createCoreViewSort",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateViewSortInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateCoreViewSort",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateViewSortInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCoreViewSort",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyCoreViewSort",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createCoreViewGroup",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateViewGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createManyCoreViewGroups",
+            "args": [
+              {
+                "name": "inputs",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": null,
+                    "kind": "LIST"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateCoreViewGroup",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateViewGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCoreViewGroup",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DeleteViewGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyCoreViewGroup",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DestroyViewGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createCoreViewFilterGroup",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateViewFilterGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateCoreViewFilterGroup",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateViewFilterGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCoreViewFilterGroup",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyCoreViewFilterGroup",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createCoreViewFilter",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateViewFilterInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateCoreViewFilter",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateViewFilterInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCoreViewFilter",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DeleteViewFilterInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyCoreViewFilter",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DestroyViewFilterInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateCoreViewFieldGroup",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateViewFieldGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createCoreViewFieldGroup",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateViewFieldGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createManyCoreViewFieldGroups",
+            "args": [
+              {
+                "name": "inputs",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": null,
+                    "kind": "LIST"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCoreViewFieldGroup",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DeleteViewFieldGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "destroyCoreViewFieldGroup",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DestroyViewFieldGroupInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createCommandMenuItem",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateCommandMenuItemInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateCommandMenuItem",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateCommandMenuItemInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCommandMenuItem",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createFrontComponent",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateFrontComponentInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateFrontComponent",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateFrontComponentInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteFrontComponent",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createOneAgent",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateAgentInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateOneAgent",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateAgentInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteOneAgent",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "AgentIdInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "checkoutSession",
+            "args": [
+              {
+                "name": "recurringInterval",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "SubscriptionInterval",
+                    "kind": "ENUM"
+                  }
+                }
+              },
+              {
+                "name": "plan",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "BillingPlanKey",
+                    "kind": "ENUM"
+                  }
+                }
+              },
+              {
+                "name": "requirePaymentMethod",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Boolean",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "successUrlPath",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "switchSubscriptionInterval",
+            "args": []
+          },
+          {
+            "name": "switchBillingPlan",
+            "args": []
+          },
+          {
+            "name": "cancelSwitchBillingPlan",
+            "args": []
+          },
+          {
+            "name": "cancelSwitchBillingInterval",
+            "args": []
+          },
+          {
+            "name": "setMeteredSubscriptionPrice",
+            "args": [
+              {
+                "name": "priceId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "endSubscriptionTrialPeriod",
+            "args": []
+          },
+          {
+            "name": "cancelSwitchMeteredPrice",
+            "args": []
+          },
+          {
+            "name": "updateWorkspaceMemberRole",
+            "args": [
+              {
+                "name": "workspaceMemberId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "roleId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createOneRole",
+            "args": [
+              {
+                "name": "createRoleInput",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateRoleInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateOneRole",
+            "args": [
+              {
+                "name": "updateRoleInput",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateRoleInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteOneRole",
+            "args": [
+              {
+                "name": "roleId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "upsertObjectPermissions",
+            "args": [
+              {
+                "name": "upsertObjectPermissionsInput",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpsertObjectPermissionsInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "upsertPermissionFlags",
+            "args": [
+              {
+                "name": "upsertPermissionFlagsInput",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpsertPermissionFlagsInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "upsertFieldPermissions",
+            "args": [
+              {
+                "name": "upsertFieldPermissionsInput",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpsertFieldPermissionsInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "upsertRowLevelPermissionPredicates",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpsertRowLevelPermissionPredicatesInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "assignRoleToAgent",
+            "args": [
+              {
+                "name": "agentId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "roleId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "removeRoleFromAgent",
+            "args": [
+              {
+                "name": "agentId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "uploadWorkspaceMemberProfilePictureLegacy",
+            "args": [
+              {
+                "name": "file",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Upload",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "skipSyncEmailOnboardingStep",
+            "args": []
+          },
+          {
+            "name": "skipBookOnboardingStep",
+            "args": []
+          },
+          {
+            "name": "deleteWorkspaceInvitation",
+            "args": [
+              {
+                "name": "appTokenId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "resendWorkspaceInvitation",
+            "args": [
+              {
+                "name": "appTokenId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "sendInvitations",
+            "args": [
+              {
+                "name": "emails",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": null,
+                    "kind": "LIST"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createApprovedAccessDomain",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateApprovedAccessDomainInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteApprovedAccessDomain",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DeleteApprovedAccessDomainInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "validateApprovedAccessDomain",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "ValidateApprovedAccessDomainInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createApiKey",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateApiKeyInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateApiKey",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateApiKeyInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "revokeApiKey",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "RevokeApiKeyInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "assignRoleToApiKey",
+            "args": [
+              {
+                "name": "apiKeyId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "roleId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createOneField",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateOneFieldMetadataInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateOneField",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateOneFieldMetadataInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteOneField",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DeleteOneFieldInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteUser",
+            "args": []
+          },
+          {
+            "name": "deleteUserFromWorkspace",
+            "args": [
+              {
+                "name": "workspaceMemberIdToDelete",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateUserEmail",
+            "args": [
+              {
+                "name": "newEmail",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "verifyEmailRedirectPath",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "resendEmailVerificationToken",
+            "args": [
+              {
+                "name": "email",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "origin",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "activateWorkspace",
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "ActivateWorkspaceInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateWorkspace",
+            "args": [
+              {
+                "name": "data",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateWorkspaceInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "uploadWorkspaceLogoLegacy",
+            "args": [
+              {
+                "name": "file",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Upload",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteCurrentWorkspace",
+            "args": []
+          },
+          {
+            "name": "checkCustomDomainValidRecords",
+            "args": []
+          },
+          {
+            "name": "getAuthorizationUrlForSSO",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "GetAuthorizationUrlForSSOInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "getLoginTokenFromCredentials",
+            "args": [
+              {
+                "name": "email",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "password",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "captchaToken",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "locale",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "verifyEmailRedirectPath",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "origin",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "signIn",
+            "args": [
+              {
+                "name": "email",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "password",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "captchaToken",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "locale",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "verifyEmailRedirectPath",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "verifyEmailAndGetLoginToken",
+            "args": [
+              {
+                "name": "emailVerificationToken",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "email",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "captchaToken",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "origin",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "verifyEmailAndGetWorkspaceAgnosticToken",
+            "args": [
+              {
+                "name": "emailVerificationToken",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "email",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "captchaToken",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "getAuthTokensFromOTP",
+            "args": [
+              {
+                "name": "otp",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "loginToken",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "captchaToken",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "origin",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "signUp",
+            "args": [
+              {
+                "name": "email",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "password",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "captchaToken",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "locale",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "verifyEmailRedirectPath",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "signUpInWorkspace",
+            "args": [
+              {
+                "name": "email",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "password",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "workspaceId",
+                "type": {
+                  "name": "UUID",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "workspaceInviteHash",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "workspacePersonalInviteToken",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "captchaToken",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "locale",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "verifyEmailRedirectPath",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "signUpInNewWorkspace",
+            "args": []
+          },
+          {
+            "name": "generateTransientToken",
+            "args": []
+          },
+          {
+            "name": "getAuthTokensFromLoginToken",
+            "args": [
+              {
+                "name": "loginToken",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "origin",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "authorizeApp",
+            "args": [
+              {
+                "name": "clientId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "codeChallenge",
+                "type": {
+                  "name": "String",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              },
+              {
+                "name": "redirectUrl",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "renewToken",
+            "args": [
+              {
+                "name": "appToken",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "generateApiKeyToken",
+            "args": [
+              {
+                "name": "apiKeyId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "expiresAt",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "emailPasswordResetLink",
+            "args": [
+              {
+                "name": "email",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "workspaceId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updatePasswordViaResetToken",
+            "args": [
+              {
+                "name": "passwordResetToken",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "newPassword",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "initiateOTPProvisioning",
+            "args": [
+              {
+                "name": "loginToken",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "origin",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "initiateOTPProvisioningForAuthenticatedUser",
+            "args": []
+          },
+          {
+            "name": "deleteTwoFactorAuthenticationMethod",
+            "args": [
+              {
+                "name": "twoFactorAuthenticationMethodId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "verifyTwoFactorAuthenticationMethodForAuthenticatedUser",
+            "args": [
+              {
+                "name": "otp",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createOIDCIdentityProvider",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "SetupOIDCSsoInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createSAMLIdentityProvider",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "SetupSAMLSsoInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteSSOIdentityProvider",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "DeleteSsoInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "editSSOIdentityProvider",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "EditSsoInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createWebhook",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateWebhookInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateWebhook",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateWebhookInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteWebhook",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createChatThread",
+            "args": []
+          },
+          {
+            "name": "createSkill",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateSkillInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateSkill",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateSkillInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteSkill",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "activateSkill",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deactivateSkill",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "evaluateAgentTurn",
+            "args": [
+              {
+                "name": "turnId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "runEvaluationInput",
+            "args": [
+              {
+                "name": "agentId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createNavigationMenuItem",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateNavigationMenuItemInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateNavigationMenuItem",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateOneNavigationMenuItemInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteNavigationMenuItem",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "duplicateDashboard",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "impersonate",
+            "args": [
+              {
+                "name": "userId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "workspaceId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "startChannelSync",
+            "args": [
+              {
+                "name": "connectedAccountId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "saveImapSmtpCaldavAccount",
+            "args": [
+              {
+                "name": "accountOwnerId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "handle",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "connectionParameters",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "EmailAccountConnectionParameters",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              },
+              {
+                "name": "id",
+                "type": {
+                  "name": "UUID",
+                  "kind": "SCALAR",
+                  "ofType": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateLabPublicFeatureFlag",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UpdateLabPublicFeatureFlagInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "userLookupAdminPanel",
+            "args": [
+              {
+                "name": "userIdentifier",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateWorkspaceFeatureFlag",
+            "args": [
+              {
+                "name": "workspaceId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "featureFlag",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "value",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Boolean",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createDatabaseConfigVariable",
+            "args": [
+              {
+                "name": "key",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "value",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "JSON",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateDatabaseConfigVariable",
+            "args": [
+              {
+                "name": "key",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "value",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "JSON",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteDatabaseConfigVariable",
+            "args": [
+              {
+                "name": "key",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "retryJobs",
+            "args": [
+              {
+                "name": "queueName",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "jobIds",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": null,
+                    "kind": "LIST"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteJobs",
+            "args": [
+              {
+                "name": "queueName",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "jobIds",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": null,
+                    "kind": "LIST"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "enablePostgresProxy",
+            "args": []
+          },
+          {
+            "name": "disablePostgresProxy",
+            "args": []
+          },
+          {
+            "name": "createPublicDomain",
+            "args": [
+              {
+                "name": "domain",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deletePublicDomain",
+            "args": [
+              {
+                "name": "domain",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "checkPublicDomainValidRecords",
+            "args": [
+              {
+                "name": "domain",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createEmailingDomain",
+            "args": [
+              {
+                "name": "domain",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "driver",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "EmailingDomainDriver",
+                    "kind": "ENUM"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "deleteEmailingDomain",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "verifyEmailingDomain",
+            "args": [
+              {
+                "name": "id",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createOneAppToken",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateOneAppTokenInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "renewApplicationToken",
+            "args": [
+              {
+                "name": "applicationRefreshToken",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "installApplication",
+            "args": [
+              {
+                "name": "workspaceMigration",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "WorkspaceMigrationInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "uninstallApplication",
+            "args": [
+              {
+                "name": "universalIdentifier",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "generateApplicationToken",
+            "args": [
+              {
+                "name": "applicationId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "syncApplication",
+            "args": [
+              {
+                "name": "manifest",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "JSON",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "createOneApplication",
+            "args": [
+              {
+                "name": "input",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "CreateApplicationInput",
+                    "kind": "INPUT_OBJECT"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "uploadApplicationFile",
+            "args": [
+              {
+                "name": "file",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "Upload",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "applicationUniversalIdentifier",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "fileFolder",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "FileFolder",
+                    "kind": "ENUM"
+                  }
+                }
+              },
+              {
+                "name": "filePath",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "installMarketplaceApp",
+            "args": []
+          },
+          {
+            "name": "updateOneApplicationVariable",
+            "args": [
+              {
+                "name": "key",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "value",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "String",
+                    "kind": "SCALAR"
+                  }
+                }
+              },
+              {
+                "name": "applicationId",
+                "type": {
+                  "name": null,
+                  "kind": "NON_NULL",
+                  "ofType": {
+                    "name": "UUID",
+                    "kind": "SCALAR"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

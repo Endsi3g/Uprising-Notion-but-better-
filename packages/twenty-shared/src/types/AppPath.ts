@@ -28,6 +28,8 @@ export enum AppPath {
   SettingsCatchAll = `/${Settings}/*`,
   Developers = `developers`,
   DevelopersCatchAll = `/${Developers}/*`,
+  AppHub = '/app-hub',
+  VoiceAgents = '/voice-agents',
 
   Authorize = '/authorize',
 

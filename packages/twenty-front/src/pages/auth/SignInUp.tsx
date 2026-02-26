@@ -1,8 +1,8 @@
 import { useSignInUp } from '@/auth/sign-in-up/hooks/useSignInUp';
 import { useSignInUpForm } from '@/auth/sign-in-up/hooks/useSignInUpForm';
 import {
-  SignInUpStep,
-  signInUpStepState,
+    SignInUpStep,
+    signInUpStepState,
 } from '@/auth/states/signInUpStepState';
 import { workspacePublicDataState } from '@/auth/states/workspacePublicDataState';
 import styled from '@emotion/styled';
@@ -121,13 +121,13 @@ export const SignInUp = () => {
     }
 
     if (isGlobalScope) {
-      return t`Welcome to Twenty`;
+      return t`Uprising Studio — Centre de Contrôle`;
     }
 
     const workspaceName = workspacePublicData?.displayName;
 
     if (!workspaceName) {
-      return t`Welcome to your workspace`;
+      return t`Uprising Studio — Centre de Contrôle`;
     }
 
     return t`Welcome, ${workspaceName}.`;

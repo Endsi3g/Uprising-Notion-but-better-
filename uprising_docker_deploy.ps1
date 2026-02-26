@@ -58,7 +58,7 @@ function Set-Env-Var($Content, $Key, $Value) {
 
 try {
     Write-Header "Étape 1 : Vérification des prérequis"
-    
+
     if (Get-Command "docker" -ErrorAction SilentlyContinue) {
         $dockerVersion = docker --version
         Write-Success "Docker détecté : $dockerVersion"
@@ -91,7 +91,7 @@ try {
     }
 
     Write-Header "Étape 2 : Configuration du fichier .env"
-    
+
     if (-not (Test-Path ".env")) {
         Write-Host "Création du fichier .env à partir de l'exemple..."
         if (Test-Path "packages/twenty-docker/.env.example") {
@@ -142,7 +142,7 @@ try {
     # 2.4 - Configuration Base de données et URLs (OBLIGATOIRE pour Docker)
     Write-Host "Synchronisation de la base de données et des URLs (Port 3001)..."
     $envContent = Set-Env-Var $envContent "PG_DATABASE_USER" "postgres"
-    $envContent = Set-Env-Var $envContent "PG_DATABASE_NAME" "postgres"
+    $envContent = Set-Env-Var $envContent "PG_DATABASE_NAME" "default"
     $envContent = Set-Env-Var $envContent "SERVER_URL" "http://localhost:3001"
     $envContent = Set-Env-Var $envContent "FRONTEND_URL" "http://localhost:3001"
     $envContent = Set-Env-Var $envContent "EMAIL_FROM_ADDRESS" "quebecsaas@gmail.com"
@@ -156,7 +156,7 @@ try {
     Write-Success "Configuration .env mise à jour sur le port 3001."
 
     Write-Header "Étape 3 : Récupération du Docker Compose"
-    
+
     # On force la mise à jour de docker-compose.yml pour refléter le port 3001
     Write-Host "Mise à jour de docker-compose.yml vers le port 3001..."
     if (Test-Path "packages/twenty-docker/docker-compose.yml") {
@@ -165,7 +165,7 @@ try {
     else {
         curl -s -o docker-compose.yml https://raw.githubusercontent.com/twentyhq/twenty/refs/heads/main/packages/twenty-docker/docker-compose.yml
     }
-    
+
     # Patch manuel du port si nécessaire (au cas où le fichier source n'est pas encore modifié)
     $dcContent = Get-Content "docker-compose.yml"
     $dcContent = $dcContent -replace '"3000:3000"', '"3001:3000"'
@@ -173,7 +173,7 @@ try {
     Write-Success "docker-compose.yml configuré sur le port 3001."
 
     Write-Header "Étape 4 : Lancement et Initialisation"
-    
+
     Write-Host "Souhaitez-vous lancer les containers et configurer les background jobs ? (o/n)" -ForegroundColor Yellow
     $choice = Read-Host
     if ($choice -eq "o" -or $choice -eq "y") {
@@ -183,7 +183,7 @@ try {
         Write-Success "Containers lancés sur http://localhost:3001."
 
         Write-Host "Attente du démarrage du serveur et des migrations (cela peut prendre quelques minutes)..." -ForegroundColor Cyan
-        
+
         # Récupération dynamique de l'ID du conteneur serveur pour éviter les problèmes de nommage
         $containerId = & $DOCKER_COMPOSE_CMD ps -q server
         if (-not $containerId) {
@@ -194,7 +194,7 @@ try {
         $timeout = 600 # 10 minutes max
         $elapsed = 0
         $isHealthy = $false
-        
+
         Write-Host "Démarrage en cours (Migrations) " -NoNewline -ForegroundColor Cyan
         while ($elapsed -lt $timeout) {
             $status = docker inspect --format '{{.State.Health.Status}}' $containerId 2>$null
