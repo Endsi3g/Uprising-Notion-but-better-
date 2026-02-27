@@ -3,6 +3,9 @@ FROM node:24-alpine AS common-deps
 
 WORKDIR /app
 
+# Install native build tools for node-gyp and canvas
+RUN apk add --no-cache python3 make g++ cairo-dev pango-dev jpeg-dev giflib-dev librsvg-dev
+
 # Copy only the necessary files for dependency resolution
 COPY ./package.json ./yarn.lock ./.yarnrc.yml ./tsconfig.base.json ./nx.json /app/
 COPY ./.yarn/releases /app/.yarn/releases
