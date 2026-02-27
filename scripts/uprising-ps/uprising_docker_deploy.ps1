@@ -7,9 +7,10 @@
 
 $ErrorActionPreference = "Stop"
 
-# Force current directory to be the script's directory
+# Set project root (two levels up from scripts/uprising-ps/)
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
-Set-Location $ScriptDir
+$ProjectRoot = (Get-Item "$ScriptDir\..\..").FullName
+Set-Location $ProjectRoot
 
 function Write-Header($msg) {
     Write-Host "`n=== $msg ===" -ForegroundColor Cyan
