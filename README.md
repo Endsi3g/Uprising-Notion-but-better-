@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h2 align="center" >Uprising — CRM Open-Source pour Agences </h2>
+<h2 align="center" >Uprising Studio — Control Centre </h2>
 
 <p align="center"><a href="https://twenty.com">🌐 Website</a> · <a href="https://docs.twenty.com">📚 Documentation</a> · <a href="https://github.com/orgs/twentyhq/projects/1"><img src="./packages/twenty-website/public/images/readme/planner-icon.svg" width="12" height="12"/> Roadmap </a> · <a href="https://discord.gg/cx5n4Jzs57"><img src="./packages/twenty-website/public/images/readme/discord-icon.svg" width="12" height="12"/> Discord</a> · <a href="https://www.figma.com/file/xt8O9mFeLl46C5InWwoMrN/Twenty"><img src="./packages/twenty-website/public/images/readme/figma-icon.png"  width="12" height="12"/>  Figma</a></p>
 <br />
@@ -22,12 +22,21 @@
 
 <br />
 
+# Uprising Enhancements
+Uprising Studio has extended Twenty CRM with specialized agency-first features:
+- 🔗 **Notion & Google Tasks Sync**: Two-way synchronization for companies, people, and task management.
+- 🚀 **Integrated App Hub**: A central hub to access all your agency tools and GitHub repositories.
+- 🎙️ **AI Voice Agent Manager**: Deploy and monitor AI voice models directly from your CRM.
+- 🤖 **Acquisition Automation**: Automated lead injection (Apify) and GPT-4 powered follow-up engines.
+
+📖 **[Uprising Technical Specs](./docs/uprising/architecture-code-first---specs-techniques.md)** | 🛠️ **[Automation Guide](./docs/uprising/guide-dautomatisation-complète-avec-twenty.md)**
+
 # Installation
 
 See:
 🚀 [Self-hosting](https://docs.twenty.com/developers/self-hosting/docker-compose)
 🖥️ [Local Setup](https://docs.twenty.com/developers/local-setup)
-📖 [Internal Deployment Guide](./DEPLOYMENT_PROMPT.md)
+📖 [Internal Deployment Guide](./docs/UPRISING_STUDIO.md)
 
 # Does the world need another CRM?
 
