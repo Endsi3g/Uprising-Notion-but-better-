@@ -1,0 +1,31 @@
+{
+  "name": "uprising-automation",
+  "version": "1.0.0",
+  "description": "Acquisition automation scripts using Twenty CRM",
+  "type": "module",
+  "scripts": {
+    "apify": "node apify-to-twenty.js",
+    "followup": "node follow-up-engine.js",
+    "metrics": "node metrics-exporter.js",
+    "analyzer": "node call-analyzer.js"
+  },
+  "keywords": [
+    "automation",
+    "twenty",
+    "crm",
+    "apify",
+    "openai",
+    "fireflies"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apify-client": "^2.9.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "googleapis": "^140.0.0",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.9.13",
+    "openai": "^4.47.1"
+  }
+}
