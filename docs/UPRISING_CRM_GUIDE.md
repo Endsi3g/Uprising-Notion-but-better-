@@ -250,6 +250,6 @@ Cette approche stratégique apportera à votre agence digitale :
 - **Meilleure conversion :** Grâce à un pipeline structuré pour éviter tout lead oublié.
 - **Collaboration temps réel :** Toute l'équipe dispose d'une source unique de vérité et peut éditer les données simultanément.
 - **Scalabilité illimitée :** Vous pouvez ajouter autant d'objets, de champs et d'utilisateurs que la croissance de l'agence l'exige.
-- **Souveraineté des données :** Le code est open-source et hébergé sous votre contrôle, ce qui élimine les verrous fournisseurs (vendor lock-in) et réduit vos marges d'infrastructure.
+- **Souveraineté des données :** Le code est open-source et hébergé sous votre contrôle, ce qui élimine les verrous fournisseurs (vendor lock-in) et réduit vos coûts d'infrastructure.
 
 *Avec ces fondations, Twenty ne sera plus un CRM standard, mais le moteur de croissance sur mesure d'Uprising Studio.*

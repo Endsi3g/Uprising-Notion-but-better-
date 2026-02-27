@@ -155,30 +155,37 @@ try {
     $envContent | Set-Content ".env"
     Write-Success "Configuration .env mise à jour sur le port 3001."
 
-    Write-Header "Étape 3 : Récupération du Docker Compose"
+    Write-Header "Étape 3 : Vérification du Docker Compose"
 
-    # On force la mise à jour de docker-compose.yml pour refléter le port 3001
-    Write-Host "Mise à jour de docker-compose.yml vers le port 3001..."
-    if (Test-Path "packages/twenty-docker/docker-compose.yml") {
-        Copy-Item "packages/twenty-docker/docker-compose.yml" "docker-compose.yml"
+    # On utilise le docker-compose.yml personnalisé à la racine qui build depuis le code local
+    if (-not (Test-Path "docker-compose.yml")) {
+        Write-Error-Custom "docker-compose.yml introuvable. Il devrait être à la racine du projet avec la directive 'build:'."
+        exit 1
+    }
+
+    # Vérification que le docker-compose.yml contient la directive build (et non l'image publique)
+    $dcContent = Get-Content "docker-compose.yml" -Raw
+    if ($dcContent -match "image:\s*twentycrm/twenty") {
+        Write-Warning-Custom "docker-compose.yml utilise l'image publique au lieu du code local !"
+        Write-Warning-Custom "Vos fonctionnalités personnalisées ne seront PAS incluses."
+        Write-Warning-Custom "Vérifiez que docker-compose.yml contient 'build:' au lieu de 'image: twentycrm/twenty'."
     }
     else {
-        curl -s -o docker-compose.yml https://raw.githubusercontent.com/twentyhq/twenty/refs/heads/main/packages/twenty-docker/docker-compose.yml
+        Write-Success "docker-compose.yml configuré pour builder depuis le code local."
     }
 
-    # Patch manuel du port si nécessaire (au cas où le fichier source n'est pas encore modifié)
-    $dcContent = Get-Content "docker-compose.yml"
-    $dcContent = $dcContent -replace '"3000:3000"', '"3001:3000"'
-    $dcContent | Set-Content "docker-compose.yml"
-    Write-Success "docker-compose.yml configuré sur le port 3001."
+    Write-Header "Étape 4 : Build et Lancement"
 
-    Write-Header "Étape 4 : Lancement et Initialisation"
-
-    Write-Host "Souhaitez-vous lancer les containers et configurer les background jobs ? (o/n)" -ForegroundColor Yellow
+    Write-Host "Souhaitez-vous construire l'image et lancer les containers ? (o/n)" -ForegroundColor Yellow
+    Write-Host "(Le premier build peut prendre 15-20 minutes)" -ForegroundColor Yellow
     $choice = Read-Host
     if ($choice -eq "o" -or $choice -eq "y") {
+        Write-Host "Construction de l'image Docker depuis le code local..." -ForegroundColor Cyan
+        & $DOCKER_COMPOSE_CMD down # On s'assure de nettoyer les restes
+        & $DOCKER_COMPOSE_CMD build --no-cache server
+        Write-Success "Image construite avec succès."
+
         Write-Host "Démarrage des containers sur le port 3001 via $DOCKER_COMPOSE_CMD..."
-        & $DOCKER_COMPOSE_CMD down # On s'assure de nettoyer les restes du port 3000
         & $DOCKER_COMPOSE_CMD up -d
         Write-Success "Containers lancés sur http://localhost:3001."
 

@@ -71,7 +71,11 @@ Follow these steps for a manual setup.
 
 4. **Set the Postgres Password**
 
-   Update the `PG_DATABASE_PASSWORD` value in the .env file with a strong password without special characters.
+   Update the `PG_DATABASE_PASSWORD` value in the .env file with a strong password. Special characters are allowed but must be handled correctly:
+   - **In `.env` files** : wrap the value in single quotes (e.g., `PG_DATABASE_PASSWORD='my$tr0ng!P@ss'`).
+   - **Characters to avoid or escape** : the characters `'` (single quote) and `\` (backslash) can cause parsing issues in some `.env` loaders — avoid them or escape with `\`.
+   - **In `DATABASE_URL`** : if your password contains `@`, `:`, `/`, or `#`, URL-encode them (e.g., `@` → `%40`, `#` → `%23`).
+   - Use a password generator to create a 32+ character password with mixed case, numbers, and symbols for maximum entropy.
 
    ```ini
    PG_DATABASE_PASSWORD=my_strong_password
@@ -480,10 +484,48 @@ Add your test users to the "Users and groups" section.
 
 After configuring Gmail, Google Calendar, or Microsoft 365 integrations, you need to start the background jobs that sync data.
 
-Register the following recurring jobs in your worker container:
+### How to register these jobs
+
+Each command below is a **one-shot execution** that processes pending items and exits. They must be run **on a recurring schedule** (e.g., every 5 minutes) using one of the following mechanisms:
+
+**Option A: System crontab (Linux/macOS)**
+
+Add entries to your crontab (`crontab -e`) pointing to your worker container:
 
 ```bash
-# from your worker container
+# Example: run every 5 minutes inside the worker container
+*/5 * * * * docker exec twenty-worker yarn command:prod cron:messaging:messages-import
+*/5 * * * * docker exec twenty-worker yarn command:prod cron:messaging:message-list-fetch
+*/5 * * * * docker exec twenty-worker yarn command:prod cron:calendar:calendar-event-list-fetch
+*/5 * * * * docker exec twenty-worker yarn command:prod cron:calendar:calendar-events-import
+*/10 * * * * docker exec twenty-worker yarn command:prod cron:messaging:ongoing-stale
+*/10 * * * * docker exec twenty-worker yarn command:prod cron:calendar:ongoing-stale
+*/5 * * * * docker exec twenty-worker yarn command:prod cron:workflow:automated-cron-trigger
+```
+
+**Option B: Kubernetes CronJob**
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: twenty-messaging-import
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: worker
+            image: your-twenty-worker-image
+            command: ["yarn", "command:prod", "cron:messaging:messages-import"]
+          restartPolicy: OnFailure
+```
+
+### Complete list of recurring jobs
+
+```bash
 yarn command:prod cron:messaging:messages-import
 yarn command:prod cron:messaging:message-list-fetch
 yarn command:prod cron:calendar:calendar-event-list-fetch

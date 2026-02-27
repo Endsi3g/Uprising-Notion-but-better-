@@ -127,7 +127,7 @@ des vendeurs et vous envoie seulement les opportunités qualifiées."
 
 ## 📋 Onboarding Client
 
-**Typeform d'Onboarding** : `[INSÉRER LIEN TYPEFORM ICI]`
+**Typeform d'Onboarding** : [https://uprising.typeform.com/onboarding](https://uprising.typeform.com/onboarding)
 
 ### Processus d'Onboarding
 1. Client remplit le Typeform.

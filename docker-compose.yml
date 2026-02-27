@@ -2,7 +2,10 @@ name: twenty
 
 services:
   server:
-    image: twentycrm/twenty:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: packages/twenty-docker/twenty/Dockerfile
+    image: uprising-crm:local
     volumes:
       - server-local-data:/app/packages/twenty-server/.local-storage
     ports:
@@ -58,7 +61,7 @@ services:
     restart: always
 
   worker:
-    image: twentycrm/twenty:${TAG:-latest}
+    image: uprising-crm:local
     volumes:
       - server-local-data:/app/packages/twenty-server/.local-storage
     command: ["yarn", "worker:prod"]

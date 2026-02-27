@@ -1,6 +1,6 @@
 # 🩺 Diagnóstico Técnico - Uprising Studio CRM
 
-## 1. Análisis de Envorno
+## 1. Análisis de Entorno
 - **Estado**: Proyecto Existente (Evolución).
 - **Stack Detectado**:
   - Frontend: React (Vite) + Emotion (Styled Components).
