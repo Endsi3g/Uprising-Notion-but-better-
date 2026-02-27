@@ -46,6 +46,12 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)<
 
     return {
       VariableDeclaration: (node: TSESTree.VariableDeclaration) => {
+        if (
+          node.parent?.type !== 'Program' &&
+          node.parent?.type !== 'ExportNamedDeclaration'
+        ) {
+          return;
+        }
         constCount++;
 
         if (constCount > max) {

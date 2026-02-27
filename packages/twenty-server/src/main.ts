@@ -1,7 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { type NestExpressApplication } from '@nestjs/platform-express';
-import * as Sentry from '@sentry/node';
+
 import fs from 'fs';
+
+import * as Sentry from '@sentry/node';
 
 if (process.env.SENTRY_DSN) {
   Sentry.init({

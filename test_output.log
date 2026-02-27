@@ -1,0 +1,133 @@
+
+> nx run twenty-eslint-rules:test
+
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/rest-api-methods-should-be-guarded.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/rest-api-methods-should-be-guarded.spec.ts:16:11 - error TS1005: ',' expected.
+    16  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/rest-api-methods-should-be-guarded.spec.ts:313:11 - error TS1005: ';' expected.
+    313  } as any));
+                  ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/no-navigate-prefer-link.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/no-navigate-prefer-link.spec.ts:15:11 - error TS1005: ',' expected.
+    15  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/no-navigate-prefer-link.spec.ts:47:11 - error TS1005: ';' expected.
+    47  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/sort-css-properties-alphabetically.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/sort-css-properties-alphabetically.spec.ts:15:11 - error TS1005: ',' expected.
+    15  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/sort-css-properties-alphabetically.spec.ts:53:11 - error TS1005: ';' expected.
+    53  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/useRecoilCallback-has-dependency-array.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/useRecoilCallback-has-dependency-array.spec.ts:15:11 - error TS1005: ',' expected.
+    15  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/useRecoilCallback-has-dependency-array.spec.ts:37:11 - error TS1005: ';' expected.
+    37  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/use-getLoadable-and-getValue-to-get-atoms.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/use-getLoadable-and-getValue-to-get-atoms.spec.ts:15:11 - error TS1005: ',' expected.
+    15  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/use-getLoadable-and-getValue-to-get-atoms.spec.ts:61:11 - error TS1005: ';' expected.
+    61  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/styled-components-prefixed-with-styled.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/styled-components-prefixed-with-styled.spec.ts:15:11 - error TS1005: ',' expected.
+    15  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/styled-components-prefixed-with-styled.spec.ts:44:11 - error TS1005: ';' expected.
+    44  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/no-hardcoded-colors.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/no-hardcoded-colors.spec.ts:15:11 - error TS1005: ',' expected.
+    15  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/no-hardcoded-colors.spec.ts:79:11 - error TS1005: ';' expected.
+    79  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/no-state-useref.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/no-state-useref.spec.ts:52:11 - error TS1005: ';' expected.
+    52  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/max-consts-per-file.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/max-consts-per-file.spec.ts:17:11 - error TS1005: ',' expected.
+    17  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/max-consts-per-file.spec.ts:33:11 - error TS1005: ';' expected.
+    33  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/matching-state-variable.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/matching-state-variable.spec.ts:15:11 - error TS1005: ',' expected.
+    15  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/matching-state-variable.spec.ts:186:11 - error TS1005: ';' expected.
+    186  } as any));
+                  ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/inject-workspace-repository.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/inject-workspace-repository.spec.ts:14:11 - error TS1005: ',' expected.
+    14  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/inject-workspace-repository.spec.ts:85:11 - error TS1005: ';' expected.
+    85  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/component-props-naming.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/component-props-naming.spec.ts:15:11 - error TS1005: ',' expected.
+    15  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/component-props-naming.spec.ts:48:11 - error TS1005: ';' expected.
+    48  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/effect-components.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/effect-components.spec.ts:15:11 - error TS1005: ',' expected.
+    15  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/effect-components.spec.ts:72:11 - error TS1005: ';' expected.
+    72  } as any));
+                 ~
+ FAIL   twenty-eslint-rules  packages/twenty-eslint-rules/rules/graphql-resolvers-should-be-guarded.spec.ts
+  ÔùÅ Test suite failed to run
+    packages/twenty-eslint-rules/rules/graphql-resolvers-should-be-guarded.spec.ts:16:11 - error TS1005: ',' expected.
+    16  } as any));
+                 ~
+    packages/twenty-eslint-rules/rules/graphql-resolvers-should-be-guarded.spec.ts:283:11 - error TS1005: ';' expected.
+    283  } as any));
+                  ~
+=============================== Coverage summary ===============================
+[33;1mStatements   : Unknown% ( 0/0 )[0m
+[33;1mBranches     : Unknown% ( 0/0 )[0m
+[33;1mFunctions    : Unknown% ( 0/0 )[0m
+[33;1mLines        : Unknown% ( 0/0 )[0m
+================================================================================
+Test Suites: 14 failed, 14 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        50.358 s
+
+
+
+ NX   Running target test for project twenty-eslint-rules failed
+
+Failed tasks:
+
+- twenty-eslint-rules:test
+
+Hint: run the command with --verbose for more details.
+

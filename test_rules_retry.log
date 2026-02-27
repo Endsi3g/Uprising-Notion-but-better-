@@ -1,0 +1,533 @@
+Waiting for graph construction in another process to complete
+Waiting for graph construction in another process to complete
+
+> nx run twenty-eslint-rules:test
+
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/no-state-useref.spec.ts (51.642 s)
+  no-state-useref
+    valid
+      √ const scrollableRef = useRef<HTMLDivElement>(null); (165 ms)
+      √ const ref = useRef<HTMLInputElement>(null); (9 ms)
+    invalid
+      √ const ref = useRef(null); (9 ms)
+      √ const ref = useRef<Boolean>(null); (7 ms)
+      √ const ref = useRef<string>(''); (10 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/no-navigate-prefer-link.spec.ts (52.199 s)
+  no-navigate-prefer-link
+    valid
+      √ if(someVar) { navigate("/"); } (287 ms)
+      √ <Link to="/"><Button>Click me</Button></Link> (79 ms)
+      √ <Button onClick={() =>{ navigate("/"); doSomething(); }} /> (157 ms)
+    invalid
+      √ <Button onClick={() => navigate("/")} /> (11 ms)
+      √ <Button onClick={() => { navigate("/");} } /> (6 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/useRecoilCallback-has-dependency-array.spec.ts (52.335 s)
+  useRecoilCallback-has-dependency-array
+    valid
+      √ const someValue = useRecoilCallback(() => () => {}, []); (228 ms)
+      √ const someValue = useRecoilCallback(() => () => {}, [dependency]); (76 ms)
+    invalid
+      √ const someValue = useRecoilCallback(({}) => () => {}); (262 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/styled-components-prefixed-with-styled.spec.ts (52.938 s)
+  styled-components-prefixed-with-styled
+    valid
+      √ const StyledButton = styled.button``; (197 ms)
+      √ const StyledComponent = styled.div``; (81 ms)
+    invalid
+      √ const Button = styled.button``; (391 ms)
+      √ const Component = styled.div``; (75 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/sort-css-properties-alphabetically.spec.ts (52.929 s)
+  sort-css-properties-alphabetically
+    valid
+      √ const style = css`color: red;`; (441 ms)
+      √ const style = css`background-color: $bgColor;color: red;`; (195 ms)
+      √ const StyledComponent = styled.div`color: red;`; (105 ms)
+      √ const StyledComponent = styled.div`background-color: $bgColor;color: red;`; (13 ms)
+    invalid
+      √ const style = css`color: #FF0000;background-color: $bgColor`; (229 ms)
+      √ const StyledComponent = styled.div`color: #FF0000;background-color: $bgColor`; (256 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/use-getLoadable-and-getValue-to-get-atoms.spec.ts (53.19 s)
+  use-getLoadable-and-getValue-to-get-atoms
+    valid
+      √ const atoms = snapshot.getLoadable(someState).getValue(); (337 ms)
+      √ const atoms = snapshot.getLoadable(someState(viewId)).getValue(); (168 ms)
+    invalid
+      √ const atoms = await snapshot.getPromise(someState); (398 ms)
+      √ const atoms = await snapshot.getPromise(someState(viewId)); (341 ms)
+      √ const atoms = snapshot.getLoadable(someState).anotherMethod(); (229 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/rest-api-methods-should-be-guarded.spec.ts (55.616 s)
+  rest-api-methods-should-be-guarded
+    valid
+      √ 
+        class TestController {
+          @Get()
+          @UseGuards(UserAuthGuard, NoPermissionGuard)
+          testMethod() {}
+        }
+       (327 ms)
+      √ 
+        class TestController {
+          @Get()
+          @UseGuards(WorkspaceAuthGuard, CustomPermissionGuard)
+          testMethod() {}
+        }
+       (117 ms)
+      √ 
+        class TestController {
+          @Get()
+          @UseGuards(PublicEndpoint, NoPermissionGuard)
+          testMethod() {}
+        }
+       (192 ms)
+      √ 
+        class TestController {
+          @Get()
+          @UseGuards(CaptchaGuard, PublicEndpoint, NoPermissionGuard)
+          testMethod() {}
+        }
+       (407 ms)
+      √ 
+        @UseGuards(UserAuthGuard, NoPermissionGuard)
+        class TestController {
+          @Get()
+          testMethod() {}
+        }
+       (75 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard, CustomPermissionGuard)
+        class TestController {
+          @Get()
+          testMethod() {}
+        }
+       (87 ms)
+      √ 
+        @UseGuards(PublicEndpoint, NoPermissionGuard)
+        class TestController {
+          @Get()
+          testMethod() {}
+        }
+       (136 ms)
+      √ 
+        class TestController {
+          @Post()
+          @UseGuards(WorkspaceAuthGuard, CustomPermissionGuard)
+          createMethod() {}
+        }
+       (6 ms)
+      √ 
+        class TestController {
+          @Put()
+          @UseGuards(WorkspaceAuthGuard, UpdatePermissionGuard)
+          updateMethod() {}
+        }
+       (201 ms)
+      √ 
+        class TestController {
+          @Patch()
+          @UseGuards(WorkspaceAuthGuard, NoPermissionGuard)
+          patchMethod() {}
+        }
+       (238 ms)
+      √ 
+        class TestController {
+          @Delete()
+          @UseGuards(WorkspaceAuthGuard, DeletePermissionGuard)
+          deleteMethod() {}
+        }
+       (114 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard, CustomPermissionGuard)
+        class TestController {
+          @Post()
+          createMethod() {}
+        }
+       (6 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard, SettingsPermissionsGuard(PermissionFlagType.WORKSPACE))
+        class TestController {
+          @Delete()
+          deleteMethod() {}
+        }
+       (6 ms)
+      √ 
+        class TestController {
+          regularMethod() {}
+        }
+       (165 ms)
+    invalid
+      √ 
+        class TestController {
+          @Get()
+          testMethod() {}
+        }
+       (100 ms)
+      √ 
+        class TestController {
+          @Post()
+          testMethod() {}
+        }
+       (151 ms)
+      √ 
+        class TestController {
+          @Get()
+          @UseGuards(WorkspaceAuthGuard)
+          testMethod() {}
+        }
+       (379 ms)
+      √ 
+        class TestController {
+          @Get()
+          @UseGuards(CaptchaGuard)
+          testMethod() {}
+        }
+       (5 ms)
+      √ 
+        @UseGuards(CaptchaGuard)
+        class TestController {
+          @Get()
+          testMethod() {}
+        }
+       (7 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard)
+        class TestController {
+          @Get()
+          testMethod() {}
+        }
+       (286 ms)
+      √ 
+        class TestController {
+          @Post()
+          @UseGuards(WorkspaceAuthGuard)
+          createMethod() {}
+        }
+       (172 ms)
+      √ 
+        class TestController {
+          @Put()
+          @UseGuards(WorkspaceAuthGuard)
+          updateMethod() {}
+        }
+       (9 ms)
+      √ 
+        class TestController {
+          @Patch()
+          @UseGuards(WorkspaceAuthGuard)
+          patchMethod() {}
+        }
+       (141 ms)
+      √ 
+        class TestController {
+          @Delete()
+          @UseGuards(WorkspaceAuthGuard)
+          deleteMethod() {}
+        }
+       (81 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard)
+        class TestController {
+          @Post()
+          createMethod() {}
+        }
+       (63 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard)
+        class TestController {
+          @Delete()
+          deleteMethod() {}
+        }
+       (5 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/inject-workspace-repository.spec.ts
+  inject-workspace-repository
+    valid
+      √ 
+        class MyWorkspaceService {
+          constructor(@InjectWorkspaceRepository() private repository) {}
+        }
+       (455 ms)
+      √ 
+        class AnotherWorkspaceService {
+          constructor(private myWorkspaceService: MyWorkspaceService) {}
+        }
+       (8 ms)
+    invalid
+      √ 
+        class MyService {
+          constructor(@InjectWorkspaceRepository() private repository) {}
+        }
+       (18 ms)
+      √ 
+        class MyWorkspaceService {
+          constructor(@InjectWorkspaceRepository() private repository) {}
+        }
+       (15 ms)
+      √ 
+        class MyService {
+          constructor(@InjectWorkspaceRepository() private repository) {}
+        }
+       (61 ms)
+      √ 
+        class AnotherWorkspaceService {
+          constructor(private myWorkspaceService: MyWorkspaceService) {}
+        }
+       (7 ms)
+      √ 
+        class AnotherService {
+          constructor(private myWorkspaceService: MyWorkspaceService) {}
+        }
+       (9 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/effect-components.spec.ts
+  effect-components
+    valid
+      √ const TestComponentEffect = () => <></>; (243 ms)
+      √ const TestComponent = () => <div></div>; (12 ms)
+      √ export const useUpdateEffect = () => null; (89 ms)
+      √ export const useUpdateEffect = () => <></>; (8 ms)
+      √ const TestComponent = () => <><div></div></>; (9 ms)
+      √ const TestComponentEffect = () => null; (4 ms)
+      √ const TestComponentEffect = () => { 
+        useEffect(() => {}, []);
+
+        return null; 
+      } (12 ms)
+      √ const TestComponentEffect = () => { 
+        useEffect(() => {}, []);
+        
+        return <></>; 
+      } (386 ms)
+    invalid
+      √ const TestComponent = () => <></>; (427 ms)
+      √ const TestComponentEffect = () => <><div></div></>; (13 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/max-consts-per-file.spec.ts
+  max-consts-per-file
+    valid
+      √ const A = 1; (388 ms)
+    invalid
+      √ const NAME_A = 1;
+const NAME_B = 2; (587 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/matching-state-variable.spec.ts (5.945 s)
+  matching-state-variable
+    valid
+      √ const variable = useRecoilValue(variableState); (106 ms)
+      √ const variable = useRecoilScopedValue(variableScopedState); (5 ms)
+      √ const [variable, setVariable] = useRecoilState(variableScopedState); (6 ms)
+      √ const [variable, setVariable] = useRecoilScopedState(variableScopedState); (7 ms)
+      √ const [variable, setVariable] = useRecoilFamilyState(variableScopedState); (5 ms)
+      √ const [variable, setVariable] = useRecoilScopedFamilyState(variableScopedState); (172 ms)
+    invalid
+      √ const myValue = useRecoilValue(variableState); (439 ms)
+      √ const myValue = useRecoilScopedValue(variableState); (20 ms)
+      √ const [myValue, setMyValue] = useRecoilState(variableState); (10 ms)
+      √ const [myValue] = useRecoilState(variableState); (10 ms)
+      √ const [, setMyValue] = useRecoilState(variableState); (17 ms)
+      √ const [myValue, setMyValue] = useRecoilScopedState(variableState); (10 ms)
+      √ const [myValue] = useRecoilScopedState(variableState); (185 ms)
+      √ const [, setMyValue] = useRecoilScopedState(variableState); (98 ms)
+      √ const [myValue, setMyValue] = useRecoilFamilyState(variableState); (270 ms)
+      √ const [myValue] = useRecoilFamilyState(variableState); (14 ms)
+      √ const [, setMyValue] = useRecoilFamilyState(variableState); (225 ms)
+      √ const [myValue, setMyValue] = useRecoilScopedFamilyState(variableState); (305 ms)
+      √ const [myValue] = useRecoilScopedFamilyState(variableState); (867 ms)
+      √ const [, setMyValue] = useRecoilScopedFamilyState(variableState); (13 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/component-props-naming.spec.ts (5.047 s)
+  component-props-naming
+    valid
+      √ export const MyComponent= (props: MyComponentProps) => <div>{props.message}</div>; (252 ms)
+      √ export const MyComponent = ({ message }: MyComponentProps) => <div>{message}</div>; (184 ms)
+    invalid
+      √ export const MyComponent = (props: OwnProps) => <div>{props.message}</div>; (1176 ms)
+      √ export const MyComponent = ({ message }: OwnProps) => <div>{message}</div>; (458 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/graphql-resolvers-should-be-guarded.spec.ts (6.976 s)
+  graphql-resolvers-should-be-guarded
+    valid
+      √ 
+        class TestResolver {
+          @Query()
+          @UseGuards(UserAuthGuard, NoPermissionGuard)
+          testQuery() {}
+        }
+       (52 ms)
+      √ 
+        class TestResolver {
+          @Query()
+          @UseGuards(WorkspaceAuthGuard, CustomPermissionGuard)
+          testQuery() {}
+        }
+       (98 ms)
+      √ 
+        class TestResolver {
+          @Query()
+          @UseGuards(PublicEndpointGuard, NoPermissionGuard)
+          testQuery() {}
+        }
+       (8 ms)
+      √ 
+        @UseGuards(UserAuthGuard, NoPermissionGuard)
+        class TestResolver {
+          @Query()
+          testQuery() {}
+        }
+       (8 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard, CustomPermissionGuard)
+        class TestResolver {
+          @Query()
+          testQuery() {}
+        }
+       (64 ms)
+      √ 
+        @UseGuards(PublicEndpointGuard, NoPermissionGuard)
+        class TestResolver {
+          @Query()
+          testQuery() {}
+        }
+       (159 ms)
+      √ 
+        class TestResolver {
+          @Subscription()
+          @UseGuards(WorkspaceAuthGuard, NoPermissionGuard)
+          testSubscription() {}
+        }
+       (209 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard, NoPermissionGuard)
+        class TestResolver {
+          @Subscription()
+          testSubscription() {}
+        }
+       (293 ms)
+      √ 
+        class TestResolver {
+          regularMethod() {}
+        }
+       (517 ms)
+      √ 
+        class TestResolver {
+          @ResolveField()
+          testField() {}
+        }
+       (361 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard, SettingsPermissionsGuard(PermissionFlagType.WORKSPACE))
+        class TestResolver {
+          @Mutation(() => String)
+          async createSomething() {}
+        }
+       (17 ms)
+      √ 
+        class TestResolver {
+          @Mutation(() => String)
+          @UseGuards(WorkspaceAuthGuard, SettingsPermissionsGuard(PermissionFlagType.WORKSPACE))
+          async createSomething() {}
+        }
+       (585 ms)
+      √ 
+        class TestResolver {
+          @Mutation(() => String)
+          @UseGuards(WorkspaceAuthGuard, CustomPermissionGuard)
+          async createSomething() {}
+        }
+       (11 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard, CustomPermissionGuard)
+        class TestResolver {
+          @Mutation(() => String)
+          async createSomething() {}
+        }
+       (363 ms)
+    invalid
+      √ 
+        class TestResolver {
+          @Query()
+          testQuery() {}
+        }
+       (4 ms)
+      √ 
+        class TestResolver {
+          @Mutation()
+          testMutation() {}
+        }
+       (116 ms)
+      √ 
+        class TestResolver {
+          @Subscription()
+          testSubscription() {}
+        }
+       (230 ms)
+      √ 
+        class TestResolver {
+          @Query()
+          @UseGuards(UserAuthGuard)
+          testQuery() {}
+        }
+       (171 ms)
+      √ 
+        class TestResolver {
+          @Query()
+          @UseGuards(CaptchaGuard)
+          testQuery() {}
+        }
+       (134 ms)
+      √ 
+        @UseGuards(CaptchaGuard)
+        class TestResolver {
+          @Query()
+          testQuery() {}
+        }
+       (6 ms)
+      √ 
+        class TestResolver {
+          @Subscription()
+          @UseGuards(WorkspaceAuthGuard)
+          testSubscription() {}
+        }
+       (5 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard)
+        class TestResolver {
+          @Subscription()
+          testSubscription() {}
+        }
+       (9 ms)
+      √ 
+        class TestResolver {
+          @Mutation(() => String)
+          @UseGuards(WorkspaceAuthGuard)
+          async createSomething() {}
+        }
+       (5 ms)
+      √ 
+        @UseGuards(WorkspaceAuthGuard)
+        class TestResolver {
+          @Mutation(() => String)
+          async createSomething() {}
+        }
+       (162 ms)
+ PASS   twenty-eslint-rules  packages/twenty-eslint-rules/rules/no-hardcoded-colors.spec.ts
+  no-hardcoded-colors
+    valid
+      √ const color = theme.background.secondary; (450 ms)
+    invalid
+      √ const color = "rgb(154,205,50)"; (90 ms)
+      √ const color = { test: "rgb(154,205,50)", test2: "#ADFF2F" } (189 ms)
+      √ const color = { test: `rgb(${r},${g},${b})`, test2: `#ADFF${test}` } (67 ms)
+      √ const color = "#ADFF2F"; (31 ms)
+      √ const myCss = css`color: #123; background-color: ${theme.background.secondary};` (33 ms)
+      √ const myCss = styled.div`color: ${({ theme }) => theme.font.color.primary};flex-shrink: 0;background-color: #123;text-overflow: ellipsis;white-space: nowrap;max-width: 100%;` (13 ms)
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks. Active timers can also cause this, ensure that .unref() was called on them.
+=============================== Coverage summary ===============================
+[32;1mStatements   : 88.85% ( 335/377 )[0m
+[33;1mBranches     : 73.1% ( 280/383 )[0m
+[32;1mFunctions    : 94% ( 94/100 )[0m
+[32;1mLines        : 89.01% ( 316/355 )[0m
+================================================================================
+Test Suites: 14 passed, 14 total
+Tests:       128 passed, 128 total
+Snapshots:   0 total
+Time:        79.016 s
+
+
+
+ NX   Successfully ran target test for project twenty-eslint-rules
+
+

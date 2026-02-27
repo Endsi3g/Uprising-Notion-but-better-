@@ -2,6 +2,8 @@ import { RuleTester } from '@typescript-eslint/rule-tester';
 
 import { rule, RULE_NAME } from './no-hardcoded-colors';
 
+
+// @ts-ignore
 const ruleTester = new RuleTester({
   languageOptions: {
     parser: require('@typescript-eslint/parser'),

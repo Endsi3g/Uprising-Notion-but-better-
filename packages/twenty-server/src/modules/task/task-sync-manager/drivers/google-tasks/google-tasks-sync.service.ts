@@ -2,8 +2,8 @@ import { Injectable, Logger } from '@nestjs/common';
 
 import { google } from 'googleapis';
 
-import { WorkspaceAuthContext } from 'src/engine/core-modules/auth/types/workspace-auth-context.type';
-import { GlobalWorkspaceOrmManager } from 'src/engine/twenty-orm/global-workspace-datasource/global-workspace-orm.manager';
+import type { WorkspaceAuthContext } from 'src/engine/core-modules/auth/types/workspace-auth-context.type';
+import type { GlobalWorkspaceOrmManager } from 'src/engine/twenty-orm/global-workspace-datasource/global-workspace-orm.manager';
 import { TaskTargetWorkspaceEntity } from 'src/modules/task/standard-objects/task-target.workspace-entity';
 import { TaskWorkspaceEntity } from 'src/modules/task/standard-objects/task.workspace-entity';
 
@@ -44,7 +44,7 @@ export class GoogleTasksSyncService {
       }
 
       // 2. Fetch tasks from the list
-      const tasks: any[] = [];
+      const tasks: unknown[] = [];
       let pageToken: string | undefined = undefined;
 
       do {

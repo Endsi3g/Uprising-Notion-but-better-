@@ -51347,6 +51347,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-core@npm:1.58.2":
+  version: 1.58.2
+  resolution: "playwright-core@npm:1.58.2"
+  bin:
+    playwright-core: cli.js
+  checksum: 10c0/5aa15b2b764e6ffe738293a09081a6f7023847a0dbf4cd05fe10eed2e25450d321baf7482f938f2d2eb330291e197fa23e57b29a5b552b89927ceb791266225b
+  languageName: node
+  linkType: hard
+
 "playwright-core@npm:>=1.2.0":
   version: 1.51.0
   resolution: "playwright-core@npm:1.51.0"
@@ -51368,6 +51377,21 @@ __metadata:
   bin:
     playwright: cli.js
   checksum: 10c0/8e9965aede86df0f4722063385748498977b219630a40a10d1b82b8bd8d4d4e9b6b65ecbfa024331a30800163161aca292fb6dd7446c531a1ad25f4155625ab4
+  languageName: node
+  linkType: hard
+
+"playwright@npm:^1.58.2":
+  version: 1.58.2
+  resolution: "playwright@npm:1.58.2"
+  dependencies:
+    fsevents: "npm:2.3.2"
+    playwright-core: "npm:1.58.2"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    playwright: cli.js
+  checksum: 10c0/d060d9b7cc124bd8b5dffebaab5e84f6b34654a553758fe7b19cc598dfbee93f6ecfbdc1832b40a6380ae04eade86ef3285ba03aa0b136799e83402246dc0727
   languageName: node
   linkType: hard
 
@@ -52783,7 +52807,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer-core@npm:^24.0.0":
+"puppeteer-core@npm:24.37.5, puppeteer-core@npm:^24.0.0":
   version: 24.37.5
   resolution: "puppeteer-core@npm:24.37.5"
   dependencies:
@@ -52809,6 +52833,22 @@ __metadata:
   bin:
     puppeteer: lib/esm/puppeteer/node/cli.js
   checksum: 10c0/c31ec024dd7722c32a681c3e2ae23751021abb3f4c39fbdd895859327e855ae2b89e5682fcdb789de7412314701d882bd37e8545e45cf0a97cd5df06449987b9
+  languageName: node
+  linkType: hard
+
+"puppeteer@npm:^24.37.5":
+  version: 24.37.5
+  resolution: "puppeteer@npm:24.37.5"
+  dependencies:
+    "@puppeteer/browsers": "npm:2.13.0"
+    chromium-bidi: "npm:14.0.0"
+    cosmiconfig: "npm:^9.0.0"
+    devtools-protocol: "npm:0.0.1566079"
+    puppeteer-core: "npm:24.37.5"
+    typed-query-selector: "npm:^2.12.0"
+  bin:
+    puppeteer: lib/cjs/puppeteer/node/cli.js
+  checksum: 10c0/28f1e72ca44ba5df9a8913f987aabb929dce004f98f7a245ce9ddb33ce31bd42e385a63a5b6b9d30eefbd7b2c2bf6e89c9704771182b3fcee7dd106bf911e18c
   languageName: node
   linkType: hard
 
@@ -59904,8 +59944,10 @@ __metadata:
     msw-storybook-addon: "npm:^2.0.6"
     nx: "npm:22.3.3"
     planer: "npm:^1.2.0"
+    playwright: "npm:^1.58.2"
     pluralize: "npm:^8.0.0"
     prettier: "npm:^3.1.1"
+    puppeteer: "npm:^24.37.5"
     raw-loader: "npm:^4.0.2"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"

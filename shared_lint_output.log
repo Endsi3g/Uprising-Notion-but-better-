@@ -1,0 +1,47 @@
+
+> nx run twenty-shared:lint
+
+Linting "twenty-shared"...
+(node:7480) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\application\fieldManifestType.ts[24m[0m
+[0m  [2m3:3[22m  [31merror[39m  Delete `··`               [2mprettier/prettier[22m[0m
+[0m  [2m4:3[22m  [31merror[39m  Delete `··`               [2mprettier/prettier[22m[0m
+[0m  [2m5:1[22m  [31merror[39m  Replace `····` with `··`  [2mprettier/prettier[22m[0m
+[0m  [2m6:1[22m  [31merror[39m  Delete `··`               [2mprettier/prettier[22m[0m
+[0m  [2m7:1[22m  [31merror[39m  Delete `··`               [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\application\pageLayoutManifestType.ts[24m[0m
+[0m  [2m3:3[22m  [31merror[39m  Delete `··`  [2mprettier/prettier[22m[0m
+[0m  [2m4:1[22m  [31merror[39m  Delete `··`  [2mprettier/prettier[22m[0m
+[0m  [2m5:1[22m  [31merror[39m  Delete `··`  [2mprettier/prettier[22m[0m
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\metadata\constants\all-metadata-name.constant.ts[24m[0m
+[0m  [2m1:1[22m  [33mwarning[39m  Filename is not in pascal case. Rename it to `AllMetadataName.constant.ts`  [2municorn/filename-case[22m[0m
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\metadata\constants\default-relations-object-standard-ids.constant.ts[24m[0m
+[0m  [2m1:1[22m  [33mwarning[39m  Filename is not in pascal case. Rename it to `DefaultRelationsObjectStandardIds.constant.ts`  [2municorn/filename-case[22m[0m
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\metadata\constants\reserved-metadata-name-keywords.constant.ts[24m[0m
+[0m  [2m1:1[22m  [33mwarning[39m  Filename is not in pascal case. Rename it to `ReservedMetadataNameKeywords.constant.ts`  [2municorn/filename-case[22m[0m
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\metadata\constants\standard-object.constant.ts[24m[0m
+[0m  [2m1:1[22m  [33mwarning[39m  Filename is not in pascal case. Rename it to `StandardObject.constant.ts`  [2municorn/filename-case[22m[0m
+[0m[0m
+[0m[31m[1m✖ 12 problems (8 errors, 4 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  8 errors and 0 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+✖ 12 problems (8 errors, 4 warnings)
+  8 errors and 0 warnings are potentially fixable with the `--fix` option.
+
+
+
+ NX   Running target lint for project twenty-shared failed
+
+Failed tasks:
+
+- twenty-shared:lint
+
+Hint: run the command with --verbose for more details.
+

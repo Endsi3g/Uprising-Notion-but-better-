@@ -1,7 +1,7 @@
 const jestConfig = {
   silent: true,
   displayName: 'twenty-shared',
-  preset: '../../jest.preset.js',
+  preset: '../../scripts/jest.preset.js',
   testEnvironment: 'jsdom',
   transformIgnorePatterns: ['../../node_modules/'],
   transform: {

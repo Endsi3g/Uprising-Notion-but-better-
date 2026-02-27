@@ -1,24 +1,28 @@
 import {
-    Controller,
-    Headers,
-    InternalServerErrorException,
-    Post,
-    RawBodyRequest,
-    Req,
-    UnauthorizedException,
-    UseFilters,
+  Controller,
+  Headers,
+  InternalServerErrorException,
+  Post,
+  type RawBodyRequest,
+  Req,
+  UnauthorizedException,
+  UseFilters,
+  UseGuards,
 } from '@nestjs/common';
 
 import * as crypto from 'crypto';
 
-import { Request } from 'express';
+import type { Request } from 'express';
 
 import { RestApiExceptionFilter } from 'src/engine/api/rest/rest-api-exception.filter';
+import { NoPermissionGuard } from 'src/engine/core-modules/auth/guards/no-permission.guard';
+import { PublicEndpointGuard } from 'src/engine/core-modules/auth/guards/public-endpoint.guard';
 
 @Controller('rest/integration/notion')
 @UseFilters(RestApiExceptionFilter)
 export class NotionWebhookController {
   @Post('webhook')
+  @UseGuards(PublicEndpointGuard, NoPermissionGuard)
   async handleWebhook(
     @Headers('x-notion-signature') signature: string,
     @Req() req: RawBodyRequest<Request>,

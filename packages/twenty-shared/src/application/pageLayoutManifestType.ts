@@ -1,8 +1,8 @@
 import { type SyncableEntityOptions } from '@/application/syncableEntityOptionsType';
-import {
-  type PageLayoutTabLayoutMode,
-  type PageLayoutWidgetConditionalDisplay,
-  type PageLayoutWidgetUniversalConfiguration,
+import type {
+  PageLayoutTabLayoutMode,
+  PageLayoutWidgetConditionalDisplay,
+  PageLayoutWidgetUniversalConfiguration,
 } from '@/types';
 
 export type PageLayoutWidgetManifest = SyncableEntityOptions & {

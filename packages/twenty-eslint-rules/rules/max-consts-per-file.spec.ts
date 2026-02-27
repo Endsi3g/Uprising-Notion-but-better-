@@ -4,6 +4,8 @@ import { rule, RULE_NAME } from './max-consts-per-file';
 
 const max = 1;
 
+
+// @ts-ignore
 const ruleTester = new RuleTester({
   languageOptions: {
     parser: require('@typescript-eslint/parser'),

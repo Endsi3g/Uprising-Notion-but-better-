@@ -1,8 +1,7 @@
 
 export default {
   displayName: 'twenty-eslint-rules',
-  silent: false,
-  preset: '../../jest.preset.js',
+  preset: '../../scripts/jest.preset.js',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.json' }],
   },

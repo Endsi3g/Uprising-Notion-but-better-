@@ -2,10 +2,10 @@ import { Injectable, Logger } from '@nestjs/common';
 
 import { Client } from '@notionhq/client';
 
-import { WorkspaceAuthContext } from 'src/engine/core-modules/auth/types/workspace-auth-context.type';
+import type { WorkspaceAuthContext } from 'src/engine/core-modules/auth/types/workspace-auth-context.type';
 import { KeyValuePairType } from 'src/engine/core-modules/key-value-pair/key-value-pair.entity';
 import { KeyValuePairService } from 'src/engine/core-modules/key-value-pair/key-value-pair.service';
-import { GlobalWorkspaceOrmManager } from 'src/engine/twenty-orm/global-workspace-datasource/global-workspace-orm.manager';
+import type { GlobalWorkspaceOrmManager } from 'src/engine/twenty-orm/global-workspace-datasource/global-workspace-orm.manager';
 import { CompanyWorkspaceEntity } from 'src/modules/company/standard-objects/company.workspace-entity';
 import { OpportunityWorkspaceEntity } from 'src/modules/opportunity/standard-objects/opportunity.workspace-entity';
 import { PersonWorkspaceEntity } from 'src/modules/person/standard-objects/person.workspace-entity';
@@ -111,7 +111,7 @@ export class NotionSyncService {
     databaseId: string,
   ): Promise<number> {
     const response = await notion.databases.query({ database_id: databaseId });
-    const pages = response.results as Record<string, any>[];
+    const pages = response.results as Record<string, unknown>[];
 
     return this.globalWorkspaceOrmManager.executeInWorkspaceContext(
       async () => {
@@ -163,7 +163,7 @@ export class NotionSyncService {
     databaseId: string,
   ): Promise<number> {
     const response = await notion.databases.query({ database_id: databaseId });
-    const pages = response.results as Record<string, any>[];
+    const pages = response.results as Record<string, unknown>[];
 
     return this.globalWorkspaceOrmManager.executeInWorkspaceContext(
       async () => {
@@ -175,7 +175,7 @@ export class NotionSyncService {
         let syncedCount = 0;
 
         for (const page of pages) {
-          const properties = page.properties as Record<string, any>;
+          const properties = page.properties as Record<string, unknown>;
           const name =
             properties.Name?.title?.[0]?.plain_text || 'Unnamed Person';
           const email = properties.Email?.email || '';
@@ -210,7 +210,7 @@ export class NotionSyncService {
     databaseId: string,
   ): Promise<number> {
     const response = await notion.databases.query({ database_id: databaseId });
-    const pages = response.results as Record<string, any>[];
+    const pages = response.results as Record<string, unknown>[];
 
     return this.globalWorkspaceOrmManager.executeInWorkspaceContext(
       async () => {
@@ -222,7 +222,7 @@ export class NotionSyncService {
         let syncedCount = 0;
 
         for (const page of pages) {
-          const properties = page.properties as Record<string, any>;
+          const properties = page.properties as Record<string, unknown>;
           const name =
             properties.Name?.title?.[0]?.plain_text || 'Unnamed Opportunity';
           const stage = properties.Stage?.select?.name || 'NEW';
@@ -249,7 +249,7 @@ export class NotionSyncService {
     databaseId: string,
   ): Promise<number> {
     const response = await notion.databases.query({ database_id: databaseId });
-    const pages = response.results as Record<string, any>[];
+    const pages = response.results as Record<string, unknown>[];
 
     return this.globalWorkspaceOrmManager.executeInWorkspaceContext(
       async () => {
@@ -261,7 +261,7 @@ export class NotionSyncService {
         let syncedCount = 0;
 
         for (const page of pages) {
-          const properties = page.properties as Record<string, any>;
+          const properties = page.properties as Record<string, unknown>;
           const title =
             properties.Name?.title?.[0]?.plain_text || 'Unnamed Task';
           const status = properties.Status?.status?.name || 'TODO';
@@ -301,13 +301,16 @@ export class NotionSyncService {
       workspaceId,
       key: 'NOTION_DATABASES',
       type: KeyValuePairType.CONFIG_VARIABLE,
-      value: databases as any,
+      value: databases as Record<string, unknown>,
     });
 
     return { success: true };
   }
 
-  async createOrUpdateCompanyInNotion(workspaceId: string, company: any) {
+  async createOrUpdateCompanyInNotion(
+    workspaceId: string,
+    company: Record<string, any>,
+  ) {
     const notion = await this.getNotionClient(workspaceId);
 
     if (!notion) return;
@@ -317,7 +320,8 @@ export class NotionSyncService {
       type: KeyValuePairType.CONFIG_VARIABLE,
       workspaceId,
     });
-    const databaseId = (dbConfigs[0]?.value as any)?.companiesId;
+    const databaseId = (dbConfigs[0]?.value as Record<string, unknown>)
+      ?.companiesId as string | undefined;
 
     if (!databaseId) return;
 
@@ -336,7 +340,7 @@ export class NotionSyncService {
 
     const pageId = response.results[0]?.id;
 
-    const properties: any = {
+    const properties: Record<string, unknown> = {
       Name: {
         title: [{ text: { content: company.name || 'Unnamed Company' } }],
       },
@@ -363,7 +367,10 @@ export class NotionSyncService {
     }
   }
 
-  async createOrUpdatePersonInNotion(workspaceId: string, person: any) {
+  async createOrUpdatePersonInNotion(
+    workspaceId: string,
+    person: Record<string, any>,
+  ) {
     const notion = await this.getNotionClient(workspaceId);
 
     if (!notion) return;
@@ -373,7 +380,8 @@ export class NotionSyncService {
       type: KeyValuePairType.CONFIG_VARIABLE,
       workspaceId,
     });
-    const databaseId = (dbConfigs[0]?.value as any)?.peopleId;
+    const databaseId = (dbConfigs[0]?.value as Record<string, unknown>)
+      ?.peopleId as string | undefined;
 
     if (!databaseId) return;
 
@@ -395,7 +403,7 @@ export class NotionSyncService {
       `${person.name?.firstName || ''} ${person.name?.lastName || ''}`.trim() ||
       'Unnamed Person';
 
-    const properties: any = {
+    const properties: Record<string, unknown> = {
       Name: {
         title: [{ text: { content: fullName } }],
       },

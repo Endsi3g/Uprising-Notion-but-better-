@@ -1,0 +1,28 @@
+
+> nx run twenty-shared:lint --fix
+
+Linting "twenty-shared"...
+(node:27620) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\metadata\constants\all-metadata-name.constant.ts[24m[0m
+[0m  [2m1:1[22m  [33mwarning[39m  Filename is not in pascal case. Rename it to `AllMetadataName.constant.ts`  [2municorn/filename-case[22m[0m
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\metadata\constants\default-relations-object-standard-ids.constant.ts[24m[0m
+[0m  [2m1:1[22m  [33mwarning[39m  Filename is not in pascal case. Rename it to `DefaultRelationsObjectStandardIds.constant.ts`  [2municorn/filename-case[22m[0m
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\metadata\constants\reserved-metadata-name-keywords.constant.ts[24m[0m
+[0m  [2m1:1[22m  [33mwarning[39m  Filename is not in pascal case. Rename it to `ReservedMetadataNameKeywords.constant.ts`  [2municorn/filename-case[22m[0m
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-shared\src\metadata\constants\standard-object.constant.ts[24m[0m
+[0m  [2m1:1[22m  [33mwarning[39m  Filename is not in pascal case. Rename it to `StandardObject.constant.ts`  [2municorn/filename-case[22m[0m
+[0m[0m
+[0m[33m[1mÔ£û 4 problems (0 errors, 4 warnings)[22m[39m[0m
+[0m[33m[1m[22m[39m[0m
+Ô£û 4 problems (0 errors, 4 warnings)
+
+
+
+ NX   Successfully ran target lint for project twenty-shared
+
+

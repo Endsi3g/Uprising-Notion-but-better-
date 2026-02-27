@@ -1,0 +1,53 @@
+Waiting for graph construction in another process to complete
+
+ NX   Running target lint for project twenty-server and 3 tasks it depends on:
+
+
+
+> nx run twenty-shared:generateBarrels  [local cache]
+
+
+> nx run twenty-shared:build  [local cache]
+
+
+> nx run twenty-emails:build  [local cache]
+
+
+> nx run twenty-server:lint
+
+Linting "twenty-server"...
+(node:28040) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-server\src\main.ts[24m[0m
+[0m  [2m4:1[22m  [31merror[39m  There should be at least one empty line between import groups  [2mimport/order[22m[0m
+[0m  [2m5:1[22m  [31merror[39m  There should be no empty line within import group              [2mimport/order[22m[0m
+[0m[0m
+[0m[4mC:\Users\upris\Downloads\twenty-main\packages\twenty-server\src\modules\integration-notion\services\notion-sync.service.ts[24m[0m
+[0m  [2m178:64[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m225:64[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m264:64[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m304:27[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m312:29[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m323:48[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m342:23[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m371:28[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m382:48[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m404:23[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[31m[1m✖ 12 problems (12 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[31m[1m  1 error and 0 warnings potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+✖ 12 problems (12 errors, 0 warnings)
+  1 error and 0 warnings are potentially fixable with the `--fix` option.
+
+
+
+ NX   Running target lint for project twenty-server and 3 tasks it depends on failed
+
+Failed tasks:
+
+- twenty-server:lint
+
+Hint: run the command with --verbose for more details.
+
