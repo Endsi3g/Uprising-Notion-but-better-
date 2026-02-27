@@ -3,11 +3,13 @@
 ## Avant la Session (15 min)
 
 ### Setup Mental
+
 - [ ] Relire 2-3 témoignages clients (Clenar, etc.) pour état d'esprit de conviction
 - [ ] Visualiser 3 conversations réussies avec bookings
 - [ ] Rappel : "Je n'interromps pas, j'apporte une solution à un problème qui leur coûte de l'argent"
 
 ### Setup Technique (Cold Calls)
+
 - [ ] Twenty ouvert avec pipeline "Leads Froids" filtré par industrie du jour
 - [ ] Scripts Platten & Daniel G ouverts sous les yeux
 - [ ] Outil d'enregistrement lancé (Fireflies ou fonction native)
@@ -16,6 +18,7 @@
 - [ ] Bouteille d'eau à portée (voix claire = crédibilité)
 
 ### Setup Technique (Guerrilla)
+
 - [ ] Téléphone chargé à 100%
 - [ ] Agent IA testé (faire 1 appel test)
 - [ ] 25 cartes de visite dans la poche
@@ -64,17 +67,20 @@
 ## Après la Session (15 min)
 
 ### Analyse Immédiate
+
 - [ ] Calculer taux de connexion / taux de visite complète
 - [ ] Identifier pattern du jour : quel script/approche a le mieux marché
 - [ ] Noter 1-2 objections récurrentes rencontrées
 - [ ] Écouter 2-3 enregistrements d'appels (seulement les plus prometteurs ou les pires)
 
 ### Actions de Follow-up
+
 - [ ] Envoyer emails/SMS de confirmation pour démos bookées
 - [ ] Planifier rappels dans Twenty pour prospects "À recontacter"
 - [ ] Mettre à jour la target list : retirer les "Pas Intéressé", prioriser les "Chauds"
 
 ### Update Dashboard
+
 - [ ] Exporter les données du jour vers Google Sheets (si automation configurée)
 - [ ] Ou manuellement : noter dans un doc les chiffres clés
   - Appels faits / Connexions / Démos bookées
@@ -85,11 +91,13 @@
 ## Routine Hebdomadaire
 
 ### Lundi Matin (30 min)
+
 - [ ] Review de la semaine précédente : quels chiffres, quels patterns
 - [ ] Planifier la semaine : combien de sessions d'appels, combien de sorties terrain
 - [ ] Préparer nouvelles target lists si nécessaire (scraping Apify)
 
 ### Vendredi Après-midi (1h)
+
 - [ ] Analyse approfondie de la semaine :
   - [ ] Taux de conversion global par canal
   - [ ] Industries qui répondent le mieux
@@ -105,14 +113,17 @@
 Si tu vois ces signaux, STOP et ajuste :
 
 **Taux de connexion < 30% (Cold Calls)** :
+
 - Problème : mauvais timing, numéros invalides, ou gatekeeper trop fort
 - Action : tester différentes heures, vérifier qualité de la liste
 
 **Taux de conversation complète < 50% (Guerrilla)** :
+
 - Problème : pitch d'entrée trop faible, ou mauvais ciblage
 - Action : retravailler les 10 premières secondes, ou cibler des businesses plus accessibles
 
 **Démos bookées < 2 par 50 contacts** :
+
 - Problème : message ne résonne pas, ou objections mal gérées
 - Action : analyser enregistrements, identifier où le script casse, ajuster
 
@@ -120,7 +131,7 @@ Si tu vois ces signaux, STOP et ajuste :
 
 ## Mindset : La Discipline Crée les Résultats
 
-L'acquisition est un jeu de volume + qualité. 
+L'acquisition est un jeu de volume + qualité.
 
 - **Volume** : Tu dois toucher 100+ prospects pour identifier le playbook gagnant
 - **Qualité** : Chaque interaction doit être trackée pour apprendre

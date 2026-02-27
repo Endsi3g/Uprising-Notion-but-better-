@@ -53,9 +53,10 @@
 1. Après chaque appel, tu updates le statut dans Twenty ("Intéressé - Follow-up", "Démo Bookée", "Pas Intéressé")
 2. Make surveille les changements de statut
 3. Envoie automatiquement :
-  - Email de confirmation si démo bookée (avec lien Calendly)
-  - SMS de follow-up si intéressé mais pas encore booké ("Salut [Nom], comme discuté, voici le lien pour choisir ton créneau...")
-  - Rien si pas intéressé
+
+- Email de confirmation si démo bookée (avec lien Calendly)
+- SMS de follow-up si intéressé mais pas encore booké ("Salut [Nom], comme discuté, voici le lien pour choisir ton créneau...")
+- Rien si pas intéressé
 
 **Temps gagné** : 30min-1h de follow-ups manuels par jour
 
@@ -74,10 +75,11 @@
 
 1. Avant d'appeler, tu cliques sur le contact dans Twenty
 2. Make récupère automatiquement :
-  - Leur site web
-  - Profil LinkedIn du propriétaire
-  - Derniers avis Google (pour identifier pain points)
-3. Affiche un "briefing card" avec info clé
+
+- Leur site web
+- Profil LinkedIn du propriétaire
+- Derniers avis Google (pour identifier pain points)
+1. Affiche un "briefing card" avec info clé
 
 **Temps gagné** : 5min de recherche par prospect x 50 appels = 4h
 
@@ -97,10 +99,11 @@
 1. Twenty log tous les appels avec outcome
 2. Make exporte automatiquement les données vers Google Sheets chaque soir
 3. Google Sheets calcule :
-  - Taux de connexion par script
-  - Taux de démo bookée par industrie
-  - Taux de close par canal
-4. Data Studio génère dashboard visuel en temps réel
+
+- Taux de connexion par script
+- Taux de démo bookée par industrie
+- Taux de close par canal
+1. Data Studio génère dashboard visuel en temps réel
 
 **Temps gagné** : Pas besoin d'analyser manuellement, tu vois les patterns instantanément
 

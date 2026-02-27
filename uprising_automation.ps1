@@ -90,7 +90,7 @@ try {
 
     # Vérification Ollama
     try {
-        $ollamaCheck = Invoke-RestMethod -Uri "http://localhost:11434/api/tags" -ErrorAction SilentlyContinue
+        Invoke-RestMethod -Uri "http://localhost:11434/api/tags" -ErrorAction SilentlyContinue | Out-Null
         Write-Success "Ollama est en ligne et accessible."
     }
     catch {

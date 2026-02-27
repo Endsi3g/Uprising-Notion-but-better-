@@ -60,6 +60,7 @@ S'ils disent "Non, on a une secrétaire" :
 **Objectif** : Les rendre témoins de la magie en temps réel.
 
 **Le Pattern** :
+
 1. **Poser ton téléphone sur leur bureau** (geste physique important, ça capte l'attention)
 2. **Appeler ton agent IA en direct** : "Regardez, je vais appeler mon client Clenar [ou ton agent de démo]. Vous allez voir ce qui se passe quand un client appelle."
 3. **Mettre sur haut-parleur** pendant que l'IA répond professionnellement, qualifie l'appel, et propose de booker un rendez-vous
@@ -119,19 +120,23 @@ C'est souvent un "non" poli. Tu dois re-qualifier.
 ## Logistique d'Exécution
 
 ### Meilleur Timing
+
 - **9h-11h** : Ils sont au bureau avant de partir sur le terrain
 - **16h30-18h** : Retour de chantier, ils font la paperasse
 - **Éviter 12h-14h** : Lunch, souvent absents
 
 ### Itinéraire Optimisé
+
 - Utiliser Google Maps avec toutes les adresses de ta liste "Cibles Guerrilla"
 - Regrouper par zone géographique (ex : faire tout Repentigny le lundi, Terrebonne le mardi)
 - Objectif : 10-15 visites en 3-4h
 
 ### Mindset Pré-Session
+
 Comme Hormozi le dit : **la conviction corrige ton ton**.
 
 Avant de partir sur le terrain :
+
 1. Relire les témoignages Clenar (ou écouter un enregistrement de client satisfait)
 2. Te rappeler : tu n'es pas en train de les déranger, tu leur apportes une solution à un problème réel qui leur coûte de l'argent chaque semaine
 3. Visualiser 3-4 démos réussies avec des bookings sur place
@@ -168,6 +173,7 @@ Ne force jamais une conversation. Il y a 150 autres prospects sur ta liste.
 ## Success Metrics
 
 **Objectif Wave 1** (10 visites) :
+
 - 7-8 conversations complètes (démonstration faite)
 - 2-3 démos bookées sur place
 - 1-2 follow-ups prometteurs

@@ -56,13 +56,14 @@ Dans Twenty, tu dois ajouter des champs custom à l'objet "People" ou "Companies
 
 ### 2.1 Scraper Google Maps avec Apify
 
-**Aller sur** : https://apify.com/compass/crawler-google-places
+**Aller sur** : <https://apify.com/compass/crawler-google-places>
 
 **Configurer le scraper** :
+
 - **Search Query** : "plombier Repentigny" (ou autre combinaison industrie + ville)
 - **Max Results** : 30
 - **Language** : fr
-- **Fields à extraire** : 
+- **Fields à extraire** :
   - title (nom du business)
   - phone
   - address
@@ -87,22 +88,26 @@ Dans Twenty, tu dois ajouter des champs custom à l'objet "People" ou "Companies
 
 ### 2.3 Créer le Scenario Make.com
 
-**Aller sur** : https://make.com
+**Aller sur** : <https://make.com>
 
 **Créer un nouveau scenario** avec ces modules :
 
 **Module 1 : Apify - Watch Task Runs**
+
 - Connect ton compte Apify
 - Select le task que tu viens de créer
 
 **Module 2 : Apify - Get Dataset Items**
+
 - Task Run ID : mappé depuis Module 1
 - Format : JSON
 
 **Module 3 : Iterator**
+
 - Array : sortie du Module 2 (pour boucler sur chaque lead)
 
 **Module 4 : Tools - Set Variables**
+
 - Mapper les champs :
   - `nom_business` = title
   - `telephone` = phone
@@ -115,6 +120,7 @@ Dans Twenty, tu dois ajouter des champs custom à l'objet "People" ou "Companies
 Twenty n'a pas encore de module Make natif, donc tu passes par HTTP Request.
 
 **Configuration HTTP Request** :
+
 ```
 Method: POST
 URL: https://[ton-instance-twenty].com/graphql
@@ -166,7 +172,8 @@ Body:
 ### 3.1 Enregistrement Automatique avec Fireflies.ai
 
 **Setup Fireflies** :
-1. Créer compte sur https://fireflies.ai
+
+1. Créer compte sur <https://fireflies.ai>
 2. Connecter ton système téléphonique :
    - Si tu utilises Zoom : connecte via intégration Zoom
    - Si tu utilises téléphone direct : utilise l'app mobile Fireflies
@@ -183,22 +190,26 @@ Fireflies peut envoyer un webhook à Make après chaque appel.
 ### 3.2 Scenario Make : Fireflies → Twenty
 
 **Module 1 : Webhook - Custom Webhook**
+
 - Créer un webhook et copier l'URL
 - Coller dans Fireflies (étape précédente)
 
 **Module 2 : Tools - Parse JSON**
+
 - Parse le payload Fireflies pour extraire :
   - Transcript
   - Duration
   - Participant Name (si détectable)
 
 **Module 3 : OpenAI - Create a Completion (Optional mais puissant)**
+
 - Utiliser GPT-4 pour analyser le transcript et extraire :
   - Objection principale
   - Sentiment (Positif/Neutre/Négatif)
   - Next action recommandée
 
 Prompt :
+
 ```
 Analyse cette conversation de vente et extrais:
 1. L'objection principale du prospect (si applicable)
@@ -215,6 +226,7 @@ Réponds en JSON:
 **Module 4 : Twenty - Update Person Record**
 
 Update le contact dans Twenty avec :
+
 - Objection Principale (depuis OpenAI ou manual)
 - Dernière Interaction = today
 - Notes = résumé de l'appel
@@ -232,13 +244,16 @@ Update le contact dans Twenty avec :
 **Action** :
 
 **Module 1 : Twenty - Get Record Details**
+
 - Récupérer nom, email, téléphone du prospect
 
 **Module 2 : Router (2 chemins)**
 
 **Chemin A : Si Email disponible**
+
 - **Gmail/SendGrid - Send Email**
 - Template :
+
 ```
 Subject: Suite à notre conversation
 
@@ -255,13 +270,16 @@ Uprising Studio
 ```
 
 **Chemin B : Si Téléphone disponible**
+
 - **Twilio - Send SMS**
 - Template :
+
 ```
 Salut {{firstName}}, c'est Kael d'Uprising. Voici le lien pour booker ta démo : [lien]. Des questions ? Réponds à ce texto.
 ```
 
 **Module 3 : Twenty - Update Record**
+
 - Ajouter note : "Follow-up envoyé le [date]"
 - Update "Nombre Appels Faits" += 1
 
@@ -287,9 +305,11 @@ Body:
 ```
 
 **Module 2 : Iterator**
+
 - Boucler sur chaque opportunity
 
 **Module 3 : Google Sheets - Add a Row**
+
 - Spreadsheet : "Uprising - Métriques Acquisition"
 - Sheet : "Raw Data"
 - Valeurs :
@@ -307,21 +327,25 @@ Body:
 Dans ton Google Sheet, créer un onglet "Dashboard" avec ces formules :
 
 **Taux de Connexion (Cold Calls)** :
+
 ```
 =COUNTIF(Raw_Data!D:D,"Cold Call") / COUNTIF(Raw_Data!C:C,"Contacté")
 ```
 
 **Taux de Démo Bookée** :
+
 ```
 =COUNTIF(Raw_Data!C:C,"Démo Bookée") / COUNTIF(Raw_Data!C:C,"Intéressé")
 ```
 
 **Taux de Close** :
+
 ```
 =COUNTIF(Raw_Data!C:C,"Gagné") / COUNTIF(Raw_Data!C:C,"Démo Faite")
 ```
 
 **Performance par Industrie** :
+
 ```
 =COUNTIFS(Raw_Data!E:E,"Plomberie", Raw_Data!C:C,"Gagné")
 ```
@@ -347,6 +371,7 @@ Dans ton Google Sheet, créer un onglet "Dashboard" avec ces formules :
 
 **Module 2 : Gmail - Send Email**
 Template :
+
 ```
 Subject: Bienvenue chez Uprising Studio 🚀
 
@@ -367,9 +392,11 @@ Kael
 ```
 
 **Module 3 : Twenty - Add Note**
+
 - "Email onboarding envoyé le [date]"
 
 **Module 4 : Slack Notification (Optional)**
+
 - Notifier Xavier : "Nouveau client closé : {{firstName}}, industry: {{industrie}}"
 
 ---
@@ -394,6 +421,7 @@ Kael
 ## Ordre de Setup (Priorisation)
 
 **Phase 1 (Cette semaine) - Les Essentiels** :
+
 1. ✅ Configurer champs custom dans Twenty
 2. ✅ Créer pipeline de ventes dans Twenty
 3. ✅ Setup Apify scraping + injection manuelle dans Twenty (test avec 20-30 leads)

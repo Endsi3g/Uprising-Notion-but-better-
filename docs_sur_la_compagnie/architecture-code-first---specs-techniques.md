@@ -22,7 +22,8 @@
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-**Pourquoi Node.js ?** 
+**Pourquoi Node.js ?**
+
 - Twenty utilise GraphQL (natif en JS)
 - Apify SDK en JavaScript
 - Déploiement facile (Vercel, Railway, ou serveur simple)

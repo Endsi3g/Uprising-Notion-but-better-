@@ -198,6 +198,7 @@ Google Sheets calcule automatiquement :
 ## Roadmap d'Automatisation
 
 ### Phase 1 : Essentials (Semaine 1)
+
 ✅ Twenty configuré avec champs + pipeline
 ✅ Template Make #1 : Apify → Twenty
 ✅ Fireflies installé et enregistrement actif
@@ -207,6 +208,7 @@ Google Sheets calcule automatiquement :
 ---
 
 ### Phase 2 : Follow-ups (Semaine 2)
+
 ✅ Template Make #2 : Auto follow-up emails
 ✅ Template Make #3 : Daily export Google Sheets
 
@@ -215,6 +217,7 @@ Google Sheets calcule automatiquement :
 ---
 
 ### Phase 3 : Intelligence (Semaine 3+)
+
 ✅ Template Make #4 : Fireflies + GPT-4 analysis
 ✅ Data Studio dashboard avec visualisations
 ✅ SMS automation (Twilio) pour prospects chauds

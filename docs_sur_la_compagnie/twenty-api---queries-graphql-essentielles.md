@@ -359,6 +359,7 @@ Twenty supporte les webhooks pour trigger Make automatiquement quand un record c
 ```
 
 **Utilisation dans Make** :
+
 - Trigger : Webhook
 - Condition : Si `data.stage.name == "Démo Bookée"`
 - Action : Envoyer email de confirmation avec lien Calendly
@@ -402,14 +403,17 @@ Twenty supporte les webhooks pour trigger Make automatiquement quand un record c
 ## Troubleshooting
 
 ### Erreur : "Authentication required"
+
 - Vérifier que l'API Key est bien dans le header `Authorization: Bearer sk_...`
 - Vérifier que la key n'a pas expiré (Settings → API Keys)
 
 ### Erreur : "Field does not exist"
+
 - Les custom fields doivent être créés dans l'UI avant d'être utilisés via API
 - Vérifier le nom exact du champ (case-sensitive)
 
 ### Erreur : "Rate limit exceeded"
+
 - Twenty a des limites de rate (généralement 100 requests/min)
 - Dans Make, ajouter un "Sleep" de 1-2 secondes entre les iterations si tu traites beaucoup de records
 
@@ -417,6 +421,6 @@ Twenty supporte les webhooks pour trigger Make automatiquement quand un record c
 
 ## Ressources
 
-- **Documentation Twenty API** : https://twenty.com/developers/section/graphql
+- **Documentation Twenty API** : <https://twenty.com/developers/section/graphql>
 - **GraphQL Playground** : https://[ton-instance].twenty.com/graphql (pour tester les queries en live)
 - **Make.com Twenty Integration** : Pas de module natif encore, utiliser HTTP module avec les queries ci-dessus

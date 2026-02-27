@@ -17,6 +17,7 @@ Le prospect s'en fout que tu utilises Framer, Twilio ou des LLMs. Il veut savoir
 **Objectif** : Faire dire au prospect qu'il a un problème.
 
 **Questions à poser** :
+
 - "Combien d'appels vous recevez par semaine en moyenne ?"
 - "Combien de ces appels vous ratez parce que vous êtes sur un chantier / en intervention ?"
 - "Quand vous ratez un appel, qu'est-ce qui se passe ? Est-ce qu'ils rappellent ou ils appellent le concurrent ?"
@@ -58,6 +59,7 @@ Le prospect s'en fout que tu utilises Framer, Twilio ou des LLMs. Il veut savoir
 > "OK, imaginez que vous êtes sur un chantier en ce moment. Un client potentiel vous appelle, mais vous ne pouvez pas répondre. Voici ce qui se passe avec notre système."
 
 **L'Exécution** :
+
 1. Partage ton écran (si Zoom) ou mets ton téléphone devant la caméra (si en personne)
 2. Appelle ton agent IA de démo en direct
 3. Fais comme si tu es un client : "Bonjour, j'aurais besoin d'un [service] rapidement"
@@ -79,6 +81,7 @@ Le prospect s'en fout que tu utilises Framer, Twilio ou des LLMs. Il veut savoir
 > "Je vais vous montrer rapidement un client qu'on a installé il y a [X mois]. [Nom de l'entreprise], même industrie que vous."
 
 **Présenter les résultats** (si tu as les chiffres) :
+
 - "Avant : ils rataient environ [X] appels par semaine"
 - "Après installation : taux de réponse de 95%, [X] rendez-vous bookés automatiquement par mois"
 - "Résultat : [X] contrats additionnels closés, ce qui représente [X $] de revenus en plus"
@@ -184,14 +187,17 @@ Si tout va bien, à la fin de la démo, tu veux un engagement.
 ## Après la Démo : Follow-up Immédiat
 
 **Dans les 5 minutes après la démo** :
+
 - [ ] Envoyer email récap : "Merci pour ton temps, voici ce qu'on a discuté + lien Typeform + lien Stripe"
 - [ ] Logger outcome dans Twenty : "Intéressé - En Réflexion" ou "Démo Close - Attente Paiement"
 - [ ] Planifier rappel dans 24-48h si pas de mouvement
 
 **24h après (si pas de réponse)** :
+
 - [ ] SMS court : "Salut [Nom], as-tu eu le temps de remplir le Typeform ? Si tu as des questions, je suis dispo."
 
 **48h après (si toujours pas de réponse)** :
+
 - [ ] Appel de suivi : "Hey [Nom], je voulais juste m'assurer que tu n'avais pas de blocage. Qu'est-ce qui te retient ?"
 
 ---
@@ -199,12 +205,14 @@ Si tout va bien, à la fin de la démo, tu veux un engagement.
 ## Success Metrics
 
 **Démo réussie** :
+
 - Le prospect a posé des questions pendant la démo (= engagement)
 - Il a eu un "wow moment" visible pendant la démo de l'IA
 - Il a admis qu'il perd des contrats à cause d'appels manqués
 - Il a demandé le pricing sans que tu le pousses
 
 **Objectif conversion** :
+
 - 2-3 démos closes sur 5 démos livrées = 40-60% close rate (très bon pour B2B local)
 
 Si ton close rate est < 30%, c'est un signal pour ajuster la démo (possiblement trop technique, pas assez centré sur l'outcome).
