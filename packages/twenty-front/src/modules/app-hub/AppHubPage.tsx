@@ -62,6 +62,13 @@ const StyledAppSubtitle = styled.span`
   font-size: 13px;
 `;
 
+interface AppHubLink {
+  id: string;
+  title: string;
+  desc: string;
+  link: string;
+}
+
 export const AppHubPage = () => {
   const { t } = useLingui();
 
@@ -125,16 +132,16 @@ export const AppHubPage = () => {
   return (
     <StyledContainer>
       <StyledTitle>{t`Uprising App Hub`}</StyledTitle>
-      <StyledDescription>{t`Accédez à tous vos outils d'agence et dépôts GitHub depuis un point central.`}</StyledDescription>
+      <StyledDescription>{t`Access all your agency tools and GitHub repos from a central hub.`}</StyledDescription>
 
       {loading ? (
-        <StyledDescription>{t`Loading apps...`}</StyledDescription>
+        <StyledDescription>{t`Loading apps…`}</StyledDescription>
       ) : error && (!apps || apps.length === 0) ? (
         // Ignore error if it's just 'Object appHubLink not found' because they might not have created the Custom Object yet
         <StyledDescription>{t`Please create a Custom Object named 'AppHubLink' with fields 'title', 'desc', and 'link' to manage these apps.`}</StyledDescription>
       ) : (
         <StyledAppGrid>
-          {displayApps.map((app: any) => (
+          {displayApps.map((app: AppHubLink) => (
             <StyledAppCard
               key={app.id || app.title}
               href={app.link}

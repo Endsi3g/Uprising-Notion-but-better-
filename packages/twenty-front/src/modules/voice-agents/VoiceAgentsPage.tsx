@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useLingui } from '@lingui/react/macro';
 import { useEffect, useState } from 'react';
-import { Button } from 'twenty-ui/display';
+import { Button } from 'twenty-ui/input';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -55,14 +55,21 @@ const NoticeOrError = styled.div`
 `;
 
 const StyledAgentName = styled.h3`
-  margin: 0;
   font-size: 16px;
+  margin: 0;
 `;
 
 const StyledAgentInfo = styled.span`
-  font-size: 13px;
   color: ${({ theme }) => theme.font.color.tertiary};
+  font-size: 13px;
 `;
+
+interface Agent {
+  id: string;
+  name: string;
+  status: string;
+  hostedBy: string;
+}
 
 export const VoiceAgentsPage = () => {
   const { t } = useLingui();
@@ -138,7 +145,7 @@ export const VoiceAgentsPage = () => {
       {error && <NoticeOrError>{error}</NoticeOrError>}
 
       {loading ? (
-        <NoticeOrError>Loading agents...</NoticeOrError>
+        <NoticeOrError>{t`Loading agents…`}</NoticeOrError>
       ) : (
         <AgentList>
           {agents.map((agent) => (

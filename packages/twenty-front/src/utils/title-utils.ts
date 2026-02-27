@@ -1,3 +1,4 @@
+import { DEFAULT_WORKSPACE_NAME } from '@/ui/navigation/navigation-drawer/constants/DefaultWorkspaceName';
 import { t } from '@lingui/core/macro';
 import { AppBasePath, AppPath, SettingsPath } from 'twenty-shared/types';
 
@@ -54,6 +55,6 @@ export const getPageTitleFromPath = (pathname: string): string => {
     case SettingsPathPrefixes.General:
       return t`General - Settings`;
     default:
-      return 'Uprising Studio';
+      return DEFAULT_WORKSPACE_NAME;
   }
 };
