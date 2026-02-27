@@ -70,24 +70,32 @@ try {
     }
 
     # 1.2 - Détection de la commande Docker Compose
-    $DOCKER_COMPOSE_CMD = $null
+    $GLOBAL:DOCKER_COMPOSE_V2 = $false
 
     # Tentative avec le plugin (docker compose)
     docker compose version >$null 2>&1
     if ($LASTEXITCODE -eq 0) {
-        $DOCKER_COMPOSE_CMD = @("docker", "compose")
+        $GLOBAL:DOCKER_COMPOSE_V2 = $true
         Write-Success "Docker Compose (plugin) détecté."
     }
     # Fallback sur le standalone (docker-compose)
     else {
         if (Get-Command "docker-compose" -ErrorAction SilentlyContinue) {
-            $DOCKER_COMPOSE_CMD = "docker-compose"
-            $dcVersion = & $DOCKER_COMPOSE_CMD --version
-            Write-Success "Docker Compose (standalone) détecté : $dcVersion"
+            $GLOBAL:DOCKER_COMPOSE_V2 = $false
+            Write-Success "Docker Compose (standalone) détecté."
         }
         else {
             Write-Error-Custom "Docker Compose n'est pas détecté. Veuillez l'installer sur https://docs.docker.com/compose/install/"
             exit 1
+        }
+    }
+
+    function Invoke-Docker-Compose {
+        param([Parameter(ValueFromRemainingArguments=$true)]$Arguments)
+        if ($GLOBAL:DOCKER_COMPOSE_V2) {
+            docker compose @Arguments
+        } else {
+            docker-compose @Arguments
         }
     }
 
@@ -182,18 +190,18 @@ try {
     $choice = Read-Host
     if ($choice -eq "o" -or $choice -eq "y") {
         Write-Host "Construction de l'image Docker depuis le code local..." -ForegroundColor Cyan
-        & $DOCKER_COMPOSE_CMD down # On s'assure de nettoyer les restes
-        & $DOCKER_COMPOSE_CMD build --no-cache server
+        Invoke-Docker-Compose down # On s'assure de nettoyer les restes
+        Invoke-Docker-Compose build --no-cache server
         Write-Success "Image construite avec succès."
 
-        Write-Host "Démarrage des containers sur le port 3001 via $DOCKER_COMPOSE_CMD..."
-        & $DOCKER_COMPOSE_CMD up -d
+        Write-Host "Démarrage des containers sur le port 3001 via Docker Compose..."
+        Invoke-Docker-Compose up -d
         Write-Success "Containers lancés sur http://localhost:3001."
 
         Write-Host "Attente du démarrage du serveur et des migrations (cela peut prendre quelques minutes)..." -ForegroundColor Cyan
 
         # Récupération dynamique de l'ID du conteneur serveur pour éviter les problèmes de nommage
-        $containerId = & $DOCKER_COMPOSE_CMD ps -q server
+        $containerId = Invoke-Docker-Compose ps -q server
         if (-not $containerId) {
             Write-Error-Custom "Le conteneur 'server' est introuvable. Vérifiez que 'docker-compose up' a réussi."
             exit 1
@@ -237,7 +245,7 @@ try {
 
         foreach ($job in $jobs) {
             Write-Host "Enregistrement du job : $job"
-            & $DOCKER_COMPOSE_CMD exec -T worker yarn command:prod $job
+            Invoke-Docker-Compose exec -T worker yarn command:prod $job
         }
 
         Write-Success "Tous les background jobs ont été enregistrés."
