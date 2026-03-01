@@ -1,0 +1,9 @@
+time="2026-03-01T00:47:55-05:00" level=warning msg="The \"DISABLE_DB_MIGRATIONS\" variable is not set. Defaulting to a blank string."
+time="2026-03-01T00:47:57-05:00" level=warning msg="The \"STORAGE_S3_NAME\" variable is not set. Defaulting to a blank string."
+time="2026-03-01T00:47:57-05:00" level=warning msg="The \"DISABLE_CRON_JOBS_REGISTRATION\" variable is not set. Defaulting to a blank string."
+time="2026-03-01T00:47:57-05:00" level=warning msg="The \"STORAGE_S3_REGION\" variable is not set. Defaulting to a blank string."
+time="2026-03-01T00:47:57-05:00" level=warning msg="The \"STORAGE_S3_ENDPOINT\" variable is not set. Defaulting to a blank string."
+time="2026-03-01T00:47:57-05:00" level=warning msg="The \"STORAGE_S3_REGION\" variable is not set. Defaulting to a blank string."
+time="2026-03-01T00:47:57-05:00" level=warning msg="The \"STORAGE_S3_ENDPOINT\" variable is not set. Defaulting to a blank string."
+time="2026-03-01T00:47:57-05:00" level=warning msg="The \"STORAGE_S3_NAME\" variable is not set. Defaulting to a blank string."
+no such service: twenty-front

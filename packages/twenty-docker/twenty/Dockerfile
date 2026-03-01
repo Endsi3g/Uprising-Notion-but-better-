@@ -44,6 +44,10 @@ COPY ./packages/twenty-front /app/packages/twenty-front
 COPY ./packages/twenty-ui /app/packages/twenty-ui
 COPY ./packages/twenty-shared /app/packages/twenty-shared
 COPY ./packages/twenty-sdk /app/packages/twenty-sdk
+
+# Generate dynamic schema/component files required by twenty-sdk
+RUN npx tsx -r tsconfig-paths/register packages/twenty-sdk/scripts/remote-dom/generate-remote-dom-elements.ts
+
 RUN npx nx build twenty-front
 
 
