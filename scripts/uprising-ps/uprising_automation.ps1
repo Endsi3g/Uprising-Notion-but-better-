@@ -127,7 +127,15 @@ try {
         Write-Warning-Custom "Fichier .env manquant. Impossible d'identifier l'URL."
     }
 
-    Write-Header "Étape 7 : Automatisation Git (Commit & Push)"
+    Write-Header "Étape 7 : Mise à jour du dépôt Voice Agency"
+    $VoiceSyncScript = Join-Path $ScriptDir "uprising-sync-voice.ps1"
+    if (Test-Path $VoiceSyncScript) {
+        & $VoiceSyncScript
+    } else {
+        Write-Warning-Custom "Script de synchronisation Voice Agency non trouvé : $VoiceSyncScript"
+    }
+
+    Write-Header "Étape 8 : Automatisation Git (Commit & Push)"
     $gitStatus = git status --porcelain
     if ($gitStatus) {
         Write-Host "Changements détectés. Préparation du commit..."

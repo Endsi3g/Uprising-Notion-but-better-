@@ -2,6 +2,18 @@
 
 Toutes les modifications notables apportées à ce projet seront documentées dans ce fichier.
 
+## [1.3.0] - 2026-03-02
+
+### Ajouté
+
+- **Intégration Voice Agency** : Intégration complète du dépôt `Uprising-ai-voice-agency` avec support pour la synchronisation automatique.
+- **App Hub** : Ajout de "Uprising AI Voice Agency" à la liste des applications disponibles.
+- **Voice Platform** : Mise à jour des agents avec les profils réels (Rénovation Expert Québec, Clinique Dentaire Sourire Plus, Garage Mécanique Pro).
+- **Infrastructure** : Ajout du service `voice-agency` dans Docker Compose et création du script `uprising-sync-voice.ps1`.
+- **Automatisation** : Intégration de la synchronisation de l'agence vocale dans le flux d'automatisation principal.
+
+---
+
 ## [1.2.0] - 2026-03-01
 
 ### Corrigé

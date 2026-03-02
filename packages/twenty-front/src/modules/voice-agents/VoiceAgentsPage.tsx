@@ -90,16 +90,22 @@ export const VoiceAgentsPage = () => {
           // Fallback placeholders when env vars are missing
           setAgents([
             {
-              id: 'agent-1',
-              name: 'Sales Agent',
+              id: 'renovation',
+              name: 'Rénovation Expert Québec',
               status: 'Online',
-              hostedBy: 'here.now',
+              hostedBy: 'uprising-voice.internal',
             },
             {
-              id: 'agent-2',
-              name: 'Support Agent',
+              id: 'dentist',
+              name: 'Clinique Dentaire Sourire Plus',
+              status: 'Online',
+              hostedBy: 'uprising-voice.internal',
+            },
+            {
+              id: 'uprising-voice-agent-garage',
+              name: 'Garage Mécanique Pro',
               status: 'Offline',
-              hostedBy: 'here.now',
+              hostedBy: 'uprising-voice.internal',
             },
           ]);
           setError(

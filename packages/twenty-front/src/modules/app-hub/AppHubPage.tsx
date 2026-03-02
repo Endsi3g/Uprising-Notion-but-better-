@@ -105,24 +105,30 @@ export const AppHubPage = () => {
           },
           {
             id: 'default4',
+            title: t`Uprising AI Voice Agency`,
+            desc: t`AI Receptionist & Voice Agent Manager`,
+            link: 'https://github.com/xaviertardif24-hub/Uprising-ai-voice-agency.git',
+          },
+          {
+            id: 'default5',
             title: t`GitHub Repositories`,
             desc: t`Manage your code and deployments`,
             link: 'https://github.com/uprising-studio',
           },
           {
-            id: 'default5',
+            id: 'default6',
             title: t`Google Drive`,
             desc: t`File Storage & Sharing`,
             link: 'https://drive.google.com',
           },
           {
-            id: 'default6',
+            id: 'default7',
             title: t`Google Meet`,
             desc: t`Video Conferences`,
             link: 'https://meet.google.com',
           },
           {
-            id: 'default7',
+            id: 'default8',
             title: t`Google Docs`,
             desc: t`Word Processing`,
             link: 'https://docs.google.com',
