@@ -1,0 +1,22 @@
+{
+  "name": "@twenty/instagram-monitor",
+  "version": "1.0.0",
+  "description": "Instagram monitor service for Twenty CRM",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "instagram-private-api": "^1.46.1",
+    "chalk": "^4.1.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.2",
+    "ts-node": "^10.9.1",
+    "@types/node": "^20.10.0"
+  }
+}

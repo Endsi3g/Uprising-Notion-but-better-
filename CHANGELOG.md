@@ -2,6 +2,16 @@
 
 Toutes les modifications notables apportées à ce projet seront documentées dans ce fichier.
 
+## [1.4.0] - 2026-03-02
+
+### Ajouté
+
+- **Intégration Instagram & Ollama** : Nouveau service de surveillance (`instagram-monitor`) pour automatiser les interactions Instagram via Ollama.
+- **Monitoring IA** : Surveillance automatique des messages directs avec génération de réponses contextuelles par LLM local.
+- **Support Instagram CLI** : Intégration du dépôt `Instagram-clii` comme base pour les opérations CLI.
+- **Configuration** : Nouvelles variables d'environnement pour la gestion des identifiants Instagram et les intervalles de surveillance.
+
+
 ## [1.3.0] - 2026-03-02
 
 ### Ajouté
