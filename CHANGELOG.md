@@ -11,7 +11,6 @@ Toutes les modifications notables apportées à ce projet seront documentées da
 - **Support Instagram CLI** : Intégration du dépôt `Instagram-clii` comme base pour les opérations CLI.
 - **Configuration** : Nouvelles variables d'environnement pour la gestion des identifiants Instagram et les intervalles de surveillance.
 
-
 ## [1.3.0] - 2026-03-02
 
 ### Ajouté
