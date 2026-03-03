@@ -4,7 +4,8 @@ import { OllamaIntegration } from './ollama-integration';
 const instagram = new InstagramService();
 const ollama = new OllamaIntegration();
 
-const MONITOR_INTERVAL = parseInt(process.env.INSTAGRAM_MONITOR_INTERVAL || '300') * 1000;
+const MONITOR_INTERVAL =
+  parseInt(process.env.INSTAGRAM_MONITOR_INTERVAL || '300') * 1000;
 
 async function startMonitor() {
   try {
@@ -18,14 +19,20 @@ async function startMonitor() {
       const messages = await instagram.getLatestMessages();
 
       for (const msg of messages) {
-        if (!lastProcessedTimestamps[msg.id] || msg.timestamp > lastProcessedTimestamps[msg.id]) {
-          console.log(`New message from ${msg.users.join(', ')}: ${msg.lastMessage}`);
+        const timestamp = Number(msg.timestamp);
+        if (
+          !lastProcessedTimestamps[msg.id] ||
+          timestamp > lastProcessedTimestamps[msg.id]
+        ) {
+          console.log(
+            `New message from ${msg.users.join(', ')}: ${msg.lastMessage}`,
+          );
 
           const response = await ollama.generateAction(msg.lastMessage);
           console.log('Ollama suggested response:', response.text);
 
           await instagram.sendMessage(msg.id, response.text);
-          lastProcessedTimestamps[msg.id] = msg.timestamp;
+          lastProcessedTimestamps[msg.id] = timestamp;
         }
       }
     }, MONITOR_INTERVAL);

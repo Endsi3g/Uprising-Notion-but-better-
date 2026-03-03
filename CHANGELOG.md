@@ -4,7 +4,7 @@ Toutes les modifications notables apportées à ce projet seront documentées da
 
 ## [1.4.0] - 2026-03-02
 
-### Ajouté
+### Ajouté (1.4.0)
 
 - **Intégration Instagram & Ollama** : Nouveau service de surveillance (`instagram-monitor`) pour automatiser les interactions Instagram via Ollama.
 - **Monitoring IA** : Surveillance automatique des messages directs avec génération de réponses contextuelles par LLM local.
@@ -13,7 +13,7 @@ Toutes les modifications notables apportées à ce projet seront documentées da
 
 ## [1.3.0] - 2026-03-02
 
-### Ajouté
+### Ajouté (1.3.0)
 
 - **Intégration Voice Agency** : Intégration complète du dépôt `Uprising-ai-voice-agency` avec support pour la synchronisation automatique.
 - **App Hub** : Ajout de "Uprising AI Voice Agency" à la liste des applications disponibles.
@@ -25,13 +25,13 @@ Toutes les modifications notables apportées à ce projet seront documentées da
 
 ## [1.2.0] - 2026-03-01
 
-### Corrigé
+### Corrigé (1.2.0)
 
 - **Docker Build** : Résolution d'un bug critique dans la build `twenty-front` en contournant NX pour la génération des éléments DOM distants.
 - **Scripts de Déploiement** : Correction de la résolution des chemins dans les scripts PowerShell après leur réorganisation.
 - **Import TypeScript** : Correction du chemin d'import du composant `Button` dans `VoiceAgentsPage.tsx`.
 
-### Modifié
+### Modifié (1.2.0)
 
 - **Internationalisation** : Traduction des labels français en anglais dans les fichiers sources pour assurer la compatibilité avec le pipeline Lingui (`SignInUp.tsx`, `AppHubPage.tsx`).
 - **Branding Centralisé** : Utilisation de `DefaultWorkspaceName` pour toutes les instances de "Uprising Studio".
@@ -41,7 +41,7 @@ Toutes les modifications notables apportées à ce projet seront documentées da
 
 ## [1.1.0] - 2026-02-26
 
-### Ajouté
+### Ajouté (1.1.0)
 
 - **Intégration Notion (Backend)** : Scaffoldé le module `integration-notion` avec support pour `Companies`, `People`, `Opportunities` et `Tasks`. Implémentation du client `@notionhq/client`.
 - **Intégration Google Tasks (Backend)** : Extension des scopes OAuth et création du `GoogleTasksSyncService`.
