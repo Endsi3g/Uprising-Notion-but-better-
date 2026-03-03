@@ -191,7 +191,7 @@ try {
     if ($choice -eq "o" -or $choice -eq "y") {
         Write-Host "Construction de l'image Docker depuis le code local..." -ForegroundColor Cyan
         Invoke-Docker-Compose down # On s'assure de nettoyer les restes
-        Invoke-Docker-Compose build --no-cache server
+        Invoke-Docker-Compose build
         Write-Success "Image construite avec succès."
 
         Write-Host "Démarrage des containers sur le port 3001 via Docker Compose..."

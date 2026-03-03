@@ -144,6 +144,22 @@ services:
       PORT: 5000
     restart: always
 
+  instagram-monitor:
+    build:
+      context: ./packages/twenty-apps/instagram-monitor
+      dockerfile: Dockerfile
+    image: uprising-instagram-monitor:local
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      INSTAGRAM_USERNAME: ${INSTAGRAM_USERNAME}
+      INSTAGRAM_PASSWORD: ${INSTAGRAM_PASSWORD}
+      INSTAGRAM_MONITOR_INTERVAL: ${INSTAGRAM_MONITOR_INTERVAL:-300}
+      OPENAI_COMPATIBLE_BASE_URL: ${OPENAI_COMPATIBLE_BASE_URL:-http://ollama:11434/v1}
+      OPENAI_COMPATIBLE_MODEL_NAMES: ${OPENAI_COMPATIBLE_MODEL_NAMES:-llama3.1}
+    restart: always
+
 #
 
 volumes:
