@@ -35,6 +35,26 @@ function Write-Error-Custom($msg) {
     Write-Host "❌ $msg" -ForegroundColor Red
 }
 
+function Check-Dependencies {
+    Write-Header "Vérification des dépendances"
+    if (-not (Get-Command "yarn" -ErrorAction SilentlyContinue)) {
+        Write-Warning-Custom "Yarn n'est pas détecté. Tentative d'activation via Corepack..."
+        if (Get-Command "corepack" -ErrorAction SilentlyContinue) {
+            try {
+                corepack enable
+                Write-Success "Corepack activé."
+            } catch {
+                Write-Error-Custom "Échec de l'activation de Corepack. Veuillez l'activer manuellement : 'corepack enable'"
+                exit 1
+            }
+        } else {
+            Write-Error-Custom "Yarn et Corepack sont introuvables. Veuillez installer Node.js récent."
+            exit 1
+        }
+    }
+    Write-Success "Dépendances vérifiées."
+}
+
 function Invoke-NativeCommand($Command) {
     Invoke-Expression $Command
     if ($LASTEXITCODE -ne 0) {
@@ -43,6 +63,8 @@ function Invoke-NativeCommand($Command) {
 }
 
 try {
+    Check-Dependencies
+
     Write-Header "Étape 1 : Installation des dépendances (Yarn)"
     if (Get-Command "yarn" -ErrorAction SilentlyContinue) {
         # --json might avoid some interactive prompts, but --immutable is better if we have a lockfile.

@@ -9,9 +9,9 @@ import { DefaultLayout } from '@/ui/layout/page/components/DefaultLayout';
 import { AppPath } from 'twenty-shared/types';
 
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
 } from 'react-router-dom';
 import { Authorize } from '~/pages/auth/Authorize';
 import { PasswordReset } from '~/pages/auth/PasswordReset';
@@ -27,6 +27,7 @@ import { CreateWorkspace } from '~/pages/onboarding/CreateWorkspace';
 import { InviteTeam } from '~/pages/onboarding/InviteTeam';
 import { PaymentSuccess } from '~/pages/onboarding/PaymentSuccess';
 import { SyncEmails } from '~/pages/onboarding/SyncEmails';
+import { WebsitePreviewPage } from '~/pages/WebsitePreviewPage';
 
 export const useCreateAppRouter = (
   isFunctionSettingsEnabled?: boolean,
@@ -63,6 +64,7 @@ export const useCreateAppRouter = (
           <Route path={indexAppPath.getIndexAppPath()} element={<></>} />
           <Route path={AppPath.RecordIndexPage} element={<RecordIndexPage />} />
           <Route path={AppPath.RecordShowPage} element={<RecordShowPage />} />
+          <Route path={AppPath.WebsitePreview} element={<WebsitePreviewPage />} />
           <Route
             path={AppPath.SettingsCatchAll}
             element={

@@ -30,7 +30,27 @@ function Write-Error-Custom($msg) {
     Write-Host "❌ $msg" -ForegroundColor Red
 }
 
+function Check-Dependencies {
+    Write-Header "Vérification des dépendances"
+    if (-not (Get-Command "yarn" -ErrorAction SilentlyContinue)) {
+        Write-Host "⚠️ Yarn n'est pas détecté. Tentative d'activation via Corepack..." -ForegroundColor Yellow
+        if (Get-Command "corepack" -ErrorAction SilentlyContinue) {
+            try {
+                corepack enable
+                Write-Host "✅ Corepack activé." -ForegroundColor Green
+            } catch {
+                Write-Error-Custom "Échec de l'activation de Corepack. Veuillez l'activer manuellement : 'corepack enable'"
+                exit 1
+            }
+        } else {
+            Write-Error-Custom "Yarn et Corepack sont introuvables. Veuillez installer Node.js récent."
+            exit 1
+        }
+    }
+}
+
 try {
+    Check-Dependencies
     Write-Header "Étape 1 : Qualité du Code (Linting - Précédemment ignoré)"
     Write-Host "Exécution d'ESLint pour l'ensemble du monorepo (peut prendre quelques minutes)..." -ForegroundColor Yellow
     # On exécute linting pour tout le projet sauf les docs pour éviter le dépassement de ligne de commande Windows

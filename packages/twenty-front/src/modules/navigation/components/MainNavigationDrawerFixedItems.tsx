@@ -9,9 +9,9 @@ import { useSetRecoilStateV2 } from '@/ui/utilities/state/jotai/hooks/useSetReco
 import { useIsFeatureEnabled } from '@/workspace/hooks/useIsFeatureEnabled';
 import { useLingui } from '@lingui/react/macro';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { SettingsPath } from 'twenty-shared/types';
+import { AppPath } from 'twenty-shared/types';
 import { getSettingsPath } from 'twenty-shared/utils';
-import { IconSearch, IconSettings, IconSparkles } from 'twenty-ui/display';
+import { IconSearch, IconSettings, IconSparkles, IconWorld } from 'twenty-ui/display';
 import { useIsMobile } from 'twenty-ui/utilities';
 import { FeatureFlagKey } from '~/generated-metadata/graphql';
 
@@ -55,6 +55,11 @@ export const MainNavigationDrawerFixedItems = () => {
             mouseUpNavigation={true}
           />
         )}
+        <NavigationDrawerItem
+          label={t`Website`}
+          to={AppPath.WebsitePreview}
+          Icon={IconWorld}
+        />
         <NavigationDrawerItem
           label={t`Settings`}
           to={getSettingsPath(SettingsPath.ProfilePage)}

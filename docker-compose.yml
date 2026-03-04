@@ -131,14 +131,15 @@ services:
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
   voice-agency:
+    profiles: ["alternative"]
     build:
-      context: C:/Users/upris/Downloads/uprising-voice-temp
-      dockerfile: C:/Users/upris/Downloads/twenty-main/packages/twenty-docker/voice-agency/Dockerfile
+      context: ./uprising-voice-temp
+      dockerfile: ../packages/twenty-docker/voice-agency/Dockerfile
     image: uprising-voice-agency:local
     ports:
       - "5000:5000"
     volumes:
-      - C:/Users/upris/Downloads/uprising-voice-temp:/app
+      - ./uprising-voice-temp:/app
       - /app/node_modules
     environment:
       PORT: 5000

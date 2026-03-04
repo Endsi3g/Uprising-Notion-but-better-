@@ -1,3 +1,8 @@
+param(
+    [switch]$Auto,
+    [switch]$BuildOnly
+)
+
 # ============================================================
 # Project: Uprising CRM
 # Author: Uprising Studio
@@ -61,8 +66,14 @@ try {
     Write-Header "Étape 1 : Vérification des prérequis"
 
     if (Get-Command "docker" -ErrorAction SilentlyContinue) {
+        $dockerInfo = docker info 2>&1
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error-Custom "Le daemon Docker ne semble pas répondre ou le context est invalide."
+            Write-Error-Custom $dockerInfo
+            exit 1
+        }
         $dockerVersion = docker --version
-        Write-Success "Docker détecté : $dockerVersion"
+        Write-Success "Docker détecté et opérationnel : $dockerVersion"
     }
     else {
         Write-Error-Custom "Docker n'est pas installé. Veuillez l'installer sur https://docs.docker.com/get-docker/"
@@ -185,9 +196,16 @@ try {
 
     Write-Header "Étape 4 : Build et Lancement"
 
-    Write-Host "Souhaitez-vous construire l'image et lancer les containers ? (o/n)" -ForegroundColor Yellow
-    Write-Host "(Le premier build peut prendre 15-20 minutes)" -ForegroundColor Yellow
-    $choice = Read-Host
+    $choice = "n"
+    if ($Auto) {
+        Write-Host "Mode automatique activé. Lancement de la construction et des containers..." -ForegroundColor Green
+        $choice = "o"
+    } else {
+        Write-Host "Souhaitez-vous construire l'image et lancer les containers ? (o/n)" -ForegroundColor Yellow
+        Write-Host "(Le premier build peut prendre 15-20 minutes)" -ForegroundColor Yellow
+        $choice = Read-Host
+    }
+
     if ($choice -eq "o" -or $choice -eq "y") {
         Write-Host "Construction de l'image Docker depuis le code local..." -ForegroundColor Cyan
         Invoke-Docker-Compose down # On s'assure de nettoyer les restes
@@ -200,10 +218,17 @@ try {
 
         Write-Host "Attente du démarrage du serveur et des migrations (cela peut prendre quelques minutes)..." -ForegroundColor Cyan
 
-        # Récupération dynamique de l'ID du conteneur serveur pour éviter les problèmes de nommage
-        $containerId = Invoke-Docker-Compose ps -q server
+        # Récupération dynamique de l'ID du conteneur serveur
+        # On cherche un conteneur qui contient 'server' dans son nom
+        $containerId = docker ps -q -f "name=server" | Select-Object -First 1
         if (-not $containerId) {
-            Write-Error-Custom "Le conteneur 'server' est introuvable. Vérifiez que 'docker-compose up' a réussi."
+            # Tentative alternative via docker-compose ps
+            $containerId = Invoke-Docker-Compose ps -q server
+        }
+
+        if (-not $containerId) {
+            Write-Error-Custom "Le conteneur 'server' est introuvable. Voici l'état actuel :"
+            docker ps -a
             exit 1
         }
 
