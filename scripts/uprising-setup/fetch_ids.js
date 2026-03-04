@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: fetch_ids.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 const { spawnSync } = require('child_process');
 
 try {

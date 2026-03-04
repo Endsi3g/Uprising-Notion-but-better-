@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: jest.preset.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 const nxPreset = require('@nx/jest/preset').default;
 
 module.exports = {

@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: metrics-exporter.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 import 'dotenv/config';
 import fs from 'fs';
 import { google } from 'googleapis';

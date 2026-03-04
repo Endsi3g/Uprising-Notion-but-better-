@@ -1,8 +1,8 @@
 # ============================================================
-# Uprising CRM — Docker Deployment Automation
-# ============================================================
-# Automates the setup of Twenty using Docker Compose on port 3001.
-# Usage: .\uprising_docker_deploy.ps1
+# Project: Uprising CRM
+# Author: Uprising Studio
+# Description: uprising_docker_deploy.ps1
+# Last Modified: 2026-03-04
 # ============================================================
 
 $ErrorActionPreference = "Stop"

@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: create_acquisition_workflow.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 const { execSync } = require('child_process');
 const fs = require('fs');
 const crypto = require('crypto');

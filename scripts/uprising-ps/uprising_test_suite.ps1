@@ -1,9 +1,8 @@
 # ============================================================
-# Uprising CRM — Test Suite & Web Automation Setup
-# ============================================================
-# Ce script réactive le linting et les tests unitaires (autrefois
-# ignorés). Il installe également Playwright/Puppeteer et
-# démarre une instance de Browserless via Docker.
+# Project: Uprising CRM
+# Author: Uprising Studio
+# Description: uprising_test_suite.ps1
+# Last Modified: 2026-03-04
 # ============================================================
 
 $ErrorActionPreference = "Stop"

@@ -1,8 +1,8 @@
 # ============================================================
-# Uprising CRM — Automation Script (Setup, Test, Git)
-# ============================================================
-# Ce script automatise l'installation, les tests et le git.
-# Usage: .\uprising_automation.ps1
+# Project: Uprising CRM
+# Author: Uprising Studio
+# Description: uprising_automation.ps1
+# Last Modified: 2026-03-04
 # ============================================================
 
 $ErrorActionPreference = "Stop"

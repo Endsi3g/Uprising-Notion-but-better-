@@ -1,4 +1,9 @@
-
+-- ============================================================
+-- Project: Uprising CRM
+-- Author: Uprising Studio
+-- Description: insert_view.sql
+-- Last Modified: 2026-03-04
+-- ============================================================
 INSERT INTO core.view (
   id, "universalIdentifier", name, "objectMetadataId", type, icon, position,
   "isCompact", "isCustom", "openRecordIn", "workspaceId",

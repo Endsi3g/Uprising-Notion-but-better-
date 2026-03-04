@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: get_workflow_template.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 const { execSync } = require('child_process');
 const fs = require('fs');
 

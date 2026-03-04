@@ -1,5 +1,9 @@
-# Uprising AI Voice Agency Sync Script
-# This script pulls the latest changes from the Uprising AI Voice Agency repository.
+# ============================================================
+# Project: Uprising CRM
+# Author: Uprising Studio
+# Description: uprising-sync-voice.ps1
+# Last Modified: 2026-03-04
+# ============================================================
 
 $RepoPath = "C:\Users\upris\Downloads\uprising-voice-temp"
 

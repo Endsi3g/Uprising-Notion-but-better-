@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: check_views.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 const fs = require('fs');
 const td = JSON.parse(fs.readFileSync('introspection_full.json'));
 

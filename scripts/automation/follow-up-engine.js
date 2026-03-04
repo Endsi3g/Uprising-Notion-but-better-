@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: follow-up-engine.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 import 'dotenv/config';
 import fs from 'fs';
 /* eslint-disable no-console */

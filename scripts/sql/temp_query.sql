@@ -1,4 +1,9 @@
-
+-- ============================================================
+-- Project: Uprising CRM
+-- Author: Uprising Studio
+-- Description: temp_query.sql
+-- Last Modified: 2026-03-04
+-- ============================================================
 BEGIN;
 
 INSERT INTO "workspace_815i5mpuq7jwcic6l2iitsuil"."workflow" (id, "createdAt", "updatedAt", name)

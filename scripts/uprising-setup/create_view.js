@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: create_view.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 const fs = require('fs');
 const { execSync, spawnSync } = require('child_process');
 const crypto = require('crypto');

@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: introspect_full.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 const fs = require('fs');
 
 const TOKEN = process.env.INTROSPECT_TOKEN;

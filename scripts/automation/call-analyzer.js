@@ -1,3 +1,11 @@
+/**
+ * ============================================================
+ * Project: Uprising CRM
+ * Author: Uprising Studio
+ * Description: call-analyzer.js
+ * Last Modified: 2026-03-04
+ * ============================================================
+ */
 import 'dotenv/config';
 import express from 'express';
 /* eslint-disable no-console */
