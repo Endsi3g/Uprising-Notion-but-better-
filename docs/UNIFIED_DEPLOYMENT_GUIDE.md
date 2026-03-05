@@ -73,7 +73,7 @@ export NOTION_DB_ENTERPRISES="id_db_entreprises"
 export NOTION_DB_PEOPLE="id_db_personnes"
 
 # Lancer le script de configuration
-node scripts/setup_notion_config.js
+node scripts/uprising-setup/setup_notion_config.js
 ```
 
 *Cela injectera directement les identifiants dans la base de données sans passer par l'interface.*

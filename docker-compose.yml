@@ -1,7 +1,8 @@
-name: twenty
+name: uprising-crm
 
 services:
   server:
+    container_name: uprising-server
     build:
       context: .
       dockerfile: packages/twenty-docker/twenty/Dockerfile
@@ -61,6 +62,7 @@ services:
     restart: always
 
   worker:
+    container_name: uprising-worker
     image: uprising-crm:local
     volumes:
       - server-local-data:/app/packages/twenty-server/.local-storage
@@ -110,6 +112,7 @@ services:
     restart: always
 
   db:
+    container_name: uprising-db
     image: postgres:16
     volumes:
       - db-data:/var/lib/postgresql/data
@@ -125,27 +128,36 @@ services:
     restart: always
 
   redis:
+    container_name: uprising-redis
     image: redis
     restart: always
     command: ["--maxmemory-policy", "noeviction"]
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   voice-agency:
-    profiles: ["alternative"]
+    # NOTE: The Dockerfile lives in this repo at packages/twenty-docker/voice-agency/Dockerfile.
+    # The voice-agency source (Uprising-ai-voice-agency) must be cloned next to this repo
+    # at ../uprising-voice-temp — it is mounted at runtime via the volume below.
+    container_name: uprising-voice-agency
     build:
-      context: ./uprising-voice-temp
-      dockerfile: ../packages/twenty-docker/voice-agency/Dockerfile
+      context: .
+      dockerfile: packages/twenty-docker/voice-agency/Dockerfile
     image: uprising-voice-agency:local
     ports:
       - "5000:5000"
     volumes:
-      - ./uprising-voice-temp:/app
+      - ../uprising-voice-temp:/app
       - /app/node_modules
     environment:
       PORT: 5000
     restart: always
 
   instagram-monitor:
+    container_name: uprising-instagram-monitor
     build:
       context: ./packages/twenty-apps/instagram-monitor
       dockerfile: Dockerfile

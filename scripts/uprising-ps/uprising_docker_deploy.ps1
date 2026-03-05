@@ -144,8 +144,9 @@ try {
 
     # 2.2 - Configuration Google OAuth (Port 3001)
     Write-Host "Configuration de l'intégration Google OAuth (Port 3001)..."
-    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CLIENT_ID" "YOUR_CLIENT_ID"
-    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CLIENT_SECRET" "YOUR_CLIENT_SECRET"
+    # SECURITY: Fill in your own Google OAuth credentials from https://console.cloud.google.com
+    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CLIENT_ID" "CHANGE_ME"
+    $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CLIENT_SECRET" "CHANGE_ME"
     $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CALLBACK_URL" "http://localhost:3001/auth/google/redirect"
     $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_APIS_CALLBACK_URL" "http://localhost:3001/auth/google-apis/get-access-token"
     $envContent = Set-Env-Var $envContent "MESSAGING_PROVIDER_GMAIL_ENABLED" "true"
@@ -156,8 +157,9 @@ try {
     $envContent = Set-Env-Var $envContent "EMAIL_DRIVER" "smtp"
     $envContent = Set-Env-Var $envContent "EMAIL_SMTP_HOST" "smtp.gmail.com"
     $envContent = Set-Env-Var $envContent "EMAIL_SMTP_PORT" "465"
-    $envContent = Set-Env-Var $envContent "EMAIL_SMTP_USER" "quebecsaas@gmail.com"
-    $envContent = Set-Env-Var $envContent "EMAIL_SMTP_PASSWORD" "trit opdl uifl qkfv"
+    # SECURITY: Fill in your own SMTP credentials — never commit real passwords
+    $envContent = Set-Env-Var $envContent "EMAIL_SMTP_USER" "CHANGE_ME"
+    $envContent = Set-Env-Var $envContent "EMAIL_SMTP_PASSWORD" "CHANGE_ME"
 
     # 2.4 - Configuration Base de données et URLs (OBLIGATOIRE pour Docker)
     Write-Host "Synchronisation de la base de données et des URLs (Port 3001)..."
@@ -165,7 +167,7 @@ try {
     $envContent = Set-Env-Var $envContent "PG_DATABASE_NAME" "default"
     $envContent = Set-Env-Var $envContent "SERVER_URL" "http://localhost:3001"
     $envContent = Set-Env-Var $envContent "FRONTEND_URL" "http://localhost:3001"
-    $envContent = Set-Env-Var $envContent "EMAIL_FROM_ADDRESS" "quebecsaas@gmail.com"
+    $envContent = Set-Env-Var $envContent "EMAIL_FROM_ADDRESS" "noreply@your-domain.com"
     $envContent = Set-Env-Var $envContent "EMAIL_FROM_NAME" "Uprising Studio"
 
     # 2.4 - Configuration de l'URL du serveur (Port 3001)

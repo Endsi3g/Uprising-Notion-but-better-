@@ -1,5 +1,15 @@
 .git
 .env
 node_modules
+**/node_modules
 .nx/cache
+.cache
+.yarn/cache
+.yarn/install-state.gz
+dist
+build
+.swc
+.vscode
+*.log
 packages/twenty-server/.env
+

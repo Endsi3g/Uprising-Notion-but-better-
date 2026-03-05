@@ -1,61 +1,61 @@
 # Changelog - Uprising Studio CRM
 
-Toutes les modifications notables apportées à ce projet seront documentées dans ce fichier.
+All notable changes to this project will be documented in this file.
 
 ## [1.4.0] - 2026-03-02
 
-### Ajouté (1.4.0)
+### Added (1.4.0)
 
-- **Intégration Instagram & Ollama** : Nouveau service de surveillance (`instagram-monitor`) pour automatiser les interactions Instagram via Ollama.
-- **Monitoring IA** : Surveillance automatique des messages directs avec génération de réponses contextuelles par LLM local.
-- **Support Instagram CLI** : Intégration du dépôt `Instagram-clii` comme base pour les opérations CLI.
-- **Configuration** : Nouvelles variables d'environnement pour la gestion des identifiants Instagram et les intervalles de surveillance.
+- **Instagram & Ollama Integration**: New monitoring service (`instagram-monitor`) to automate Instagram interactions via Ollama.
+- **AI Monitoring**: Automated direct message surveillance with contextual response generation by a local LLM.
+- **Instagram CLI Support**: Integration of the `Instagram-clii` repository as the base for CLI operations.
+- **Configuration**: New environment variables for managing Instagram credentials and monitoring intervals.
 
 ## [1.3.0] - 2026-03-02
 
-### Ajouté (1.3.0)
+### Added (1.3.0)
 
-- **Intégration Voice Agency** : Intégration complète du dépôt `Uprising-ai-voice-agency` avec support pour la synchronisation automatique.
-- **App Hub** : Ajout de "Uprising AI Voice Agency" à la liste des applications disponibles.
-- **Voice Platform** : Mise à jour des agents avec les profils réels (Rénovation Expert Québec, Clinique Dentaire Sourire Plus, Garage Mécanique Pro).
-- **Infrastructure** : Ajout du service `voice-agency` dans Docker Compose et création du script `uprising-sync-voice.ps1`.
-- **Automatisation** : Intégration de la synchronisation de l'agence vocale dans le flux d'automatisation principal.
+- **Voice Agency Integration**: Full integration of the `Uprising-ai-voice-agency` repository with support for automatic synchronisation.
+- **App Hub**: Added "Uprising AI Voice Agency" to the list of available applications.
+- **Voice Platform**: Updated agents with real profiles (Rénovation Expert Québec, Clinique Dentaire Sourire Plus, Garage Mécanique Pro).
+- **Infrastructure**: Added `voice-agency` service to Docker Compose and created the `uprising-sync-voice.ps1` script.
+- **Automation**: Integrated voice agency synchronisation into the main automation workflow.
 
 ---
 
 ## [1.2.0] - 2026-03-01
 
-### Corrigé (1.2.0)
+### Fixed (1.2.0)
 
-- **Docker Build** : Résolution d'un bug critique dans la build `twenty-front` en contournant NX pour la génération des éléments DOM distants.
-- **Scripts de Déploiement** : Correction de la résolution des chemins dans les scripts PowerShell après leur réorganisation.
-- **Import TypeScript** : Correction du chemin d'import du composant `Button` dans `VoiceAgentsPage.tsx`.
+- **Docker Build**: Resolved a critical bug in the `twenty-front` build by bypassing NX for remote DOM element generation.
+- **Deployment Scripts**: Fixed path resolution in PowerShell scripts after their reorganisation.
+- **TypeScript Import**: Fixed the import path for the `Button` component in `VoiceAgentsPage.tsx`.
 
-### Modifié (1.2.0)
+### Changed (1.2.0)
 
-- **Internationalisation** : Traduction des labels français en anglais dans les fichiers sources pour assurer la compatibilité avec le pipeline Lingui (`SignInUp.tsx`, `AppHubPage.tsx`).
-- **Branding Centralisé** : Utilisation de `DefaultWorkspaceName` pour toutes les instances de "Uprising Studio".
-- **Organisation du Code** : Réorganisation majeure des documents et scripts vers `docs/uprising/` et `scripts/uprising-ps/` pour un socle plus propre.
+- **Internationalisation**: Translated French labels to English in source files to ensure compatibility with the Lingui pipeline (`SignInUp.tsx`, `AppHubPage.tsx`).
+- **Centralised Branding**: Using `DefaultWorkspaceName` for all instances of "Uprising Studio".
+- **Code Organisation**: Major reorganisation of documents and scripts into `docs/uprising/` and `scripts/uprising-ps/` for a cleaner codebase.
 
 ---
 
 ## [1.1.0] - 2026-02-26
 
-### Ajouté (1.1.0)
+### Added (1.1.0)
 
-- **Intégration Notion (Backend)** : Scaffoldé le module `integration-notion` avec support pour `Companies`, `People`, `Opportunities` et `Tasks`. Implémentation du client `@notionhq/client`.
-- **Intégration Google Tasks (Backend)** : Extension des scopes OAuth et création du `GoogleTasksSyncService`.
-- **App Hub** : Création de la page `App Hub` dynamique utilisant l'objet personnalisé `AppHubLink`.
-- **Gestionnaire de Clés-Valeurs** : Utilisation du `KeyValuePairService` pour stocker les tokens et configurations d'intégration.
+- **Notion Integration (Backend)**: Scaffolded the `integration-notion` module with support for `Companies`, `People`, `Opportunities`, and `Tasks`. Implemented the `@notionhq/client`.
+- **Google Tasks Integration (Backend)**: Extended OAuth scopes and created the `GoogleTasksSyncService`.
+- **App Hub**: Created the dynamic `App Hub` page using the custom `AppHubLink` object.
+- **Key-Value Manager**: Using `KeyValuePairService` to store integration tokens and configurations.
 
-### Modifié
+### Changed
 
-- **Dashboard Branding** : Texte de bienvenue mis à jour ("Uprising Studio — Centre de Contrôle").
-- **Voice Platform** : Préparation de `VoiceAgentsPage.tsx` pour l'intégration d'endpoints REST via variables d'environnement.
+- **Dashboard Branding**: Updated welcome text ("Uprising Studio — Control Center").
+- **Voice Platform**: Prepared `VoiceAgentsPage.tsx` for REST endpoint integration via environment variables.
 
 ---
 
 ## [1.0.0] - 2026-02-20
 
-- Initialisation du fork de Twenty CRM pour Uprising Studio.
-- Traduction des labels de statut en Français.
+- Initialised the Twenty CRM fork for Uprising Studio.
+- Translated status labels to French.

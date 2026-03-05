@@ -53,7 +53,7 @@ docker compose ps
 docker compose logs --tail=50
 
 # Tester le point de santé de l'API
-curl http://localhost:3000/healthz
+curl http://localhost:3001/healthz
 ```
 
 ## 3. Configuration des Intégrations
@@ -112,7 +112,7 @@ Avant toute mise à jour, effectuez une sauvegarde de la base de données et des
 
 ```bash
 # Sauvegarder la base de données
-docker exec twenty-db-1 pg_dump -U postgres -d default > backup_$(date +%Y%m%d_%H%M%S).sql
+docker exec uprising-db pg_dump -U postgres -d default > backup_$(date +%Y%m%d_%H%M%S).sql
 
 # Sauvegarder les volumes Docker (optionnel)
 docker compose stop
@@ -153,7 +153,7 @@ Si la mise à jour cause des problèmes :
 git checkout HEAD~1
 
 # Restaurer la sauvegarde de la base de données
-docker exec -i twenty-db-1 psql -U postgres -d default < backup_YYYYMMDD_HHMMSS.sql
+docker exec -i uprising-db psql -U postgres -d default < backup_YYYYMMDD_HHMMSS.sql
 
 # Reconstruire et redémarrer
 yarn install
@@ -168,11 +168,11 @@ docker compose restart
 docker compose ps
 
 # Tester le point de santé de l'API
-curl http://localhost:3000/healthz
+curl http://localhost:3001/healthz
 
 # Vérifier la connectivité à la base de données
-docker exec twenty-db-1 pg_isready -U postgres
+docker exec uprising-db pg_isready -U postgres
 
 # Consulter les logs pour d'éventuelles erreurs
-docker compose logs --tail=20 twenty-server twenty-worker
+docker compose logs --tail=20 uprising-server uprising-worker
 ```

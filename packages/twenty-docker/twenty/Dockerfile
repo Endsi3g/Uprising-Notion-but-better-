@@ -20,7 +20,10 @@ COPY ./packages/twenty-front/package.json /app/packages/twenty-front/
 COPY ./packages/twenty-sdk/package.json /app/packages/twenty-sdk/
 
 # Install all dependencies
-RUN yarn && yarn cache clean && npx nx reset
+RUN --mount=type=cache,target=/root/.yarn/berry/cache \
+    --mount=type=cache,target=/root/.cache \
+    yarn install && npx nx reset
+
 
 
 # Build the back
