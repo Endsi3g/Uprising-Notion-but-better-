@@ -32,9 +32,11 @@ COPY packages/twenty-sdk/package.json          ./packages/twenty-sdk/
 
 # Install dependencies — Yarn Berry disk cache preserved across builds
 # via BuildKit cache mounts so subsequent installs are near-instant.
+# Adding YARN_ENABLE_HARDENED_MODE=0 and --immutable to prevent the
+# "unexpected empty event loop" bug in Yarn 4 during CI/Docker builds.
 RUN --mount=type=cache,target=/root/.yarn/berry/cache \
     --mount=type=cache,target=/root/.cache \
-    yarn install && npx nx reset
+    YARN_ENABLE_HARDENED_MODE=0 YARN_HTTP_TIMEOUT=100000 yarn install --immutable && npx nx reset
 
 
 # ── Stage 2: Backend build ───────────────────────────────────
