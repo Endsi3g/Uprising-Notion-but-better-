@@ -111,7 +111,6 @@ const sendFollowUpEmail = async (person) => {
 
       <p>Si tu as des questions d'ici là, n'hésite pas à répondre à cet email.</p>
 
-      <p>Kael<br>
       <p>Xavier<br>
       Uprising Studio</p>
     `,

@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - **Instagram & Ollama Integration**: New monitoring service (`instagram-monitor`) to automate Instagram interactions via Ollama.
 - **AI Monitoring**: Automated direct message surveillance with contextual response generation by a local LLM.
-- **Instagram CLI Support**: Integration of the `Instagram-clii` repository as the base for CLI operations.
+- **Instagram CLI Support**: Integration of the `Instagram-CLI` repository as the base for CLI operations.
 - **Configuration**: New environment variables for managing Instagram credentials and monitoring intervals.
 
 ## [1.3.0] - 2026-03-02
@@ -48,7 +48,7 @@ All notable changes to this project will be documented in this file.
 - **App Hub**: Created the dynamic `App Hub` page using the custom `AppHubLink` object.
 - **Key-Value Manager**: Using `KeyValuePairService` to store integration tokens and configurations.
 
-### Changed
+### Changed (1.1.0)
 
 - **Dashboard Branding**: Updated welcome text ("Uprising Studio — Control Center").
 - **Voice Platform**: Prepared `VoiceAgentsPage.tsx` for REST endpoint integration via environment variables.

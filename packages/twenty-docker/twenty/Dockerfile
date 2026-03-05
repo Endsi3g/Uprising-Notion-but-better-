@@ -1,71 +1,84 @@
-# Base image for common dependencies
+# ============================================================
+# Uprising CRM — Multi-stage Dockerfile
+# ============================================================
+# Stage 1 (common-deps): Install all JS deps using Yarn Berry
+#   — layer is cached as long as package.json / yarn.lock unchanged
+# Stage 2 (twenty-server-build): Compile backend, prune to prod deps
+# Stage 3 (twenty-front-build): Vite build of the React frontend
+# Stage 4 (twenty): Minimal Alpine runtime image
+# ============================================================
+
+# ── Stage 1: Shared dependency installation ─────────────────
 FROM node:24-alpine AS common-deps
 
 WORKDIR /app
 
-# Install native build tools for node-gyp and canvas
+# Native build tools (node-gyp, canvas) — installed once, cached
 RUN apk add --no-cache python3 make g++ cairo-dev pango-dev jpeg-dev giflib-dev librsvg-dev
 
-# Copy only the necessary files for dependency resolution
-COPY ./package.json ./yarn.lock ./.yarnrc.yml ./tsconfig.base.json ./nx.json /app/
-COPY ./.yarn/releases /app/.yarn/releases
-COPY ./.yarn/patches /app/.yarn/patches
+# Copy ONLY manifests first — Docker cache is invalidated only when
+# these files change, not when source files change.
+COPY package.json yarn.lock .yarnrc.yml tsconfig.base.json nx.json ./
+COPY .yarn/releases ./.yarn/releases
+COPY .yarn/patches  ./.yarn/patches
 
-COPY ./packages/twenty-emails/package.json /app/packages/twenty-emails/
-COPY ./packages/twenty-server/package.json /app/packages/twenty-server/
-COPY ./packages/twenty-server/patches /app/packages/twenty-server/patches
-COPY ./packages/twenty-ui/package.json /app/packages/twenty-ui/
-COPY ./packages/twenty-shared/package.json /app/packages/twenty-shared/
-COPY ./packages/twenty-front/package.json /app/packages/twenty-front/
-COPY ./packages/twenty-sdk/package.json /app/packages/twenty-sdk/
+COPY packages/twenty-emails/package.json       ./packages/twenty-emails/
+COPY packages/twenty-server/package.json       ./packages/twenty-server/
+COPY packages/twenty-server/patches            ./packages/twenty-server/patches
+COPY packages/twenty-ui/package.json           ./packages/twenty-ui/
+COPY packages/twenty-shared/package.json       ./packages/twenty-shared/
+COPY packages/twenty-front/package.json        ./packages/twenty-front/
+COPY packages/twenty-sdk/package.json          ./packages/twenty-sdk/
 
-# Install all dependencies
+# Install dependencies — Yarn Berry disk cache preserved across builds
+# via BuildKit cache mounts so subsequent installs are near-instant.
 RUN --mount=type=cache,target=/root/.yarn/berry/cache \
     --mount=type=cache,target=/root/.cache \
     yarn install && npx nx reset
 
 
-
-# Build the back
+# ── Stage 2: Backend build ───────────────────────────────────
 FROM common-deps AS twenty-server-build
 
-# Copy sourcecode after installing dependences to accelerate subsequents builds
-COPY ./packages/twenty-emails /app/packages/twenty-emails
-COPY ./packages/twenty-shared /app/packages/twenty-shared
-COPY ./packages/twenty-server /app/packages/twenty-server
+# Source copied AFTER deps — only invalidates this layer, not Stage 1
+COPY packages/twenty-emails  ./packages/twenty-emails
+COPY packages/twenty-shared  ./packages/twenty-shared
+COPY packages/twenty-server  ./packages/twenty-server
 
 RUN npx nx run twenty-server:build
 
+# Prune to production-only node_modules to keep the final image lean
 RUN yarn workspaces focus --production twenty-emails twenty-shared twenty-server
 
-# Build the front
+
+# ── Stage 3: Frontend build ──────────────────────────────────
 FROM common-deps AS twenty-front-build
 
 ARG REACT_APP_SERVER_BASE_URL
 
-COPY ./packages/twenty-front /app/packages/twenty-front
-COPY ./packages/twenty-ui /app/packages/twenty-ui
-COPY ./packages/twenty-shared /app/packages/twenty-shared
-COPY ./packages/twenty-sdk /app/packages/twenty-sdk
+COPY packages/twenty-front  ./packages/twenty-front
+COPY packages/twenty-ui     ./packages/twenty-ui
+COPY packages/twenty-shared ./packages/twenty-shared
+COPY packages/twenty-sdk    ./packages/twenty-sdk
 
-# Generate dynamic schema/component files required by twenty-sdk
-RUN npx tsx -r tsconfig-paths/register packages/twenty-sdk/scripts/remote-dom/generate-remote-dom-elements.ts
+# Generate remote-DOM elements needed by twenty-sdk
+RUN npx tsx -r tsconfig-paths/register \
+    packages/twenty-sdk/scripts/remote-dom/generate-remote-dom-elements.ts
 
 RUN npx nx build twenty-front
 
 
-# Final stage: Run the application
+# ── Stage 4: Minimal runtime image ──────────────────────────
 FROM node:24-alpine AS twenty
 
-# Used to run healthcheck in docker
-RUN apk add --no-cache curl jq
+# Tooling: curl+jq for healthcheck, psql for DB commands, tsx for scripts
+# Consolidated into a single RUN to reduce image layers
+RUN apk add --no-cache curl jq postgresql-client && \
+    npm install -g tsx
 
-RUN npm install -g tsx
-
-RUN apk add --no-cache postgresql-client
-
-COPY ./packages/twenty-docker/twenty/entrypoint.sh /app/entrypoint.sh
+COPY packages/twenty-docker/twenty/entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
+
 WORKDIR /app/packages/twenty-server
 
 ARG REACT_APP_SERVER_BASE_URL
@@ -74,20 +87,20 @@ ENV REACT_APP_SERVER_BASE_URL=$REACT_APP_SERVER_BASE_URL
 ARG APP_VERSION
 ENV APP_VERSION=$APP_VERSION
 
-# Copy built applications from previous stages
+# Copy production artefacts from build stages
+# (single COPY from twenty-server-build — avoids redundant layer)
 COPY --chown=1000 --from=twenty-server-build /app /app
-COPY --chown=1000 --from=twenty-server-build /app/packages/twenty-server /app/packages/twenty-server
-COPY --chown=1000 --from=twenty-front-build /app/packages/twenty-front/build /app/packages/twenty-server/dist/front
+COPY --chown=1000 --from=twenty-front-build  \
+     /app/packages/twenty-front/build        \
+     /app/packages/twenty-server/dist/front
 
-# Set metadata and labels
-LABEL org.opencontainers.image.source=https://github.com/twentyhq/twenty
-LABEL org.opencontainers.image.description="This image provides a consistent and reproducible environment for the backend and frontend, ensuring it deploys faster and runs the same way regardless of the deployment environment."
+LABEL org.opencontainers.image.source=https://github.com/Endsi3g/Uprising-Notion-but-better-
+LABEL org.opencontainers.image.description="Uprising Studio CRM — custom fork of Twenty CRM with prospecting, voice-agency, and Instagram integrations."
 
 RUN mkdir -p /app/.local-storage /app/packages/twenty-server/.local-storage && \
     chown -R 1000:1000 /app
 
-# Use non root user with uid 1000
 USER 1000
 
-CMD ["node", "dist/main"]
 ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["node", "dist/main"]
