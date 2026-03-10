@@ -1,0 +1,60 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: uprising-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-uprising}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-uprising_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-uprising_crm}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-uprising} -d ${POSTGRES_DB:-uprising_crm}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: uprising-backend
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-uprising}:${POSTGRES_PASSWORD:-uprising_pass}@db:5432/${POSTGRES_DB:-uprising_crm}?schema=public
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: 3000
+    ports:
+      - "3000:3000"
+      - "11434:11434"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000/api/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: uprising-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:80" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  pgdata:
