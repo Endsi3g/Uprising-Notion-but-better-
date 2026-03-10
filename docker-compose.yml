@@ -63,6 +63,9 @@ services:
 
   worker:
     container_name: uprising-worker
+    build:
+      context: .
+      dockerfile: packages/twenty-docker/twenty/Dockerfile
     image: uprising-crm:local
     volumes:
       - server-local-data:/app/packages/twenty-server/.local-storage

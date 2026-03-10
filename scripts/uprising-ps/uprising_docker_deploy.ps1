@@ -143,6 +143,17 @@ try {
     }
 
     # 2.2 - Configuration Google OAuth (Port 3001)
+    Write-Header "Étape 2.5 : Vérification des dépendances externes"
+    if (-not (Test-Path "$ProjectRoot\..\uprising-voice-temp")) {
+        Write-Warning-Custom "Le dossier '../uprising-voice-temp' est introuvable."
+        Write-Warning-Custom "Le service 'voice-agency' échouera probablement au build ou au runtime."
+        Write-Warning-Custom "Veuillez cloner 'Uprising-ai-voice-agency' dans ce dossier si nécessaire."
+    }
+    else {
+        Write-Success "Dossier voice-agency détecté."
+    }
+
+    Write-Header "Étape 2.2 : Configuration Google OAuth (Port 3001)"
     Write-Host "Configuration de l'intégration Google OAuth (Port 3001)..."
     # SECURITY: Fill in your own Google OAuth credentials from https://console.cloud.google.com
     $envContent = Set-Env-Var $envContent "AUTH_GOOGLE_CLIENT_ID" "CHANGE_ME"
@@ -212,6 +223,10 @@ try {
         Write-Host "Construction de l'image Docker depuis le code local..." -ForegroundColor Cyan
         Invoke-Docker-Compose down # On s'assure de nettoyer les restes
         Invoke-Docker-Compose build
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error-Custom "La construction des images Docker a échoué."
+            exit 1
+        }
         Write-Success "Image construite avec succès."
 
         Write-Host "Démarrage des containers sur le port 3001 via Docker Compose..."

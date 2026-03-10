@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2026-03-10
+
+### Fixed (1.4.1)
+
+- **Docker Deployment**: Added build definition for the `worker` service to resolve "pull access denied" errors during local deployment.
+- **Deployment Scripts**: Improved error handling in `uprising_docker_deploy.ps1` to stop on build failures and added warnings for missing sibling repositories (`voice-agency`).
+
 ## [1.4.0] - 2026-03-02
 
 ### Added (1.4.0)
