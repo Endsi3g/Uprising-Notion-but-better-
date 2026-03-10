@@ -14,8 +14,11 @@ if (-not (Test-Path "$ProjectRoot\.env")) {
 }
 
 # 2. Installation des dépendances
-Write-Host "[*] Installation des dépendances Node.js..." -ForegroundColor Cyan
-npm install
+Write-Host "[*] Arrêt des processus existants pour éviter les verrous de fichiers..." -ForegroundColor Cyan
+Stop-Process -Name tsx, node -Force -ErrorAction SilentlyContinue
+
+Write-Host "[*] Installation des dépendances Node.js (avec --legacy-peer-deps)..." -ForegroundColor Cyan
+npm install --legacy-peer-deps
 
 # 3. Configuration Prisma (Base de données)
 Write-Host "[*] Configuration de la base de données (Prisma)..." -ForegroundColor Cyan
