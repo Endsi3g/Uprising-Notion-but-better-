@@ -38,7 +38,7 @@ try {
 # 4. Vérification d'Ollama (Optionnel mais recommandé pour l'IA locale)
 Write-Host "[*] Vérification de la connectivité avec Ollama (Port 11434)..." -ForegroundColor Cyan
 try {
-    $ollamaCheck = Invoke-RestMethod -Uri "http://localhost:11434/api/tags" -ErrorAction Stop
+    $null = Invoke-RestMethod -Uri "http://localhost:11434/api/tags" -ErrorAction Stop
     Write-Host "[+] Ollama est détecté et prêt." -ForegroundColor Green
 } catch {
     Write-Host "[!] Ollama n'est pas détecté. Les fonctionnalités d'IA locale ne seront pas disponibles." -ForegroundColor Yellow
