@@ -1,20 +1,21 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🚀 Uprising Cofounder
 
-# Run and deploy your AI Studio app
+Plateforme d'IA pour entrepreneurs canadiens. Transformez votre idée en startup avec la Trifecta Uprising.
 
-This contains everything you need to run your app locally.
+## 🛠 Installation & Démarrage Rapide
 
-View your app in AI Studio: https://ai.studio/apps/2a48bb4a-24fd-4981-95a0-97b73d908484
+### Local (Sans Docker) - Windows
+Pour un démarrage automatique incluant la configuration de la base de données (SQLite) et le lancement des serveurs :
+1. Ouvrez PowerShell en tant qu'administrateur.
+2. Lancez le script : `.\start-local.ps1`
 
-## Run Locally
+### Docker (Recommandé pour le déploiement)
+Consultez le [Guide Docker](file:///c:/Uprising-Cofounder/Uprising-Cofounder/DOCKER_GUIDE.md) pour les instructions détaillées.
+```powershell
+docker compose up -d
+```
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 📚 Documentation
+- [AGENTS.md](file:///c:/Uprising-Cofounder/Uprising-Cofounder/AGENTS.md) : Détails des services d'IA.
+- [GEMINI.md](file:///c:/Uprising-Cofounder/Uprising-Cofounder/GEMINI.md) : Contexte technique pour les développeurs IA.
+- [DOCKER_GUIDE.md](file:///c:/Uprising-Cofounder/Uprising-Cofounder/DOCKER_GUIDE.md) : Configuration et déploiement conteneurisé.
