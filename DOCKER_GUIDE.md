@@ -48,6 +48,10 @@ docker exec -it uprising-backend ollama pull llama3.1
 - **Port 80 déjà utilisé**: Modifiez le port dans `docker-compose.yml` sous le service `frontend`.
 - **Erreur de connexion DB**: Le backend attend que la DB soit "healthy". Si cela échoue, vérifiez les logs du container `uprising-db`.
 - **Mémoire**: Ollama peut être gourmand en RAM. Assurez-vous que Docker dispose d'au moins 4GB à 8GB de RAM allouée.
+- **Accès Localhost impossible (Frontend silencieux)**: Le frontend utilise désormais un reverse proxy Nginx embarqué pour rediriger les requêtes vers le `backend` via `/api/`.
+- **Contexte introuvable (`no configuration file provided`)**: Les scripts `deploy.ps1` et `deploy.sh` forcent l'exécution dans le bon dossier. Vous pouvez les appeler depuis n'importe quel emplacement.
+- **Erreur de build NPM (ERESOLVE)**: Les Dockerfiles utilisent `--legacy-peer-deps` pour éviter les conflits de version Vite/React.
+
 
 ---
 *Documentation générée pour Uprising Cofounder.*

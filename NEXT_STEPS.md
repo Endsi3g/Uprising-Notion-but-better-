@@ -68,7 +68,7 @@ Une fois l'application déployée et sécurisée, voici les fonctionnalités str
 - **Système : Redis (Upstash Free Tier) + BullMQ**
 - **Objectif** : Gérer les tâches asynchrones lourdes du backend sans bloquer l'API principale (exemple: génération de gros rapports de données ou envois d'emails en masse).
 
-### E. Monitoring & Analytics (déjà amorcé avec Sentry)
+### E. Monitoring & Analytics (Sentry en place ✅)
 
 - **Système : PostHog (Tier gratuit généreux)**
-- **Objectif** : Au-delà du tracking d'erreurs (Sentry), PostHog permet un Product Analytics complet pour savoir exactement comment les utilisateurs naviguent sur votre plateforme.
+- **Objectif** : Au-delà du tracking d'erreurs (Sentry est déjà fonctionnel), PostHog permet un Product Analytics complet pour savoir exactement comment les utilisateurs naviguent sur votre plateforme.
