@@ -31,10 +31,10 @@ Pour lancer l'application avec un coût de **$0/mois**, nous proposons l'archite
 - **Détails** : Vous pouvez brancher votre dépôt GitHub. Render lancera `npm install`, puis `npm run build` ou compilera le TypeScript à la volée.
 - *Note* : Les instances gratuites (Spin-down) s'endorment après 15 minutes d'inactivité. Le premier appel prendra quelques secondes.
 
-### Base de Données (PostgreSQL) : **Supabase** ou **Neon.tech**
+### Base de Données (PostgreSQL) : **Supabase** (Préparé ✅)
 
 - **Coût** : Gratuit (jusqu'à 500MB de stockage sur Supabase).
-- **Détails** : Remplace complètement la base de données locale ou Docker. Récupérez simplement l'`URL de connexion` fournie et insérez-la dans la variable `DATABASE_URL` du backend.
+- **Détails** : L'application est déjà configurée pour utiliser Prisma. Copiez l'`URL de connexion` fournie par Supabase dans la variable `DATABASE_URL` du fichier `.env`.
 
 ### Intelligence Artificielle (Alternative à Ollama) : **Groq** ou **Google Gemini API**
 
@@ -68,7 +68,7 @@ Une fois l'application déployée et sécurisée, voici les fonctionnalités str
 - **Système : Redis (Upstash Free Tier) + BullMQ**
 - **Objectif** : Gérer les tâches asynchrones lourdes du backend sans bloquer l'API principale (exemple: génération de gros rapports de données ou envois d'emails en masse).
 
-### E. Monitoring & Analytics (Sentry en place ✅)
+### E. Monitoring & Analytics (Sentry & PostHog en place ✅)
 
 - **Système : PostHog (Tier gratuit généreux)**
-- **Objectif** : Au-delà du tracking d'erreurs (Sentry est déjà fonctionnel), PostHog permet un Product Analytics complet pour savoir exactement comment les utilisateurs naviguent sur votre plateforme.
+- **Objectif** : L'intégration frontend de PostHog est terminée. Il suffit de renseigner `VITE_POSTHOG_KEY` dans le fichier `.env` pour commencer à recevoir les analytics d'usage.
